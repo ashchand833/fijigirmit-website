@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiji Girmit Foundation NZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f3ee; --card:#ffffff; --text:#2d2018; --muted:#6b5b52;
+  --gold:#d0ab57; --red:#df302d; --shadow:0 14px 34px rgba(0,0,0,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--text);background:var(--bg)}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
+.header-inner{max-width:1280px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:18px}.brand img{width:62px;height:62px;object-fit:contain}.brand strong{font-size:1.1rem}
+nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+nav a{padding:12px 18px;border-radius:999px;font-weight:500}
+nav a:hover,nav a.active{background:#efe7da}
+nav a.donate{background:var(--red);color:#fff;font-weight:700}
+.hero{position:relative;min-height:78vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-slides,.hero-slide{position:absolute;inset:0}
+.hero-slide{opacity:0;transition:opacity .9s ease}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(46,31,24,.42)}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;max-width:980px;padding:40px 24px}
+.hero-content p.topline{letter-spacing:4px;text-transform:uppercase;font-size:.95rem;margin:0 0 18px;color:#fff}
+.hero-content h1{margin:0;font-family:"Playfair Display",serif;font-size:5.4rem;line-height:1.03}
+.hero-content h2{margin:10px 0 22px;font-family:"Playfair Display",serif;font-size:4rem;line-height:1.05;color:var(--gold);font-style:italic}
+.hero-content p.desc{margin:0 auto 28px;max-width:940px;font-size:1.28rem;line-height:1.7;color:rgba(255,255,255,.96)}
+.hero-content button{background:var(--gold);color:#1d140f;border:none;border-radius:14px;padding:18px 42px;font-weight:800;font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow)}
+.hero-dots,.slideshow-dots{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dots{bottom:24px}
+.dot{width:12px;height:12px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer}
+.dot.active{background:#fff}
+.hero-note{text-align:center;padding:18px 24px 0;color:var(--muted);font-size:1rem}
+.section{max-width:1280px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}
+.story-text h2{margin:0 0 18px;font-family:"Playfair Display",serif;font-size:3rem}
+.story-text p{margin:0 0 18px;color:var(--muted);line-height:1.9;font-size:1.04rem}
+.full-width-slideshow{position:relative;height:420px;border-radius:24px;overflow:hidden;background:#ddd;box-shadow:var(--shadow)}
+.slides-track,.story-slide{position:absolute;inset:0}
+.story-slide{opacity:0;transition:opacity .9s ease}
+.story-slide.active{opacity:1}
+.story-slide img{width:100%;height:100%;object-fit:cover}
+.slideshow-overlay{position:absolute;inset:0;background:linear-gradient(0deg, rgba(0,0,0,.20), rgba(0,0,0,.08));pointer-events:none}
+.slideshow-dots{bottom:18px}
+.upcoming-events{padding:20px 24px 84px;max-width:1280px;margin:0 auto}
+.upcoming-title{font-family:"Playfair Display",serif;font-size:3rem;text-align:center;margin:0 0 10px}
+.events-subtitle{text-align:center;color:var(--muted);max-width:860px;margin:0 auto 34px;line-height:1.8}
+.upcoming-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.event-card{background:var(--card);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
+.event-card:hover{transform:translateY(-6px);box-shadow:0 18px 42px rgba(0,0,0,.14)}
+.event-media{width:100%;height:260px;background:#ebe4da;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.event-media img{width:100%;height:100%;object-fit:cover}
+.event-card-content{padding:26px 24px 28px}
+.event-card-content h3{margin:0 0 12px;font-family:"Playfair Display",serif;font-size:2rem;line-height:1.1}
+.event-meta{margin:0 0 16px;color:#9e302f;font-weight:700;line-height:1.5}
+.event-card-content p{margin:0 0 10px;color:var(--muted);line-height:1.7;font-size:1rem}
+.event-cta{margin-top:16px !important;color:#b88c2c !important;font-weight:800}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;z-index:2000;padding:24px}
+.modal.open{display:flex}
+.modal-content{width:min(980px, 100%);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid rgba(0,0,0,.08);background:#f8f4ef}
+.modal-header h3{margin:0;font-family:"Playfair Display",serif;font-size:2rem;line-height:1.1}
+.modal-close{border:none;background:#fff;width:42px;height:42px;border-radius:50%;font-size:1.5rem;cursor:pointer}
+.modal-body{position:relative;background:#121212;display:flex;align-items:center;justify-content:center;min-height:300px}
+.modal-slide{display:none;justify-content:center;align-items:center;padding:12px}
+.modal-slide.active{display:flex}
+.modal-slide img{width:100%;max-height:72vh;object-fit:contain;display:block;background:#111}
+.flyer-view{padding:18px;background:#fff;display:flex;justify-content:center}
+.flyer-view img{width:min(100%, 760px);max-height:78vh;object-fit:contain;border:1px solid rgba(0,0,0,.12);box-shadow:0 10px 30px rgba(0,0,0,.12);background:#fff}
+.modal-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border:none;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:28px;cursor:pointer;backdrop-filter:blur(4px)}
+.modal-prev{left:18px}.modal-next{right:18px}
+.modal-caption{padding:14px 22px;background:#181818;color:#ddd;text-align:center;line-height:1.6}
+footer{background:#222;color:#fff;text-align:center;padding:30px;margin-top:30px}
+@media(max-width:1100px){.upcoming-grid{grid-template-columns:1fr 1fr}.hero-content h1{font-size:4.4rem}.hero-content h2{font-size:3.3rem}}
+@media(max-width:900px){.header-inner{flex-direction:column;align-items:flex-start}.section{grid-template-columns:1fr;padding:56px 24px}.upcoming-events{padding:20px 24px 72px}.hero{min-height:64vh}.hero-content h1{font-size:3.2rem}.hero-content h2{font-size:2.6rem}.hero-content p.desc{font-size:1.08rem}.upcoming-grid{grid-template-columns:1fr}.full-width-slideshow{height:320px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <img src="logo.jpg" alt="Fiji Girmit Foundation NZ logo">
+      <strong>Fiji Girmit Foundation NZ</strong>
+    </div>
+    <nav>
+      <a class="active" href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="history.html">History</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+      <a class="donate" href="donate.html">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active"><img src="gday17.jpg" alt="Fiji Girmit Day celebration hero image 1"></div>
+    <div class="hero-slide"><img src="gday16.jpg" alt="Fiji Girmit Day celebration hero image 2"></div>
+    <div class="hero-slide"><img src="gday15.jpg" alt="Fiji Girmit Day celebration hero image 3"></div>
+    <div class="hero-slide"><img src="gday14.jpg" alt="Fiji Girmit Day celebration hero image 4"></div>
+    <div class="hero-slide"><img src="gday12.jpg" alt="Fiji Girmit Day celebration hero image 5"></div>
+    <div class="hero-slide"><img src="gday11.jpg" alt="Fiji Girmit Day celebration hero image 6"></div>
+  </div>
+  <div class="hero-content">
+    <p class="topline">REMEMBERING · CELEBRATING · ADVOCATING</p>
+    <h1>Honouring the Legacy of</h1>
+    <h2>the Girmitiya</h2>
+    <p class="desc">Preserving the history, culture, and resilience of the indentured labourers who journeyed from India to Fiji between 1879 and 1916.</p>
+    <button onclick="location.href='history.html'">Discover Our Story</button>
+  </div>
+  <div class="hero-dots"></div>
+</section>
+
+<div class="hero-note">Since 2012 — preserving the legacy of Girmit in Aotearoa.</div>
+
+<section class="section">
+  <div class="story-text">
+    <h2>Fiji Girmit Foundation New Zealand</h2>
+    <p>The Fiji Girmit Foundation New Zealand (FGFNZ) was founded in December 2012 in St Lukes, Auckland, with a heartfelt purpose — to honor the journey, struggles, and achievements of Fiji Indians from their Girmit roots to life in Aotearoa.</p>
+    <p>FGFNZ’s mission is to retrieve, reconnect, reclaim, and restore the foundational history of Fiji Indians while celebrating their evolving identity in New Zealand. The Foundation promotes cultural pride, language preservation, and community wellbeing through collaboration with government, tangata whenua, and diverse communities.</p>
+    <p>At its heart, the Foundation stands to give Fiji Indians a voice, celebrate our shared heritage, and ensure that our stories continue to inspire generations to come.</p>
+  </div>
+
+  <div class="full-width-slideshow">
+    <div class="slides-track">
+      <div class="story-slide active"><img src="gday10.jpg" alt="Historic Fiji Girmit memory 10"></div>
+      <div class="story-slide"><img src="gday9.jpg" alt="Historic Fiji Girmit memory 9"></div>
+      <div class="story-slide"><img src="gday8.jpg" alt="Historic Fiji Girmit memory 8"></div>
+      <div class="story-slide"><img src="gday7.jpg" alt="Historic Fiji Girmit memory 7"></div>
+    </div>
+    <div class="slideshow-overlay"></div>
+    <div class="slideshow-dots"></div>
+  </div>
+</section>
+
+<section class="upcoming-events">
+  <h2 class="upcoming-title">Upcoming Events</h2>
+  <p class="events-subtitle">Beautiful event tiles make it easier for visitors to explore celebrations, remember important dates, and open posters or galleries with one click.</p>
+  <div class="upcoming-grid">
+    <div class="event-card" onclick="openModal('gdayGallery')">
+      <div class="event-media">
+        <img src="gday17.jpg" alt="Fiji NZ Girmit Day Celebration">
+      </div>
+      <div class="event-card-content">
+        <h3>Fiji NZ Girmit Day Celebration</h3>
+        <p class="event-meta">Photo Gallery · Community Celebration</p>
+        <p>A featured gallery of Fiji NZ Girmit Day celebration moments. Click the tile to open the full flyer-style popup gallery.</p>
+        <p class="event-cta">Click to view gallery →</p>
+      </div>
+    </div>
+
+    <div class="event-card" onclick="openModal('girmitFlyer')">
+      <div class="event-media">
+        <img src="girmitday.jpg" alt="147th Girmit Remembrance Day poster">
+      </div>
+      <div class="event-card-content">
+        <h3>147th Girmit Remembrance Day</h3>
+        <p class="event-meta">Saturday 16 May 2026</p>
+        <p>Malaeola Community Centre</p>
+        <p>16 Waokauri Place, Mangere, Auckland</p>
+        <p>Doors open at 4pm · Networking, Tea &amp; Snacks: 4.30pm</p>
+        <p class="event-cta">Click to view flyer →</p>
+      </div>
+    </div>
+
+    <div class="event-card" onclick="openModal('highTeaFlyer')">
+      <div class="event-media">
+        <img src="hightea.jpg" alt="International Women's Day High Tea poster">
+      </div>
+      <div class="event-card-content">
+        <h3>International Women’s Day High Tea</h3>
+        <p class="event-meta">Sunday, 8 March 2026 · 2:00 PM - 4:00 PM</p>
+        <p>Divine Patisserie</p>
+        <p>240 Ormiston Rd, Auckland 2019</p>
+        <p>Tickets: $50 per person</p>
+        <p class="event-cta">Click to view flyer →</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="gdayGallery" aria-hidden="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Fiji NZ Girmit Day Celebration</h3>
+      <button class="modal-close" onclick="closeModal('gdayGallery')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <button class="modal-nav modal-prev" onclick="changeGallerySlide('gdayGallery', -1)">&#10094;</button>
+      <button class="modal-nav modal-next" onclick="changeGallerySlide('gdayGallery', 1)">&#10095;</button>
+
+      <div class="modal-slide active"><img src="gday17.jpg" alt="Fiji NZ Girmit Day Celebration image 17"></div>
+      <div class="modal-slide"><img src="gday16.jpg" alt="Fiji NZ Girmit Day Celebration image 16"></div>
+      <div class="modal-slide"><img src="gday15.jpg" alt="Fiji NZ Girmit Day Celebration image 15"></div>
+      <div class="modal-slide"><img src="gday14.jpg" alt="Fiji NZ Girmit Day Celebration image 14"></div>
+      <div class="modal-slide"><img src="gday12.jpg" alt="Fiji NZ Girmit Day Celebration image 12"></div>
+      <div class="modal-slide"><img src="gday11.jpg" alt="Fiji NZ Girmit Day Celebration image 11"></div>
+      <div class="modal-slide"><img src="gday10.jpg" alt="Fiji NZ Girmit Day Celebration image 10"></div>
+      <div class="modal-slide"><img src="gday9.jpg" alt="Fiji NZ Girmit Day Celebration image 9"></div>
+      <div class="modal-slide"><img src="gday8.jpg" alt="Fiji NZ Girmit Day Celebration image 8"></div>
+      <div class="modal-slide"><img src="gday7.jpg" alt="Fiji NZ Girmit Day Celebration image 7"></div>
+      <div class="modal-slide"><img src="gday6.jpg" alt="Fiji NZ Girmit Day Celebration image 6"></div>
+      <div class="modal-slide"><img src="gday5.jpg" alt="Fiji NZ Girmit Day Celebration image 5"></div>
+      <div class="modal-slide"><img src="gday4.jpg" alt="Fiji NZ Girmit Day Celebration image 4"></div>
+      <div class="modal-slide"><img src="gday3.jpg" alt="Fiji NZ Girmit Day Celebration image 3"></div>
+      <div class="modal-slide"><img src="gday2.jpg" alt="Fiji NZ Girmit Day Celebration image 2"></div>
+      <div class="modal-slide"><img src="gday1.jpg" alt="Fiji NZ Girmit Day Celebration image 1"></div>
+    </div>
+    <div class="modal-caption">Celebrating community, culture, remembrance, and the living legacy of Girmit in Aotearoa.</div>
+  </div>
+</div>
+
+<div class="modal" id="girmitFlyer" aria-hidden="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>147th Girmit Remembrance Day</h3>
+      <button class="modal-close" onclick="closeModal('girmitFlyer')">&times;</button>
+    </div>
+    <div class="flyer-view">
+      <img src="girmitday.jpg" alt="147th Girmit Remembrance Day flyer">
+    </div>
+    <div class="modal-caption">Saturday 16 May 2026 · Malaeola Community Centre · 16 Waokauri Place, Mangere, Auckland · Doors open at 4pm</div>
+  </div>
+</div>
+
+<div class="modal" id="highTeaFlyer" aria-hidden="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>International Women’s Day High Tea</h3>
+      <button class="modal-close" onclick="closeModal('highTeaFlyer')">&times;</button>
+    </div>
+    <div class="flyer-view">
+      <img src="hightea.jpg" alt="International Women's Day High Tea flyer">
+    </div>
+    <div class="modal-caption">Sunday, 8 March 2026 · Divine Patisserie · 240 Ormiston Rd, Auckland 2019 · Tickets: $50 per person</div>
+  </div>
+</div>
+
+<footer><p>© Fiji Girmit Foundation NZ</p></footer>
+
+<script>
+function setupHeroSlideshow(){
+  const slides = Array.from(document.querySelectorAll('.hero .hero-slide'));
+  const dotsWrap = document.querySelector('.hero-dots');
+  if(!slides.length || !dotsWrap) return;
+  let current = 0;
+  slides.forEach(function(_, i){
+    const b = document.createElement('button');
+    b.className = 'dot' + (i===0 ? ' active':'');
+    b.onclick = function(){ goTo(i); };
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+  function goTo(i){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  setInterval(function(){ goTo((current + 1) % slides.length); }, 4200);
+}
+function setupStorySlideshow(){
+  document.querySelectorAll('.full-width-slideshow').forEach(function(box){
+    const slides = Array.from(box.querySelectorAll('.story-slide'));
+    const dotsWrap = box.querySelector('.slideshow-dots');
+    if(!slides.length || !dotsWrap) return;
+    let current = 0;
+    slides.forEach(function(_, i){
+      const b = document.createElement('button');
+      b.className = 'dot' + (i===0 ? ' active':'');
+      b.onclick = function(){ goTo(i); };
+      dotsWrap.appendChild(b);
+    });
+    const dots = Array.from(dotsWrap.children);
+    function goTo(i){
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = i;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    setInterval(function(){ goTo((current + 1) % slides.length); }, 3600);
+  });
+}
+function openModal(id){
+  const modal = document.getElementById(id);
+  if(!modal) return;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id){
+  const modal = document.getElementById(id);
+  if(!modal) return;
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal').forEach(function(modal){
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(modal.id); });
+});
+const galleryState = {};
+function changeGallerySlide(modalId, direction){
+  const modal = document.getElementById(modalId);
+  const slides = Array.from(modal.querySelectorAll('.modal-slide'));
+  if(!(modalId in galleryState)) galleryState[modalId] = 0;
+  slides[galleryState[modalId]].classList.remove('active');
+  galleryState[modalId] = (galleryState[modalId] + direction + slides.length) % slides.length;
+  slides[galleryState[modalId]].classList.add('active');
+}
+document.addEventListener('keydown', function(e){
+  document.querySelectorAll('.modal.open').forEach(function(modal){
+    if(e.key === 'Escape') closeModal(modal.id);
+  });
+});
+setupHeroSlideshow();
+setupStorySlideshow();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+<script>
+const CMS_REPO = {
+  owner: "Ashchand833",
+  repo: "fijigirmit-website",
+  branch: "main",
+  folder: "events"
+};
+
+function cmsEscapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function cmsEscapeAttr(value) {
+  return cmsEscapeHtml(value).replace(/`/g, "&#96;");
+}
+
+function cmsNormalizeImage(value) {
+  if (!value) return "";
+  return String(value).trim();
+}
+
+function cmsBuildDateDisplay(eventItem) {
+  if (eventItem.date_display) return eventItem.date_display;
+  if (!eventItem.date) return "";
+  const d = new Date(eventItem.date);
+  if (Number.isNaN(d.getTime())) return String(eventItem.date);
+  return d.toLocaleDateString("en-NZ", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
+function cmsBuildMetaLine(eventItem) {
+  const parts = [];
+  const dateText = cmsBuildDateDisplay(eventItem);
+  if (dateText) parts.push(dateText);
+  if (eventItem.time) parts.push(eventItem.time);
+  return parts.join(" · ");
+}
+
+async function cmsFetchEvents() {
+  const apiUrl = `https://api.github.com/repos/${CMS_REPO.owner}/${CMS_REPO.repo}/contents/${CMS_REPO.folder}?ref=${CMS_REPO.branch}`;
+  const response = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
+  if (!response.ok) throw new Error("Could not load events from GitHub.");
+  const items = await response.json();
+  const files = items.filter(item =>
+    item.type === "file" && /\.(md|markdown|yml|yaml|json)$/i.test(item.name)
+  );
+  const parsed = await Promise.all(files.map(cmsFetchEventFile));
+  return parsed
+    .filter(Boolean)
+    .sort((a, b) => (Number(a.sort_order || 9999) - Number(b.sort_order || 9999)));
+}
+
+async function cmsFetchEventFile(fileItem) {
+  if (!fileItem.download_url) return null;
+  const response = await fetch(fileItem.download_url + `?v=${Date.now()}`);
+  if (!response.ok) return null;
+  const raw = await response.text();
+  return cmsParseEvent(raw, fileItem.name);
+}
+
+function cmsParseEvent(raw, fallbackName) {
+  const trimmed = raw.trim();
+  let data = {};
+  if (trimmed.startsWith("{")) {
+    data = JSON.parse(trimmed);
+  } else {
+    const fm = raw.match(/^---\s*\n([\s\S]*?)\n---/);
+    if (!fm) return null;
+    data = jsyaml.load(fm[1]) || {};
+  }
+
+  const photos = Array.isArray(data.photos)
+    ? data.photos.map(item => {
+        if (typeof item === "string") return cmsNormalizeImage(item);
+        if (item && typeof item === "object") return cmsNormalizeImage(item.image || item.src || "");
+        return "";
+      }).filter(Boolean)
+    : [];
+
+  return {
+    slug: String(data.slug || fallbackName.replace(/\.[^.]+$/, "")).trim(),
+    title: String(data.title || data.name || fallbackName.replace(/\.[^.]+$/, "")).trim(),
+    category: String(data.category || "").trim(),
+    date: data.date || "",
+    date_display: String(data.date_display || data.dateText || "").trim(),
+    time: String(data.time || "").trim(),
+    venue: String(data.venue || "").trim(),
+    location: String(data.location || "").trim(),
+    description: String(data.description || "").trim(),
+    gallery_intro: String(data.gallery_intro || "").trim(),
+    display_mode: String(data.display_mode || (photos.length ? "gallery" : "flyer")).trim(),
+    modal_caption: String(data.modal_caption || "").trim(),
+    flyer: cmsNormalizeImage(data.flyer || data.cover_image || ""),
+    photos,
+    sort_order: Number(data.sort_order || 9999)
+  };
+}
+
+function cmsHomeCardMarkup(eventItem) {
+  const title = cmsEscapeHtml(eventItem.title);
+  const image = cmsEscapeAttr(eventItem.flyer || eventItem.photos[0] || "logo.jpg");
+  const modalId = `cms-modal-${eventItem.slug}`;
+  const meta = cmsEscapeHtml(eventItem.category || cmsBuildMetaLine(eventItem));
+  const lines = [eventItem.venue, eventItem.location, eventItem.time && !meta.includes(eventItem.time) ? eventItem.time : ""].filter(Boolean);
+  const details = lines.map(line => `<p>${cmsEscapeHtml(line)}</p>`).join("");
+  const summary = cmsEscapeHtml(eventItem.description || "Click to open more details.");
+  const cta = eventItem.display_mode === "gallery" && eventItem.photos.length ? "Click to view gallery →" : "Click to view flyer →";
+
+  return `
+    <div class="event-card" onclick="openModal('${cmsEscapeAttr(modalId)}')">
+      <div class="event-media">
+        <img src="${image}" alt="${title}">
+      </div>
+      <div class="event-card-content">
+        <h3>${title}</h3>
+        <p class="event-meta">${meta}</p>
+        ${details}
+        <p>${summary}</p>
+        <p class="event-cta">${cta}</p>
+      </div>
+    </div>
+  `;
+}
+
+function cmsHomeModalMarkup(eventItem) {
+  const modalId = `cms-modal-${eventItem.slug}`;
+  const title = cmsEscapeHtml(eventItem.title);
+  const caption = cmsEscapeHtml(eventItem.modal_caption || [cmsBuildDateDisplay(eventItem), eventItem.venue, eventItem.location, eventItem.time].filter(Boolean).join(" · "));
+  if (eventItem.display_mode === "gallery" && eventItem.photos.length) {
+    const slides = eventItem.photos.map((src, idx) => `
+      <div class="modal-slide ${idx === 0 ? "active" : ""}">
+        <img src="${cmsEscapeAttr(src)}" alt="${title} image ${idx + 1}">
+      </div>
+    `).join("");
+    return `
+      <div class="modal" id="${cmsEscapeAttr(modalId)}" aria-hidden="true">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>${title}</h3>
+            <button class="modal-close" onclick="closeModal('${cmsEscapeAttr(modalId)}')">&times;</button>
+          </div>
+          <div class="modal-body">
+            <button class="modal-nav modal-prev" onclick="changeGallerySlide('${cmsEscapeAttr(modalId)}', -1)">&#10094;</button>
+            <button class="modal-nav modal-next" onclick="changeGallerySlide('${cmsEscapeAttr(modalId)}', 1)">&#10095;</button>
+            ${slides}
+          </div>
+          <div class="modal-caption">${caption}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  const flyer = cmsEscapeAttr(eventItem.flyer || eventItem.photos[0] || "logo.jpg");
+  return `
+    <div class="modal" id="${cmsEscapeAttr(modalId)}" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>${title}</h3>
+          <button class="modal-close" onclick="closeModal('${cmsEscapeAttr(modalId)}')">&times;</button>
+        </div>
+        <div class="flyer-view">
+          <img src="${flyer}" alt="${title} flyer">
+        </div>
+        <div class="modal-caption">${caption}</div>
+      </div>
+    </div>
+  `;
+}
+
+async function loadCmsHomeEvents() {
+  try {
+    const events = await cmsFetchEvents();
+    if (!events.length) return;
+    const grid = document.querySelector(".upcoming-grid");
+    if (!grid) return;
+
+    const featured = events.slice(0, 3);
+    grid.innerHTML = featured.map(cmsHomeCardMarkup).join("");
+
+    let modalHost = document.getElementById("cms-home-modals");
+    if (!modalHost) {
+      modalHost = document.createElement("div");
+      modalHost.id = "cms-home-modals";
+      document.body.appendChild(modalHost);
+    }
+    modalHost.innerHTML = featured.map(cmsHomeModalMarkup).join("");
+
+    document.querySelectorAll('.modal').forEach(function(modal){
+      modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(modal.id); });
+    });
+  } catch (error) {
+    console.warn("CMS events fallback in use.", error);
+  }
+}
+
+loadCmsHomeEvents();
+</script>
+
+</body>
+</html>
