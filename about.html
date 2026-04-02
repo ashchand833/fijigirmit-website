@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Fiji Girmit Foundation NZ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary-dark:#3b2416;
+  --accent-gold:#c8a24d;
+  --accent-cream:#f5efe7;
+  --text-dark:#2b1b14;
+  --text-light:#63554d;
+  --white:#ffffff;
+  --shadow:0 10px 28px rgba(0,0,0,0.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, Arial, sans-serif;
+  color:var(--text-dark);
+  background:#fcfaf7;
+}
+a{text-decoration:none;color:inherit}
+.container{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* Header */
+header{
+  background:rgba(255,255,255,0.96);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+  backdrop-filter: blur(8px);
+}
+.header-container{
+  max-width:1180px;
+  margin:0 auto;
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.logo-section{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:230px;
+}
+.logo-img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+}
+.logo-text h1{
+  margin:0;
+  font-family:"Playfair Display", serif;
+  font-size:1.25rem;
+  line-height:1;
+  font-weight:700;
+}
+.logo-text p{
+  margin:4px 0 0;
+  color:var(--text-light);
+  font-size:0.9rem;
+}
+nav{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+nav a{
+  padding:10px 16px;
+  border-radius:999px;
+  font-weight:500;
+  transition:all .2s ease;
+}
+nav a:hover{
+  background:var(--accent-cream);
+}
+nav a.active{
+  background:var(--accent-cream);
+}
+.donate-btn{
+  background:#dc2f2f !important;
+  color:#fff !important;
+  font-weight:700 !important;
+}
+
+/* Hero */
+.about-hero{
+  background:linear-gradient(rgba(43,27,20,0.68), rgba(43,27,20,0.68)), url("images/hero-1.jpg") center/cover no-repeat;
+  color:#fff;
+  text-align:center;
+  padding:110px 24px 90px;
+}
+.about-hero .kicker{
+  margin:0 0 16px;
+  color:var(--accent-gold);
+  font-size:0.9rem;
+  letter-spacing:2px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.about-hero h1{
+  margin:0 0 18px;
+  font-family:"Playfair Display", serif;
+  font-size:4rem;
+  line-height:1.05;
+}
+.about-hero p{
+  max-width:900px;
+  margin:0 auto;
+  font-size:1.25rem;
+  line-height:1.8;
+  color:rgba(255,255,255,0.95);
+}
+
+/* Intro / mission */
+.about-intro{
+  padding:72px 0 40px;
+}
+.intro-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:34px;
+  align-items:stretch;
+}
+.intro-card, .mission-card{
+  background:#fff;
+  border-radius:22px;
+  box-shadow:var(--shadow);
+}
+.intro-card{
+  padding:34px 34px 26px;
+}
+.section-label{
+  margin:0 0 12px;
+  color:var(--accent-gold);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-size:0.85rem;
+  font-weight:700;
+}
+.intro-card h2,
+.mission-card h2,
+.trustees h2{
+  margin:0 0 16px;
+  font-family:"Playfair Display", serif;
+  font-size:2.35rem;
+  line-height:1.1;
+}
+.intro-card p,
+.mission-card p{
+  margin:0 0 16px;
+  color:var(--text-light);
+  line-height:1.9;
+  font-size:1.03rem;
+}
+.mission-card{
+  background:linear-gradient(135deg, #fbf6ef, #f2e7d6);
+  padding:34px;
+  border:1px solid rgba(200,162,77,0.18);
+}
+.mission-points{
+  margin-top:18px;
+  display:grid;
+  gap:14px;
+}
+.point{
+  background:rgba(255,255,255,0.7);
+  border-radius:14px;
+  padding:14px 16px;
+}
+.point strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+/* Trustees */
+.trustees{
+  padding:30px 0 80px;
+}
+.trustees-head{
+  text-align:center;
+  max-width:840px;
+  margin:0 auto 34px;
+}
+.trustees-head p{
+  margin:0;
+  color:var(--text-light);
+  line-height:1.8;
+  font-size:1.04rem;
+}
+.trustee-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:28px;
+}
+.trustee{
+  background:#fff;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform .22s ease, box-shadow .22s ease;
+  text-align:center;
+}
+.trustee:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 36px rgba(0,0,0,0.12);
+}
+.trustee-photo{
+  padding:18px 18px 0;
+}
+.trustee img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:18px;
+  display:block;
+  background:#eee;
+}
+.trustee-body{
+  padding:18px 18px 24px;
+}
+.trustee h3{
+  margin:0 0 8px;
+  font-family:"Playfair Display", serif;
+  font-size:1.6rem;
+  line-height:1.15;
+}
+.trustee .role{
+  margin:0;
+  color:var(--text-light);
+  font-size:1rem;
+  font-weight:500;
+}
+
+/* Footer */
+footer{
+  background:var(--primary-dark);
+  color:#fff;
+  padding:36px 24px;
+}
+.footer-content{
+  max-width:1180px;
+  margin:0 auto;
+  text-align:center;
+}
+.footer-links{
+  margin-bottom:14px;
+}
+.footer-links a{
+  color:var(--accent-gold);
+  margin:0 14px;
+}
+.footer-text{
+  color:rgba(255,255,255,0.72);
+  font-size:0.95rem;
+}
+
+@media (max-width: 980px){
+  .intro-grid{
+    grid-template-columns:1fr;
+  }
+  .about-hero h1{
+    font-size:3rem;
+  }
+}
+@media (max-width: 720px){
+  .header-container{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  nav{
+    width:100%;
+  }
+  .about-hero{
+    padding:84px 20px 74px;
+  }
+  .about-hero h1{
+    font-size:2.5rem;
+  }
+  .about-hero p{
+    font-size:1.05rem;
+  }
+  .intro-card, .mission-card{
+    padding:26px 22px;
+  }
+  .intro-card h2, .mission-card h2, .trustees h2{
+    font-size:2rem;
+  }
+  .trustee img{
+    height:280px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo-section">
+      <img src="logo.jpg" alt="Fiji Girmit Foundation NZ Logo" class="logo-img">
+      <div class="logo-text">
+        <h1>Fiji Girmit</h1>
+        <p>Foundation NZ</p>
+      </div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="history.html">History</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" class="donate-btn">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<section class="about-hero">
+  <div class="container">
+    <p class="kicker">Our Story · Our People · Our Mission</p>
+    <h1>About Fiji Girmit Foundation NZ</h1>
+    <p>
+      Fiji Girmit Foundation New Zealand (FGFNZ) is dedicated to preserving, celebrating and advocating the heritage of the Girmitiyas — the indentured labourers who journeyed from India to Fiji between 1879 and 1916.
+    </p>
+  </div>
+</section>
+
+<section class="about-intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-card">
+        <p class="section-label">Who We Are</p>
+        <h2>Keeping Girmit history alive for future generations</h2>
+        <p>
+          Fiji Girmit Foundation NZ exists to honour the courage, endurance and cultural resilience of the Girmitiya. We work to preserve stories, memories, traditions and legacies that shaped Fiji Indian identity and continue to inspire communities in New Zealand.
+        </p>
+        <p>
+          Through remembrance, education, events and community connection, the Foundation helps keep this history visible, meaningful and relevant for younger generations.
+        </p>
+      </div>
+
+      <div class="mission-card">
+        <p class="section-label">What We Stand For</p>
+        <h2>Our mission</h2>
+        <div class="mission-points">
+          <div class="point">
+            <strong>Preserve</strong>
+            Document and protect Girmit history, stories and heritage.
+          </div>
+          <div class="point">
+            <strong>Celebrate</strong>
+            Honour the achievements, sacrifice and resilience of the Girmitiya.
+          </div>
+          <div class="point">
+            <strong>Advocate</strong>
+            Strengthen Fiji Indian identity, pride and cultural continuity in New Zealand.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trustees">
+  <div class="container">
+    <div class="trustees-head">
+      <p class="section-label">Leadership</p>
+      <h2>Board of Trustees</h2>
+      <p>
+        Meet the trustees helping preserve Girmit history, honour the legacy of the Girmitiya, and strengthen Fiji Indian heritage and identity in New Zealand.
+      </p>
+    </div>
+
+    <div class="trustee-grid">
+      <div class="trustee">
+        <div class="trustee-photo">
+          <img src="Rajendra Prasad.png" alt="Rajendra Prasad">
+        </div>
+        <div class="trustee-body">
+          <h3>Rajendra Prasad</h3>
+          <p class="role">Founding Trustee</p>
+        </div>
+      </div>
+
+      <div class="trustee">
+        <div class="trustee-photo">
+          <img src="Anji Naidu.png" alt="Anji Naidu">
+        </div>
+        <div class="trustee-body">
+          <h3>Anji Naidu</h3>
+          <p class="role">Trustee</p>
+        </div>
+      </div>
+
+      <div class="trustee">
+        <div class="trustee-photo">
+          <img src="Ashwant Sahay.png" alt="Ashwant Sahay">
+        </div>
+        <div class="trustee-body">
+          <h3>Ashwant Sahay</h3>
+          <p class="role">Trustee</p>
+        </div>
+      </div>
+
+      <div class="trustee">
+        <div class="trustee-photo">
+          <img src="Krishal Naidu.png" alt="Krishal Naidu">
+        </div>
+        <div class="trustee-body">
+          <h3>Krishal Naidu</h3>
+          <p class="role">Trustee</p>
+        </div>
+      </div>
+
+      <div class="trustee">
+        <div class="trustee-photo">
+          <img src="Mandvi Gosal-Bhatnagar.png" alt="Mandvi Gosal-Bhatnagar">
+        </div>
+        <div class="trustee-body">
+          <h3>Mandvi Gosal-Bhatnagar</h3>
+          <p class="role">Trustee</p>
+        </div>
+      </div>
+
+      <div class="trustee">
+        <div class="trustee-photo">
+          <img src="Sam Achary.png" alt="Sam Achary">
+        </div>
+        <div class="trustee-body">
+          <h3>Sam Achary</h3>
+          <p class="role">Trustee</p>
+        </div>
+      </div>
+
+      <div class="trustee">
+        <div class="trustee-photo">
+          <img src="Thakur Ranjit.png" alt="Thakur Ranjit Singh">
+        </div>
+        <div class="trustee-body">
+          <h3>Thakur Ranjit Singh</h3>
+          <p class="role">Founding Trustee</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="history.html">History</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html">Donate</a>
+    </div>
+    <p class="footer-text">© Fiji Girmit Foundation NZ. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

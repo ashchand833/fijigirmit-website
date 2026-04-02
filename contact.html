@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Fiji Girmit Foundation NZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #3d2817;
+            --accent-gold: #c9a961;
+            --accent-cream: #f4ede4;
+            --text-dark: #2c2c2c;
+            --text-light: #6b6b6b;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        header {
+            background: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            background: var(--accent-cream);
+        }
+
+        nav a.active {
+            background: var(--accent-cream);
+        }
+
+        .donate-btn {
+            background: #d32f2f !important;
+            color: white !important;
+            padding: 0.7rem 1.8rem !important;
+            border-radius: 25px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+
+        .donate-btn:hover {
+            background: #b71c1c !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .contact-hero {
+            background: var(--primary-dark);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .contact-hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.9);
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group button {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .form-group button:hover {
+            background: #f4ede4;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cream);
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-section">
+                <img src="logo.jpg" alt="Fiji Girmit Foundation Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Fiji Girmit</h1>
+                    <p>Foundation NZ</p>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="history.html" class="nav-link">History</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="donate.html" class="donate-btn">Donate</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== CONTACT HERO ========== -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>Have questions or want to learn more? We'd love to hear from you!</p>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT FORM ========== -->
+    <section>
+        <div class="contact-content">
+            <form class="contact-form" name="contact" method="POST" netlify>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="history.html">History</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Contact</a>
+                <a href="donate.html">Donate</a>
+            </div>
+            <p class="footer-text">&copy; 2024 Fiji Girmit Foundation NZ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
