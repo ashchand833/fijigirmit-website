@@ -13,10 +13,19 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Event Name", name: "title", widget: "string" }
-      - { label: "Event Date", name: "date", widget: "datetime" }
-      - { label: "Event Time", name: "time", widget: "string" }
-      - { label: "Event Flyer", name: "flyer", widget: "image" }
+      - { label: "Category", name: "category", widget: "string", required: false }
+      - { label: "Event Date", name: "date", widget: "datetime", required: false }
+      - { label: "Event Date Display", name: "date_display", widget: "string", required: false, hint: "Optional custom display text like Saturday 16 May 2026" }
+      - { label: "Event Time", name: "time", widget: "string", required: false }
+      - { label: "Venue", name: "venue", widget: "string", required: false }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Gallery Intro", name: "gallery_intro", widget: "text", required: false, hint: "Optional subtitle for gallery section on the events page" }
+      - { label: "Display Mode", name: "display_mode", widget: "select", default: "flyer", options: ["flyer", "gallery"], required: false }
+      - { label: "Sort Order", name: "sort_order", widget: "number", value_type: "int", default: 100, required: false }
+      - { label: "Event Flyer", name: "flyer", widget: "image", required: false }
       - label: "Event Photos"
         name: "photos"
         widget: "list"
+        required: false
         field: { label: "Image", name: "image", widget: "image" }
