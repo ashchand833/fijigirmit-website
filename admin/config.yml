@@ -29,3 +29,4 @@ collections:
         widget: "list"
         required: false
         field: { label: "Image", name: "image", widget: "image" }
+# trigger staging deploy
