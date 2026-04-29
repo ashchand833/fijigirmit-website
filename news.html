@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Events - Fiji Girmit Foundation NZ</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"><style>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>News - Fiji Girmit Foundation NZ</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"><style>
 :root{--ink:#2f1c14;--gold:#c9a961;--cream:#f7f3ee;--line:#eadfce;--white:#fff;--muted:#6a5b52;--shadow:0 10px 30px rgba(40,24,18,.08)}
 *{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:"Lora",serif;background:var(--cream);color:var(--ink);line-height:1.7}
 a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
@@ -16,28 +16,41 @@ footer{background:#2e1f18;color:#fff;margin-top:72px}.footer-inner{max-width:124
 @media(max-width:1100px){.featured-news,.modal-main,.section{grid-template-columns:1fr}.hero-content h1{font-size:4rem}.hero-content h2{font-size:3rem}.modal-visual{min-height:360px}}
 @media(max-width:760px){.header-inner{flex-direction:column;align-items:flex-start}.hero{min-height:60vh}.hero-content h1{font-size:2.8rem}.hero-content h2{font-size:2.2rem}.section-title,.news-article h2,.modal-top h3{font-size:2.1rem}.featured-news h2{font-size:2.5rem}.card-grid{grid-template-columns:1fr}.modal{padding:12px}.modal-shell{border-radius:20px}.modal-top{padding:18px 20px}.modal-panel{padding:20px}.modal-nav{width:44px;height:44px}}
 </style></head>
-<body><header><div class="header-inner"><a class="brand" href="index.html"><img src="logo.jpg" alt="Fiji Girmit Foundation NZ logo"><div><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="news.html">News</a><a class="active" href="events.html">Events</a><a href="contact.html">Contact</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
-<main class="section-block"><div class="container"><p class="section-label">What's happening</p><h1 class="section-title">Events & galleries</h1><p class="section-subtitle">All events and photo galleries are shown in the same card layout, even if there is only one uploaded image. Older galleries stay visible, and the newest items appear first.</p><div class="grid card-grid" id="eventsGrid"></div></div></main>
-<div class="modal" id="eventModal" aria-hidden="true"><div class="modal-shell"><div class="modal-top"><h3 data-modal-title>Event</h3><button class="close-btn" onclick="closeEventModal()">&times;</button></div><div class="modal-main"><div class="modal-visual"><button class="modal-nav prev" data-modal-prev onclick="changeEventModalGallery(-1)">&#10094;</button><img data-modal-image src="images/gday17.jpg" alt="Event image"><button class="modal-nav next" data-modal-next onclick="changeEventModalGallery(1)">&#10095;</button></div><div class="modal-panel"><div class="counter" data-modal-counter>1 / 1</div><p class="meta" data-modal-meta></p><div data-modal-text></div></div></div></div></div>
+<body><header><div class="header-inner"><a class="brand" href="index.html"><img src="logo.jpg" alt="Fiji Girmit Foundation NZ logo"><div><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a class="active" href="news.html">News</a><a href="events.html">Events</a><a href="contact.html">Contact</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
+<main class="section-block"><div class="container"><p class="section-label">Foundation updates</p><h1 class="section-title">News</h1><p class="section-subtitle">A dedicated news page for stories, announcements, and post-event updates. Admin can upload cover images and article photos, and the newest news appears first.</p><div id="featuredNewsHost"></div><div class="grid card-grid" id="moreNewsGrid"></div><div id="newsArticlesHost"></div></div></main>
 <footer><div class="footer-inner"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="news.html">News</a><a href="events.html">Events</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></div><p>© Fiji Girmit Foundation NZ</p></div></footer>
-<script>document.getElementById('eventModal').addEventListener('click', function(e){ if(e.target===this) closeEventModal(); });document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeEventModal(); });</script>
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script><script src="site-content.js"></script>
 <script>
-async function loadEventsPage() {
+async function loadNewsPage() {
   try {
-    const items = await cmsLoadEvents();
-    window.__eventItems = items;
-    const grid = document.getElementById('eventsGrid');
-    grid.innerHTML = items.map((item, index) => `
-      <article class="site-card" onclick="openEventModalByIndex(${index})">
-        <div class="media"><img src="${cmsEscapeAttr(item.photos[0] || item.flyer || 'logo.jpg')}" alt="${cmsEscapeHtml(item.title)}"></div>
-        <div class="content"><p class="eyebrow">${cmsEscapeHtml(item.category || (item.display_mode === 'gallery' ? 'Photo Gallery' : 'Event'))}</p><h3>${cmsEscapeHtml(item.title)}</h3><p class="meta">${cmsEscapeHtml(eventMetaLine(item))}</p><p>${cmsEscapeHtml(item.description || item.gallery_intro || 'Open this item to view details and photos.')}</p><p class="cta">${item.display_mode === 'gallery' ? 'Open gallery →' : 'Open event →'}</p></div>
-      </article>
-    `).join('');
-  } catch (error) {
-    console.warn(error);
-    document.getElementById('eventsGrid').innerHTML = '<div class="notice">Could not load events right now.</div>';
-  }
+    const items = await cmsLoadNews();
+    const featured = items[0];
+    const featuredHost = document.getElementById('featuredNewsHost');
+    const moreGrid = document.getElementById('moreNewsGrid');
+    const articlesHost = document.getElementById('newsArticlesHost');
+    if (featured) {
+      featuredHost.innerHTML = `
+        <article class="featured-news" id="${cmsEscapeAttr(featured.slug)}">
+          <div class="image-wrap"><img src="${cmsEscapeAttr(featured.cover_image || featured.photos[0] || 'images/gday17.jpg')}" alt="${cmsEscapeHtml(featured.title)}"></div>
+          <div class="text"><p class="section-label" style="margin-bottom:14px">News page</p><h2>${cmsEscapeHtml(featured.title)}</h2><div class="date-tag">${cmsEscapeHtml(cmsFormatDate(featured.publish_date, false))}</div><p>${cmsEscapeHtml(featured.excerpt || 'Latest Foundation update.')}</p></div>
+        </article>`;
+    }
+    moreGrid.innerHTML = items.slice(1, 4).map(item => `
+      <a class="site-card" href="#${cmsEscapeAttr(item.slug)}">
+        <div class="media"><img src="${cmsEscapeAttr(item.cover_image || item.photos[0] || 'images/gday17.jpg')}" alt="${cmsEscapeHtml(item.title)}"></div>
+        <div class="content"><p class="eyebrow">${cmsEscapeHtml(cmsFormatDate(item.publish_date, false))}</p><h3>${cmsEscapeHtml(item.title)}</h3><p>${cmsEscapeHtml(item.excerpt || 'Read more from the Foundation.')}</p><p class="cta">Read more →</p></div>
+      </a>`).join('');
+    articlesHost.innerHTML = items.map(item => {
+      const gallery = item.photos && item.photos.length ? `<div class="news-gallery">${item.photos.map(src => `<div class="thumb"><img src="${cmsEscapeAttr(src)}" alt="${cmsEscapeHtml(item.title)}"></div>`).join('')}</div>` : '';
+      const excerpt = item.excerpt ? `<p>${cmsEscapeHtml(item.excerpt)}</p>` : '';
+      return `
+        <article class="news-article" id="${cmsEscapeAttr(item.slug)}">
+          <div class="cover"><img src="${cmsEscapeAttr(item.cover_image || item.photos[0] || 'images/gday17.jpg')}" alt="${cmsEscapeHtml(item.title)}"></div>
+          <div class="body"><p class="section-label" style="margin-bottom:10px">${cmsEscapeHtml(cmsFormatDate(item.publish_date, false))}</p><h2>${cmsEscapeHtml(item.title)}</h2>${excerpt}${cmsParagraphs(item.body)}${gallery}</div>
+        </article>`;
+    }).join('');
+    if (location.hash) { const target = document.querySelector(location.hash); if (target) target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  } catch (error) { console.warn(error); }
 }
-loadEventsPage();
+loadNewsPage();
 </script></body></html>
