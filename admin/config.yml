@@ -11,8 +11,10 @@ collections:
     folder: "events"
     create: true
     slug: "{{slug}}"
+    summary: "{{title}}"
     fields:
       - { label: "Event Name", name: "title", widget: "string" }
+      - { label: "Show on Homepage", name: "show_on_homepage", widget: "boolean", default: true, required: false }
       - { label: "Category", name: "category", widget: "string", required: false }
       - { label: "Event Date", name: "date", widget: "datetime", required: false }
       - { label: "Event Date Display", name: "date_display", widget: "string", required: false, hint: "Optional custom display text like Saturday 16 May 2026" }
@@ -20,13 +22,34 @@ collections:
       - { label: "Venue", name: "venue", widget: "string", required: false }
       - { label: "Location", name: "location", widget: "string", required: false }
       - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Gallery Intro", name: "gallery_intro", widget: "text", required: false, hint: "Optional subtitle for gallery section on the events page" }
-      - { label: "Display Mode", name: "display_mode", widget: "select", default: "flyer", options: ["flyer", "gallery"], required: false }
-      - { label: "Sort Order", name: "sort_order", widget: "number", value_type: "int", default: 100, required: false }
+      - { label: "Gallery Intro", name: "gallery_intro", widget: "text", required: false }
+      - { label: "Display Mode", name: "display_mode", widget: "select", default: "gallery", options: ["gallery", "flyer"], required: false }
+      - { label: "Sort Order", name: "sort_order", widget: "number", value_type: "int", default: 100, required: false, hint: "Used only when no date is set." }
       - { label: "Event Flyer", name: "flyer", widget: "image", required: false }
       - label: "Event Photos"
         name: "photos"
         widget: "list"
         required: false
         field: { label: "Image", name: "image", widget: "image" }
-# trigger staging deploy
+
+  - name: "news"
+    label: "News"
+    folder: "news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{title}} — {{publish_date}}"
+    fields:
+      - { label: "Post Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "publish_date", widget: "datetime", required: true }
+      - { label: "Show on Homepage", name: "show_on_homepage", widget: "boolean", default: true, required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+      - { label: "Cover Image", name: "cover_image", widget: "image", required: false }
+      - label: "Article Photos"
+        name: "photos"
+        widget: "list"
+        required: false
+        field: { label: "Image", name: "image", widget: "image" }
+      - { label: "Article Body", name: "body", widget: "markdown", required: false }
