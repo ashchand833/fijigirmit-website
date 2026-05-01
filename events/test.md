@@ -7,5 +7,5 @@ location: Test Location
 description: come together for this test event
 display_mode: flyer
 sort_order: 100
-flyer: /images/uploads/147th-fiji-girmit-flyer.jpg
+flyer: ""
 ---
