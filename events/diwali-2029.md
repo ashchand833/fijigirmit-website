@@ -7,5 +7,5 @@ time: now
 description: dadada
 display_mode: gallery
 sort_order: 100
-flyer: /images/uploads/premium_photo-1705699587773-1671f658d2ce.avif
+flyer: ""
 ---
