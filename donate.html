@@ -197,7 +197,7 @@
             margin-bottom: 1.5rem;
         }
 
-        .donation-btn {
+        .donation-btn, button.donation-btn {
             background: #d32f2f;
             color: white;
             padding: 1rem 2rem;
@@ -311,9 +311,8 @@
                 <a href="about.html" class="nav-link">About</a>
                 <a href="history.html" class="nav-link">History</a>
                 <a href="news.html" class="nav-link">News</a>
-                <a href="news.html" class="nav-link">News</a>
                 <a href="events.html" class="nav-link">Events</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
                 <a href="donate.html" class="donate-btn active">Donate</a>
             </nav>
         </div>
@@ -344,12 +343,12 @@
                 <div class="donation-option">
                     <h3>🎁 One-Time Donation</h3>
                     <p>Make a single contribution to support our mission. Every dollar helps preserve Girmit heritage for future generations.</p>
-                    <a href="#" class="donation-btn" onclick="openDonationModal(event)">Donate Now</a>
+                    <button type="button" class="donation-btn" onclick="openDonationModal()">Donate Now</button>
                 </div>
 <div class="donation-option">
                     <h3>🤝 Partner With Us</h3>
                     <p>Interested in partnering with us as an organization or sponsor? We'd love to work together to support our community.</p>
-                    <a href="contact.html" class="donation-btn">Get In Touch</a>
+                    <a href="contact.html" class="donation-btn">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -380,9 +379,13 @@
                 <a href="history.html">History</a>
                 <a href="news.html">News</a>
                 <a href="events.html">Events</a>
-                <a href="contact.html">Contact</a>
+                <a href="contact.html">Contact Us</a>
                 <a href="donate.html">Donate</a>
                 <a href="/admin/">Admin Login</a>
+            </div>
+            <div class="footer-social" style="display:flex;justify-content:center;gap:1rem;margin:0.35rem 0 0.75rem;">
+                <a href="https://www.facebook.com/FijiGirmitFoundationNz/" target="_blank" rel="noopener" style="color:#c9a961;font-weight:600;">Facebook</a>
+                <a href="mailto:admin@fijigirmit.org.nz" style="color:#c9a961;font-weight:600;">Email</a>
             </div>
             <p class="footer-text">&copy; 2024 Fiji Girmit Foundation NZ. All rights reserved.</p>
         </div>

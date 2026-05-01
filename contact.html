@@ -259,9 +259,8 @@
                 <a href="about.html" class="nav-link">About</a>
                 <a href="history.html" class="nav-link">History</a>
                 <a href="news.html" class="nav-link">News</a>
-                <a href="news.html" class="nav-link">News</a>
                 <a href="events.html" class="nav-link">Events</a>
-                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="contact.html" class="nav-link active">Contact Us</a>
                 <a href="donate.html" class="donate-btn">Donate</a>
             </nav>
         </div>
@@ -300,6 +299,7 @@
                     <button type="submit">Send Message</button><p style="margin-top:0.75rem;color:#6b6b6b;font-size:0.95rem;">Messages are captured by the website form and can be forwarded to admin@fijigirmit.org.nz via Netlify form notifications.</p>
                 </div>
             </form>
+            <div id="formSuccessMessage" style="display:none;margin-top:1rem;padding:14px 16px;border-radius:12px;background:#eef7ef;color:#2e5b34;font-weight:600;">Thank you, your message has been sent.</div>
         </div>
     </section>
 
@@ -312,14 +312,42 @@
                 <a href="history.html">History</a>
                 <a href="news.html">News</a>
                 <a href="events.html">Events</a>
-                <a href="contact.html">Contact</a>
+                <a href="contact.html">Contact Us</a>
                 <a href="donate.html">Donate</a>
                 <a href="/admin/">Admin Login</a>
+            </div>
+            <div class="footer-social" style="display:flex;justify-content:center;gap:1rem;margin:0.35rem 0 0.75rem;">
+                <a href="https://www.facebook.com/FijiGirmitFoundationNz/" target="_blank" rel="noopener" style="color:#c9a961;font-weight:600;">Facebook</a>
+                <a href="mailto:admin@fijigirmit.org.nz" style="color:#c9a961;font-weight:600;">Email</a>
             </div>
             <p class="footer-text">&copy; 2024 Fiji Girmit Foundation NZ. All rights reserved.</p>
         </div>
     </footer>
 
     
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.querySelector('.contact-form');
+  var success = document.getElementById('formSuccessMessage');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var formData = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    }).then(function () {
+      form.reset();
+      if (success) success.style.display = 'block';
+      window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
+    }).catch(function () {
+      alert('Sorry, there was a problem sending your message. Please try again.');
+    });
+  });
+});
+</script>
+
 </body>
 </html>

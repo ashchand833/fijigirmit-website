@@ -16,9 +16,9 @@ footer{background:#2e1f18;color:#fff;margin-top:72px}.footer-inner{max-width:124
 @media(max-width:1100px){.featured-news,.modal-main,.section{grid-template-columns:1fr}.hero-content h1{font-size:4rem}.hero-content h2{font-size:3rem}.modal-visual{min-height:360px}}
 @media(max-width:760px){.header-inner{flex-direction:column;align-items:flex-start}.hero{min-height:60vh}.hero-content h1{font-size:2.8rem}.hero-content h2{font-size:2.2rem}.section-title,.news-article h2,.modal-top h3{font-size:2.1rem}.featured-news h2{font-size:2.5rem}.card-grid{grid-template-columns:1fr}.modal{padding:12px}.modal-shell{border-radius:20px}.modal-top{padding:18px 20px}.modal-panel{padding:20px}.modal-nav{width:44px;height:44px}}
 </style></head>
-<body><header><div class="header-inner"><a class="brand" href="index.html"><img src="logo.jpg" alt="Fiji Girmit Foundation NZ logo"><div><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a class="active" href="news.html">News</a><a href="events.html">Events</a><a href="contact.html">Contact</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
-<main class="section-block"><div class="container"><p class="section-label">Foundation updates</p><h1 class="section-title">News</h1><p class="section-subtitle">A dedicated news page for stories, announcements, and post-event updates. Admin can upload cover images and article photos, and the newest news appears first.</p><div id="featuredNewsHost"></div><div class="grid card-grid" id="moreNewsGrid"></div><div id="newsArticlesHost"></div></div></main>
-<footer><div class="footer-inner"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="news.html">News</a><a href="events.html">Events</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a></div><p>© Fiji Girmit Foundation NZ</p></div></footer>
+<body><header><div class="header-inner"><a class="brand" href="index.html"><img src="logo.jpg" alt="Fiji Girmit Foundation NZ logo"><div><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a class="active" href="news.html">News</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
+<main class="section-block"><div class="container"><p class="section-label">Foundation updates</p><h1 class="section-title">News</h1><div id="featuredNewsHost"></div><div class="grid card-grid" id="moreNewsGrid"></div><div id="newsArticlesHost"></div></div></main>
+<footer><div class="footer-inner"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="news.html">News</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a></div><div class="footer-social"><a href="https://www.facebook.com/FijiGirmitFoundationNz/" target="_blank" rel="noopener">Facebook</a><a href="mailto:admin@fijigirmit.org.nz">Email</a></div><p>© Fiji Girmit Foundation NZ</p></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script><script src="site-content.js"></script>
 <script>
 async function loadNewsPage() {
@@ -32,13 +32,13 @@ async function loadNewsPage() {
       featuredHost.innerHTML = `
         <article class="featured-news" id="${cmsEscapeAttr(featured.slug)}">
           <div class="image-wrap"><img src="${cmsEscapeAttr(featured.cover_image || featured.photos[0] || 'images/gday17.jpg')}" alt="${cmsEscapeHtml(featured.title)}"></div>
-          <div class="text"><p class="section-label" style="margin-bottom:14px">News page</p><h2>${cmsEscapeHtml(featured.title)}</h2><div class="date-tag">${cmsEscapeHtml(cmsFormatDate(featured.publish_date, false))}</div><p>${cmsEscapeHtml(featured.excerpt || 'Latest Foundation update.')}</p></div>
+          <div class="text"><p class="section-label" style="margin-bottom:14px">News page</p><h2>${cmsEscapeHtml(featured.title)}</h2><div class="date-tag">${cmsEscapeHtml(cmsFormatDate(featured.publish_date, false))}</div>${featured.excerpt ? `<p>${cmsEscapeHtml(featured.excerpt)}</p>` : ""}</div>
         </article>`;
     }
     moreGrid.innerHTML = items.slice(1, 4).map(item => `
       <a class="site-card" href="#${cmsEscapeAttr(item.slug)}">
         <div class="media"><img src="${cmsEscapeAttr(item.cover_image || item.photos[0] || 'images/gday17.jpg')}" alt="${cmsEscapeHtml(item.title)}"></div>
-        <div class="content"><p class="eyebrow">${cmsEscapeHtml(cmsFormatDate(item.publish_date, false))}</p><h3>${cmsEscapeHtml(item.title)}</h3><p>${cmsEscapeHtml(item.excerpt || 'Read more from the Foundation.')}</p><p class="cta">Read more →</p></div>
+        <div class="content"><p class="eyebrow">${cmsEscapeHtml(cmsFormatDate(item.publish_date, false))}</p><h3>${cmsEscapeHtml(item.title)}</h3>${item.excerpt ? `<p>${cmsEscapeHtml(item.excerpt)}</p>` : ""}<p class="cta">Read more →</p></div>
       </a>`).join('');
     articlesHost.innerHTML = items.map(item => {
       const gallery = item.photos && item.photos.length ? `<div class="news-gallery">${item.photos.map(src => `<div class="thumb"><img src="${cmsEscapeAttr(src)}" alt="${cmsEscapeHtml(item.title)}"></div>`).join('')}</div>` : '';
