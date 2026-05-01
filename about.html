@@ -99,10 +99,39 @@ nav a.active{
 
 /* Hero */
 .about-hero{
-  background:linear-gradient(rgba(43,27,20,0.68), rgba(43,27,20,0.68)), url("images/hero-1.jpg") center/cover no-repeat;
+  position:relative;
+  overflow:hidden;
   color:#fff;
   text-align:center;
   padding:110px 24px 90px;
+}
+.about-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(43,27,20,0.62), rgba(43,27,20,0.72));
+  z-index:1;
+}
+.about-hero-slides,
+.about-hero-slide{
+  position:absolute;
+  inset:0;
+}
+.about-hero-slide{
+  opacity:0;
+  transition:opacity .8s ease;
+}
+.about-hero-slide.active{
+  opacity:1;
+}
+.about-hero-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.about-hero .container{
+  position:relative;
+  z-index:2;
 }
 .about-hero .kicker{
   margin:0 0 16px;
@@ -323,7 +352,8 @@ footer{
       <a href="index.html">Home</a>
       <a href="about.html" class="active">About</a>
       <a href="history.html">History</a>
-      <a href="events.html">Events</a>
+      <a href="news.html">News</a>
+                <a href="events.html">Events</a>
       <a href="contact.html">Contact</a>
       <a href="donate.html" class="donate-btn">Donate</a>
     </nav>
@@ -331,6 +361,12 @@ footer{
 </header>
 
 <section class="about-hero">
+  <div class="about-hero-slides">
+    <div class="about-hero-slide"><img src="images/gday17.jpg" alt="Fiji Girmit community slideshow image 1"></div>
+    <div class="about-hero-slide"><img src="images/gday16.jpg" alt="Fiji Girmit community slideshow image 2"></div>
+    <div class="about-hero-slide"><img src="images/gday15.jpg" alt="Fiji Girmit community slideshow image 3"></div>
+    <div class="about-hero-slide"><img src="images/gday14.jpg" alt="Fiji Girmit community slideshow image 4"></div>
+  </div>
   <div class="container">
     <p class="kicker">Our Story · Our People · Our Mission</p>
     <h1>About Fiji Girmit Foundation NZ</h1>
@@ -393,7 +429,7 @@ footer{
         </div>
         <div class="trustee-body">
           <h3>Rajendra Prasad</h3>
-          <p class="role">Founding Trustee</p>
+          <p class="role">Trustee</p>
         </div>
       </div>
 
@@ -453,7 +489,7 @@ footer{
         </div>
         <div class="trustee-body">
           <h3>Thakur Ranjit Singh</h3>
-          <p class="role">Founding Trustee</p>
+          <p class="role">Trustee</p>
         </div>
       </div>
     </div>
@@ -466,13 +502,33 @@ footer{
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="history.html">History</a>
-      <a href="events.html">Events</a>
+      <a href="news.html">News</a>
+                <a href="events.html">Events</a>
       <a href="contact.html">Contact</a>
       <a href="donate.html">Donate</a>
+      <a href="/admin/">Admin Login</a>
     </div>
     <p class="footer-text">© Fiji Girmit Foundation NZ. All rights reserved.</p>
   </div>
 </footer>
 
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.about-hero-slide'));
+  if(!slides.length) return;
+  const shuffled = slides.slice().sort(() => Math.random() - 0.5);
+  const host = document.querySelector('.about-hero-slides');
+  shuffled.forEach(slide => host.appendChild(slide));
+  let current = 0;
+  function show(idx){
+    shuffled.forEach((slide, i) => slide.classList.toggle('active', i === idx));
+  }
+  show(current);
+  setInterval(() => {
+    current = (current + 1) % shuffled.length;
+    show(current);
+  }, 4200);
+})();
+</script>
 </body>
 </html>

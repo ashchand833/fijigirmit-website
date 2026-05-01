@@ -310,6 +310,8 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="history.html" class="nav-link">History</a>
+                <a href="news.html" class="nav-link">News</a>
+                <a href="news.html" class="nav-link">News</a>
                 <a href="events.html" class="nav-link">Events</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="donate.html" class="donate-btn active">Donate</a>
@@ -342,45 +344,32 @@
                 <div class="donation-option">
                     <h3>🎁 One-Time Donation</h3>
                     <p>Make a single contribution to support our mission. Every dollar helps preserve Girmit heritage for future generations.</p>
-                    <a href="#" class="donation-btn" onclick="alert('Tell us your preferred payment method (PayPal, bank transfer, Give a Little, etc.) and we will add the link here!')">Donate Now</a>
+                    <a href="#" class="donation-btn" onclick="openDonationModal(event)">Donate Now</a>
                 </div>
-
-                <div class="donation-option">
-                    <h3>💝 Monthly Support</h3>
-                    <p>Become a regular supporter with monthly donations. Your ongoing commitment helps us plan and sustain our programs.</p>
-                    <a href="#" class="donation-btn" onclick="alert('Tell us your preferred payment method and we will add the monthly donation link here!')">Set Up Monthly</a>
-                </div>
-
-                <div class="donation-option">
+<div class="donation-option">
                     <h3>🤝 Partner With Us</h3>
                     <p>Interested in partnering with us as an organization or sponsor? We'd love to work together to support our community.</p>
                     <a href="contact.html" class="donation-btn">Get In Touch</a>
                 </div>
             </div>
-
-            <div class="impact-section">
-                <h3>Your Impact</h3>
-                <div class="impact-items">
-                    <div class="impact-item">
-                        <h4>$25</h4>
-                        <p>Supports community event</p>
-                    </div>
-                    <div class="impact-item">
-                        <h4>$50</h4>
-                        <p>Helps archive oral history</p>
-                    </div>
-                    <div class="impact-item">
-                        <h4>$100</h4>
-                        <p>Sponsors educational workshop</p>
-                    </div>
-                    <div class="impact-item">
-                        <h4>$250+</h4>
-                        <p>Funds major initiatives</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
+
+    <div class="bank-modal" id="bankModal" aria-hidden="true">
+        <div class="bank-card">
+            <button class="bank-close" type="button" onclick="closeDonationModal()">&times;</button>
+            <h3>Donation Details</h3>
+            <p>Thank you for supporting Fiji Girmit Foundation NZ. Please use the bank details below for one-time donations.</p>
+            <div class="bank-detail">
+                <strong>Account Name</strong>
+                Fiji Girmit Foundation New Zealand
+            </div>
+            <div class="bank-detail">
+                <strong>Account Number</strong>
+                01-0205-0061026-00
+            </div>
+        </div>
+    </div>
 
     <!-- ========== FOOTER ========== -->
     <footer>
@@ -389,12 +378,31 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="history.html">History</a>
+                <a href="news.html">News</a>
                 <a href="events.html">Events</a>
                 <a href="contact.html">Contact</a>
                 <a href="donate.html">Donate</a>
+                <a href="/admin/">Admin Login</a>
             </div>
             <p class="footer-text">&copy; 2024 Fiji Girmit Foundation NZ. All rights reserved.</p>
         </div>
     </footer>
+<script>
+function openDonationModal(event){
+    if(event) event.preventDefault();
+    document.getElementById('bankModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeDonationModal(){
+    document.getElementById('bankModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.getElementById('bankModal').addEventListener('click', function(e){
+    if(e.target === this) closeDonationModal();
+});
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeDonationModal();
+});
+</script>
 </body>
 </html>
