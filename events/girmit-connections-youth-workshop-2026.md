@@ -11,9 +11,9 @@ description: "A youth workshop with Shana Chandra remembering the 147th Fiji Gir
 gallery_intro: "A youth workshop with Shana Chandra remembering the 147th Fiji Girmit Anniversary 2026."
 display_mode: "gallery"
 sort_order: 1
-flyer: "/images/uploads/girmit-connections-youth-workshop-2026.png"
+flyer: "/images/girmit-connections-youth-workshop-2026.png"
 photos:
-  - image: "/images/uploads/girmit-connections-youth-workshop-2026.png"
+  - image: "/images/girmit-connections-youth-workshop-2026.png"
 ---
 
 Share ideas and perspectives, connect with powerful human stories, understand diverse histories, and explore identity and belonging.
