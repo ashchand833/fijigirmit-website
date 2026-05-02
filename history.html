@@ -12,124 +12,39 @@ body{font-family:'Lora',serif;color:var(--text-dark);line-height:1.7;background:
 header{background:var(--white);padding:1rem 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
 .header-container{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
 .logo-section{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text-dark);}
-.logo-img{width:60px;height:60px;object-fit:contain;}
-.logo-text h1{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;}
+.logo-img{width:60px;height:60px;object-fit:contain;}.logo-text h1{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;}
 .logo-text p{font-size:0.75rem;color:var(--text-light);letter-spacing:0.5px;}
 nav{display:flex;align-items:center;gap:0.5rem;}
 nav a{color:var(--text-dark);text-decoration:none;padding:0.5rem 1.2rem;border-radius:25px;transition:all 0.3s;font-size:0.95rem;}
-nav a:hover, nav a.active{background:var(--accent-cream);}
-.donate-btn{background:#d32f2f !important;color:white !important;padding:0.7rem 1.8rem !important;border-radius:25px !important;font-weight:600 !important;text-decoration:none !important;display:inline-block !important;}
+nav a:hover, nav a.active{background:var(--accent-cream);}.donate-btn{background:#d32f2f !important;color:white !important;padding:0.7rem 1.8rem !important;border-radius:25px !important;font-weight:600 !important;text-decoration:none !important;display:inline-block !important;}
 .history-hero{background:var(--primary-dark);color:white;padding:5rem 2rem;text-align:center;}
-.history-hero h1{font-family:'Playfair Display',serif;font-size:3.5rem;margin-bottom:1rem;font-weight:700;}
-.history-hero p{font-size:1.1rem;max-width:700px;margin:0 auto;color:rgba(255,255,255,0.9);}
-section{padding:5rem 2rem;}
-.container{max-width:1200px;margin:0 auto;}
+.history-hero h1{font-family:'Playfair Display',serif;font-size:3.5rem;margin-bottom:1rem;font-weight:700;}.history-hero p{font-size:1.1rem;max-width:700px;margin:0 auto;color:rgba(255,255,255,0.9);}
+section{padding:5rem 2rem;}.container{max-width:1200px;margin:0 auto;}
 .history-section h2,.memory-strip h2,.timeline-section h2{font-family:'Playfair Display',serif;font-size:2.3rem;margin-bottom:1.2rem;color:var(--primary-dark);}
 .history-section p{margin-bottom:1.3rem;color:var(--text-light);line-height:1.85;}
-.memory-strip{padding:3rem 2rem 2rem;background:#fff;}
-.memory-strip p{max-width:900px;margin:0 auto 2rem;text-align:center;color:var(--text-light);}
-.gallery-shell{position:relative;}
-.full-width-slideshow{position:relative;width:100%;height:82vh;min-height:540px;max-height:900px;overflow:hidden;border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,0.16);background:#eee;}
-.slide{position:absolute;inset:0;opacity:0;transform:scale(1.03);transition:opacity 1.25s ease, transform 6s ease;}
-.slide.active{opacity:1;transform:scale(1);z-index:1;}
-.slide img{width:100%;height:100%;object-fit:cover;display:block;}
-.slideshow-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.34), rgba(0,0,0,0.08));pointer-events:none;z-index:1;}
-.slide-caption{position:absolute;left:28px;bottom:28px;color:#fff;z-index:2;background:rgba(0,0,0,0.28);padding:12px 16px;border-radius:12px;backdrop-filter:blur(4px);max-width:460px;}
-.slide-caption strong{display:block;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px;}
-.slide-caption span{font-size:.95rem;opacity:.95;}
-.slideshow-controls{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;padding:0 18px;z-index:3;pointer-events:none;}
-.slideshow-arrow{pointer-events:auto;width:48px;height:48px;border-radius:50%;border:none;background:rgba(255,255,255,0.84);color:#2b2117;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.18);transition:transform .25s ease, background .25s ease;}
-.slideshow-arrow:hover{transform:scale(1.06);background:#fff;}
-.slideshow-bottom{position:absolute;left:24px;right:24px;bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:3;}
-.slideshow-dots{display:flex;gap:8px;flex-wrap:wrap;}
-.slideshow-dots button{width:11px;height:11px;border-radius:50%;border:none;background:rgba(255,255,255,0.55);cursor:pointer;padding:0;transition:transform .25s ease, background .25s ease;}
-.slideshow-dots button.active{background:white;transform:scale(1.15);}
-.slideshow-progress{flex:1;height:4px;background:rgba(255,255,255,0.28);border-radius:999px;overflow:hidden;max-width:260px;margin-left:auto;}
-.slideshow-progress span{display:block;height:100%;width:0;background:#fff;animation:progressFill 4.6s linear infinite;}
-.history-content{background:white;}
-.timeline-section{background:linear-gradient(180deg,#faf6ef 0%,#fff 100%);}
-.timeline-intro{max-width:850px;color:var(--text-light);margin-bottom:2.5rem;}
-.timeline{position:relative;max-width:950px;margin:0 auto;padding-left:2rem;}
-.timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:4px;background:linear-gradient(var(--accent-gold), rgba(201,169,97,0.28));border-radius:999px;}
-.timeline-item{position:relative;display:grid;grid-template-columns:140px 1fr;gap:2rem;margin-bottom:2.4rem;align-items:start;}
-.timeline-item::before{content:'';position:absolute;left:-0.55rem;top:0.45rem;width:18px;height:18px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 0 7px rgba(201,169,97,0.18);}
-.timeline-year{font-family:'Playfair Display',serif;font-size:1.65rem;color:var(--primary-dark);font-weight:700;line-height:1.1;padding-top:0.2rem;}
-.timeline-card{background:#fff;border:1px solid rgba(201,169,97,0.25);border-radius:18px;padding:1.3rem 1.4rem;box-shadow:0 10px 28px rgba(61,40,23,0.08);}
-.timeline-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.55rem;color:var(--primary-dark);}
-.timeline-card p{color:var(--text-light);line-height:1.75;}
-footer{background:var(--primary-dark);color:white;padding:3rem 2rem;text-align:center;}
-.footer-content{max-width:1200px;margin:0 auto;}
-.footer-links{margin-bottom:1.5rem;}
-.footer-links a{color:var(--accent-gold);text-decoration:none;margin:0 1.5rem;font-size:0.95rem;}
-.footer-text{color:rgba(255,255,255,0.7);font-size:0.9rem;}
+.memory-strip{padding:3rem 2rem 2rem;background:#fff;}.memory-strip p{max-width:900px;margin:0 auto 2rem;text-align:center;color:var(--text-light);}
+.gallery-shell{position:relative;}.full-width-slideshow{position:relative;width:100%;height:82vh;min-height:540px;max-height:900px;overflow:hidden;border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,0.16);background:#eee;}
+.slide{position:absolute;inset:0;opacity:0;transform:scale(1.03);transition:opacity 1.25s ease, transform 6s ease;}.slide.active{opacity:1;transform:scale(1);z-index:1;}.slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.slideshow-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.18), rgba(0,0,0,0.03));pointer-events:none;z-index:1;}
+.slideshow-controls{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;padding:0 18px;z-index:3;pointer-events:none;}.slideshow-arrow{pointer-events:auto;width:48px;height:48px;border-radius:50%;border:none;background:rgba(255,255,255,0.84);color:#2b2117;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.18);transition:transform .25s ease, background .25s ease;}.slideshow-arrow:hover{transform:scale(1.06);background:#fff;}
+.slideshow-bottom{position:absolute;left:24px;right:24px;bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:3;}.slideshow-dots{display:flex;gap:8px;flex-wrap:wrap;}.slideshow-dots button{width:11px;height:11px;border-radius:50%;border:none;background:rgba(255,255,255,0.55);cursor:pointer;padding:0;transition:transform .25s ease, background .25s ease;}.slideshow-dots button.active{background:white;transform:scale(1.15);}.slideshow-progress{flex:1;height:4px;background:rgba(255,255,255,0.28);border-radius:999px;overflow:hidden;max-width:260px;margin-left:auto;}.slideshow-progress span{display:block;height:100%;width:0;background:#fff;animation:progressFill 4.6s linear infinite;}
+.history-content{background:white;}.timeline-section{background:linear-gradient(180deg,#faf6ef 0%,#fff 100%);}.timeline-intro{max-width:850px;color:var(--text-light);margin-bottom:2.5rem;}.timeline{position:relative;max-width:950px;margin:0 auto;padding-left:2rem;}.timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:4px;background:linear-gradient(var(--accent-gold), rgba(201,169,97,0.28));border-radius:999px;}.timeline-item{position:relative;display:grid;grid-template-columns:140px 1fr;gap:2rem;margin-bottom:2.4rem;align-items:start;}.timeline-item::before{content:'';position:absolute;left:-0.55rem;top:0.45rem;width:18px;height:18px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 0 7px rgba(201,169,97,0.18);}.timeline-year{font-family:'Playfair Display',serif;font-size:1.65rem;color:var(--primary-dark);font-weight:700;line-height:1.1;padding-top:0.2rem;}.timeline-card{background:#fff;border:1px solid rgba(201,169,97,0.25);border-radius:18px;padding:1.3rem 1.4rem;box-shadow:0 10px 28px rgba(61,40,23,0.08);}.timeline-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.55rem;color:var(--primary-dark);}.timeline-card p{color:var(--text-light);line-height:1.75;}
+footer{background:var(--primary-dark);color:white;padding:3rem 2rem;text-align:center;}.footer-content{max-width:1200px;margin:0 auto;}.footer-links{margin-bottom:1.5rem;}.footer-links a{color:var(--accent-gold);text-decoration:none;margin:0 1.5rem;font-size:0.95rem;}.footer-text{color:rgba(255,255,255,0.7);font-size:0.9rem;}
 @keyframes progressFill{from{width:0;}to{width:100%;}}
-@media (max-width: 768px){nav{flex-wrap:wrap;gap:0.3rem;justify-content:center;}.header-container{flex-direction:column;gap:1rem;} .full-width-slideshow{height:66vh;min-height:420px;} .slide-caption{left:16px;right:16px;bottom:52px;max-width:none;} .timeline{padding-left:1.3rem;} .timeline::before{left:8px;} .timeline-item{grid-template-columns:1fr;gap:0.8rem;margin-left:0.5rem;} .timeline-item::before{left:-0.85rem;} .timeline-year{font-size:1.4rem;padding-left:0.3rem;} .slideshow-bottom{left:14px;right:14px;}}
+@media (max-width: 768px){nav{flex-wrap:wrap;gap:0.3rem;justify-content:center;}.header-container{flex-direction:column;gap:1rem;} .full-width-slideshow{height:66vh;min-height:420px;} .timeline{padding-left:1.3rem;} .timeline::before{left:8px;} .timeline-item{grid-template-columns:1fr;gap:0.8rem;margin-left:0.5rem;} .timeline-item::before{left:-0.85rem;} .timeline-year{font-size:1.4rem;padding-left:0.3rem;} .slideshow-bottom{left:14px;right:14px;}}
 </style>
 </head>
 <body>
-<header>
-<div class="header-container">
-<a href="index.html" class="logo-section">
-<img src="logo.jpg" alt="Fiji Girmit Foundation Logo" class="logo-img">
-<div class="logo-text"><h1>Fiji Girmit</h1><p>Foundation NZ</p></div>
-</a>
-<nav>
-<a href="index.html">Home</a><a href="about.html">About</a><a href="history.html" class="active">History</a><a href="news.html">News</a>
-                <a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html" class="donate-btn">Donate</a>
-</nav>
-</div>
-</header>
+<header><div class="header-container"><a href="index.html" class="logo-section"><img src="logo.jpg" alt="Fiji Girmit Foundation Logo" class="logo-img"><div class="logo-text"><h1>Fiji Girmit</h1><p>Foundation NZ</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html" class="active">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html" class="donate-btn">Donate</a></nav></div></header>
 <section class="history-hero"><div class="container"><h1>Girmit History</h1><p>A chapter of courage, endurance, and cultural resilience — the story of the Girmitiya between 1879 and 1916.</p></div></section>
-<section class="memory-strip">
-<div class="container">
-<h2 style="text-align:center;">Historic Photo Memories</h2>
-<div class="gallery-shell">
-<div class="full-width-slideshow history-slideshow" aria-label="Historic photo slideshow" data-random="true" data-image-prefix="Historic photo memory">
-<div class="slides-track"></div>
-<div class="slideshow-overlay"></div>
-<div class="slideshow-controls"><button class="slideshow-arrow prev" aria-label="Previous slide">&#10094;</button><button class="slideshow-arrow next" aria-label="Next slide">&#10095;</button></div>
-<div class="slideshow-bottom"><div class="slideshow-dots" aria-label="Slideshow navigation"></div><div class="slideshow-progress"><span></span></div></div>
-</div>
-</div>
-</div>
-</section>
-<section class="history-content"><div class="container">
-<div class="history-section">
-<h2>What is Girmit?</h2>
-<p>The word “Girmit” came from the English word “agreement,” spoken in a different accent and repeated by labourers who were asked to sign contracts they often could not fully understand. Over time, the people who travelled under that contract became known as the Girmitiya, and their journey became one of the defining stories of Fiji Indian identity.</p>
-<p>Between 1879 and 1916, more than 60,000 men, women, and children were taken from India to Fiji under the British indenture system to work mainly on sugar plantations. Many left with hope for wages and a better future, but arrived to a reality of hard labour, strict control, and deep separation from home, family, caste, and village life.</p>
-<p>The voyage across the kala pani, or dark waters, was itself a life-changing crossing. Crowded ships, sickness, uncertainty, grief, and fear shaped the journey. Yet on those same ships, strangers began forming new bonds of survival and community that would carry into their new lives in Fiji.</p>
-<p>In Fiji, Girmitiya endured long working days, harsh discipline, and difficult living conditions. Even so, they rebuilt family life, preserved religious and cultural traditions, and created new communities rooted in resilience, faith, and mutual support. From hardship, they laid foundations that would shape Fiji’s agriculture, education, language, business, and public life for generations.</p>
-<p>Remembering Girmit today is not only about recalling suffering. It is also about honouring dignity, endurance, and the remarkable legacy built by descendants who kept language, festivals, stories, food, and values alive across Fiji and the wider diaspora, including New Zealand.</p>
-</div>
-<div class="history-section" style="margin-top:3rem;">
-<h2>Girmit Day</h2>
-<p>Every year on 14 May, communities in Fiji, New Zealand, Australia, and beyond observe Girmit Day. It marks the arrival of the first ship, Leonidas, to Fiji in 1879 and gives descendants an opportunity to remember sacrifice, celebrate endurance, and pass history to younger generations.</p>
-<p>Through prayer, speeches, cultural performance, exhibitions, and storytelling, Girmit Day keeps memory alive. It reminds us that identity was shaped by courage — and that the opportunities many enjoy today were built on the labour, hope, and survival of those who came before.</p>
-</div>
-</div></section>
-<section class="timeline-section">
-<div class="container">
-<h2>Timeline of Girmit History</h2>
-<p class="timeline-intro">This timeline gives the history page a more visual storytelling style, helping visitors follow the Girmit journey from the first ship to the living legacy carried by later generations.</p>
-<div class="timeline">
-<div class="timeline-item"><div class="timeline-year">1879</div><div class="timeline-card"><h3>Leonidas Arrives in Fiji</h3><p>The first ship, Leonidas, reaches Fiji on 14 May 1879 carrying 498 indentured labourers from India. This marked the beginning of the Girmit era in Fiji.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">1879–1916</div><div class="timeline-card"><h3>The Indenture Period</h3><p>Across 87 voyages, over 60,000 Indians were transported to Fiji under the Girmit system. They worked mostly on sugar plantations and endured difficult contracts, isolation, and harsh labour conditions.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">1916</div><div class="timeline-card"><h3>Recruitment Ends</h3><p>The indenture system was officially stopped. Public criticism and reform campaigns had exposed the human cost of the system and pushed authorities to end further recruitment.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">1920</div><div class="timeline-card"><h3>Final Contracts Expire</h3><p>By 1920, the last indenture contracts came to an end. Many Girmitiya chose to remain in Fiji, where they built homes, families, businesses, schools, and places of worship.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">1987–2006</div><div class="timeline-card"><h3>Migration Expands</h3><p>Political upheaval in Fiji encouraged many Fiji Indians to migrate abroad, including to New Zealand. Communities abroad carried Girmit memory with them and created new spaces for cultural preservation.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">2012</div><div class="timeline-card"><h3>FGFNZ Is Founded</h3><p>The Fiji Girmit Foundation New Zealand was established in Auckland to honour the Girmit legacy, preserve history, support language and culture, and give Fiji Indians in Aotearoa a stronger shared voice.</p></div></div>
-<div class="timeline-item"><div class="timeline-year">Today</div><div class="timeline-card"><h3>Legacy Continues</h3><p>Descendants continue to honour the Girmitiya through education, remembrance events, oral histories, cultural programmes, and intergenerational storytelling that keeps the journey visible for the future.</p></div></div>
-</div>
-</div>
-</section>
-<footer><div class="footer-content"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a>
-                <a href="news.html">News</a>
-                <a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a></div><div class="footer-social" style="display:flex;justify-content:center;gap:1rem;margin:0.35rem 0 0.75rem;"><a href="https://www.facebook.com/FijiGirmitFoundationNz/" target="_blank" rel="noopener" style="color:#c9a961;font-weight:600;">Facebook</a><a href="mailto:admin@fijigirmit.org.nz" style="color:#c9a961;font-weight:600;">Email</a></div><p class="footer-text">&copy; 2024 Fiji Girmit Foundation NZ. All rights reserved.</p></div></footer>
+<section class="memory-strip"><div class="container"><h2 style="text-align:center;">Historic Photo Memories</h2><div class="gallery-shell"><div class="full-width-slideshow history-slideshow" aria-label="Historic photo slideshow" data-random="true" data-image-prefix="Historic photo memory"><div class="slides-track"></div><div class="slideshow-overlay"></div><div class="slideshow-controls"><button class="slideshow-arrow prev" aria-label="Previous slide">&#10094;</button><button class="slideshow-arrow next" aria-label="Next slide">&#10095;</button></div><div class="slideshow-bottom"><div class="slideshow-dots" aria-label="Slideshow navigation"></div><div class="slideshow-progress"><span></span></div></div></div></div></div></section>
+<section class="history-content"><div class="container"><div class="history-section"><h2>What is Girmit?</h2><p>The word “Girmit” came from the English word “agreement,” spoken in a different accent and repeated by labourers who were asked to sign contracts they often could not fully understand. Over time, the people who travelled under that contract became known as the Girmitiya, and their journey became one of the defining stories of Fiji Indian identity.</p><p>Between 1879 and 1916, more than 60,000 men, women, and children were taken from India to Fiji under the British indenture system to work mainly on sugar plantations. Many left with hope for wages and a better future, but arrived to a reality of hard labour, strict control, and deep separation from home, family, caste, and village life.</p><p>The voyage across the kala pani, or dark waters, was itself a life-changing crossing. Crowded ships, sickness, uncertainty, grief, and fear shaped the journey. Yet on those same ships, strangers began forming new bonds of survival and community that would carry into their new lives in Fiji.</p><p>In Fiji, Girmitiya endured long working days, harsh discipline, and difficult living conditions. Even so, they rebuilt family life, preserved religious and cultural traditions, and created new communities rooted in resilience, faith, and mutual support. From hardship, they laid foundations that would shape Fiji’s agriculture, education, language, business, and public life for generations.</p><p>Remembering Girmit today is not only about recalling suffering. It is also about honouring dignity, endurance, and the remarkable legacy built by descendants who kept language, festivals, stories, food, and values alive across Fiji and the wider diaspora, including New Zealand.</p></div><div class="history-section" style="margin-top:3rem;"><h2>Girmit Day</h2><p>Every year on 14 May, communities in Fiji, New Zealand, Australia, and beyond observe Girmit Day. It marks the arrival of the first ship, Leonidas, to Fiji in 1879 and gives descendants an opportunity to remember sacrifice, celebrate endurance, and pass history to younger generations.</p><p>Through prayer, speeches, cultural performance, exhibitions, and storytelling, Girmit Day keeps memory alive. It reminds us that identity was shaped by courage — and that the opportunities many enjoy today were built on the labour, hope, and survival of those who came before.</p></div></div></section>
+<section class="timeline-section"><div class="container"><h2>Timeline of Girmit History</h2><div class="timeline"><div class="timeline-item"><div class="timeline-year">1879</div><div class="timeline-card"><h3>Leonidas Arrives in Fiji</h3><p>The first ship, Leonidas, reaches Fiji on 14 May 1879 carrying 498 indentured labourers from India. This marked the beginning of the Girmit era in Fiji.</p></div></div><div class="timeline-item"><div class="timeline-year">1879–1916</div><div class="timeline-card"><h3>The Indenture Period</h3><p>Across 87 voyages, over 60,000 Indians were transported to Fiji under the Girmit system. They worked mostly on sugar plantations and endured difficult contracts, isolation, and harsh labour conditions.</p></div></div><div class="timeline-item"><div class="timeline-year">1916</div><div class="timeline-card"><h3>Recruitment Ends</h3><p>The indenture system was officially stopped. Public criticism and reform campaigns had exposed the human cost of the system and pushed authorities to end further recruitment.</p></div></div><div class="timeline-item"><div class="timeline-year">1920</div><div class="timeline-card"><h3>Final Contracts Expire</h3><p>By 1920, the last indenture contracts came to an end. Many Girmitiya chose to remain in Fiji, where they built homes, families, businesses, schools, and places of worship.</p></div></div><div class="timeline-item"><div class="timeline-year">1987–2006</div><div class="timeline-card"><h3>Migration Expands</h3><p>Political upheaval in Fiji encouraged many Fiji Indians to migrate abroad, including to New Zealand. Communities abroad carried Girmit memory with them and created new spaces for cultural preservation.</p></div></div><div class="timeline-item"><div class="timeline-year">2012</div><div class="timeline-card"><h3>FGFNZ Is Founded</h3><p>The Fiji Girmit Foundation New Zealand was established in Auckland to honour the Girmit legacy, preserve history, support language and culture, and give Fiji Indians in Aotearoa a stronger shared voice.</p></div></div><div class="timeline-item"><div class="timeline-year">Today</div><div class="timeline-card"><h3>Legacy Continues</h3><p>Descendants continue to honour the Girmitiya through education, remembrance events, oral histories, cultural programmes, and intergenerational storytelling that keeps the journey visible for the future.</p></div></div></div></div></section>
+<footer><div class="footer-content"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a></div><div class="footer-social" style="display:flex;justify-content:center;gap:1rem;margin:0.35rem 0 0.75rem;"><a href="https://www.facebook.com/FijiGirmitFoundationNz/" target="_blank" rel="noopener" style="color:#c9a961;font-weight:600;">Facebook</a><a href="mailto:admin@fijigirmit.org.nz" style="color:#c9a961;font-weight:600;">Email</a></div><p class="footer-text">&copy; 2024 Fiji Girmit Foundation NZ. All rights reserved.</p></div></footer>
 <script>
 const galleryImages=['images/oldpic1.jpg','images/oldpic2.jpeg','images/oldpic3.webp','images/oldpic4.png','images/oldpic5.png','images/oldpic6.png','images/oldpic7.png','images/oldpic8.png','images/oldpic9.png','images/oldpic10.png','images/oldpic11.png'];
 function shuffleArray(items){const arr=[...items];for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
-function buildRandomSlides(slideshow, images){const track=slideshow.querySelector('.slides-track'); if(!track) return; const randomized=slideshow.dataset.random==='true'?shuffleArray(images):images; const altPrefix=slideshow.dataset.imagePrefix||'Gallery image'; track.innerHTML=randomized.map((src,index)=>`<div class="slide${index===0?' active':''}"><img src="${src}" alt="${altPrefix} ${index+1}"><div class="slide-caption"><strong>Historic Girmit Memories</strong><span>A larger, smoother gallery that showcases community and heritage photos in a stronger visual way.</span></div></div>`).join('');}
+function buildRandomSlides(slideshow, images){const track=slideshow.querySelector('.slides-track'); if(!track) return; const randomized=slideshow.dataset.random==='true'?shuffleArray(images):images; const altPrefix=slideshow.dataset.imagePrefix||'Gallery image'; track.innerHTML=randomized.map((src,index)=>`<div class="slide${index===0?' active':''}"><img src="${src}" alt="${altPrefix} ${index+1}"></div>`).join('');}
 function initializeSlideshow(selector, interval=4600){const slideshow=document.querySelector(selector); if(!slideshow) return; if(slideshow.dataset.random==='true') buildRandomSlides(slideshow,galleryImages); const slides=[...slideshow.querySelectorAll('.slide')]; const dotsContainer=slideshow.querySelector('.slideshow-dots'); const progress=slideshow.querySelector('.slideshow-progress span'); const prevBtn=slideshow.querySelector('.prev'); const nextBtn=slideshow.querySelector('.next'); if(!slides.length||!dotsContainer) return; dotsContainer.innerHTML=''; let currentIndex=0,timer; function restartProgress(){if(progress){progress.style.animation='none'; progress.offsetHeight; progress.style.animation=`progressFill ${interval}ms linear infinite`;}} function showSlide(index){slides[currentIndex].classList.remove('active'); dots[currentIndex].classList.remove('active'); currentIndex=(index+slides.length)%slides.length; slides[currentIndex].classList.add('active'); dots[currentIndex].classList.add('active'); restartProgress();} slides.forEach((_,index)=>{const dot=document.createElement('button'); if(index===0) dot.classList.add('active'); dot.setAttribute('aria-label',`Go to slide ${index+1}`); dot.addEventListener('click',()=>{showSlide(index); resetTimer();}); dotsContainer.appendChild(dot);}); const dots=[...dotsContainer.querySelectorAll('button')]; function resetTimer(){clearInterval(timer); timer=setInterval(()=>showSlide(currentIndex+1),interval); restartProgress();} prevBtn?.addEventListener('click',()=>{showSlide(currentIndex-1); resetTimer();}); nextBtn?.addEventListener('click',()=>{showSlide(currentIndex+1); resetTimer();}); slideshow.addEventListener('mouseenter',()=>clearInterval(timer)); slideshow.addEventListener('mouseleave',resetTimer); resetTimer();}
 initializeSlideshow('.history-slideshow');
 </script>

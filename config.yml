@@ -1,3 +1,6 @@
+editor:
+  preview: false
+
 backend:
   name: git-gateway
   branch: staging
@@ -31,25 +34,3 @@ collections:
         widget: "list"
         required: false
         field: { label: "Image", name: "image", widget: "image" }
-
-  - name: "news"
-    label: "News"
-    folder: "news"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    summary: "{{title}} — {{publish_date}}"
-    fields:
-      - { label: "Post Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "publish_date", widget: "datetime", required: true }
-      - { label: "Show on Homepage", name: "show_on_homepage", widget: "boolean", default: true, required: false }
-      - { label: "Featured", name: "featured", widget: "boolean", default: false, required: false }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
-      - { label: "Cover Image", name: "cover_image", widget: "image", required: false }
-      - label: "Article Photos"
-        name: "photos"
-        widget: "list"
-        required: false
-        field: { label: "Image", name: "image", widget: "image" }
-      - { label: "Article Body", name: "body", widget: "markdown", required: false }
