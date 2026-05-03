@@ -1,610 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - Fiji Girmit Foundation NZ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events - Fiji Girmit Foundation NZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --ink:#2f1c14;
+      --gold:#c9a961;
+      --cream:#f7f3ee;
+      --line:#eadfce;
+      --white:#fff;
+      --muted:#6a5b52;
+      --blue:#68BFEF;
+      --shadow:0 10px 30px rgba(40,24,18,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:"Lora",serif;background:var(--cream);color:var(--ink);line-height:1.7}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
 
-        :root {
-            --primary-dark: #3d2817;
-            --accent-gold: #c9a961;
-            --accent-cream: #f4ede4;
-            --text-dark: #2c2c2c;
-            --text-light: #6b6b6b;
-            --white: #ffffff;
-        }
+    header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .header-container{max-width:1240px;margin:0 auto;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;gap:22px}
+    .logo-section{display:flex;align-items:center;gap:14px;min-width:360px;color:inherit}
+    .logo-img{width:64px;height:64px;object-fit:contain;flex:0 0 auto}
+    .logo-text h1{margin:0;font-family:"Playfair Display",serif;font-size:1.55rem;line-height:1.1;font-weight:700;color:inherit;white-space:nowrap}
+    .logo-text p{margin:6px 0 0;color:var(--muted);font-size:.98rem;letter-spacing:.2px;white-space:nowrap}
+    nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    nav a{padding:10px 18px;border-radius:999px;font-size:1rem;transition:.2s}
+    nav a:hover,nav a.active,nav a[aria-current="page"],nav a:focus{background:#68BFEF!important;color:#18324A!important}
+    .donate-btn{background:#68BFEF!important;color:#18324A!important;font-weight:700;padding:14px 28px!important}
 
-        body {
-            font-family: 'Lora', serif;
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
+    main{min-height:60vh}
+    .section-block{padding:72px 0}
+    .container{max-width:1240px;margin:0 auto;padding:0 24px}
+    .section-title{margin:0 0 34px;font-family:"Playfair Display",serif;font-size:3.2rem;line-height:1.08}
+    .grid{display:grid;gap:24px}
+    .card-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .site-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit;padding:0}
+    .site-card:hover,.site-card:focus{transform:translateY(-4px);box-shadow:0 18px 34px rgba(40,24,18,.12)}
+    .site-card:focus{outline:3px solid rgba(29,78,216,.35);outline-offset:3px}
+    .media{aspect-ratio:4/3;background:#efe6da;overflow:hidden}
+    .media img{width:100%;height:100%;object-fit:cover}
+    .content{padding:22px}
+    .eyebrow{margin:0 0 10px;color:var(--gold);font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+    .site-card h3{margin:0 0 10px;font-family:"Playfair Display",serif;font-size:1.9rem;line-height:1.05}
+    .meta{margin:0 0 12px;color:var(--muted);font-size:.97rem}
+    .site-card p{margin:0;color:var(--muted)}
+    .cta{margin-top:14px!important;color:#68BFEF!important;font-weight:700}
 
-        header {
-            background: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+    .modal{position:fixed;inset:0;background:rgba(20,13,10,.78);display:none;align-items:center;justify-content:center;padding:24px;z-index:2000}
+    .modal.open{display:flex}
+    .modal-shell{width:min(1120px,100%);background:#fbf8f4;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);max-height:92vh}
+    .modal-top{display:flex;align-items:center;justify-content:space-between;padding:22px 28px;border-bottom:1px solid var(--line)}
+    .modal-top h3{margin:0;font-family:"Playfair Display",serif;font-size:2.2rem;line-height:1.1}
+    .close-btn{background:none;border:none;font-size:2rem;cursor:pointer;color:var(--ink)}
+    .modal-main{display:grid;grid-template-columns:1.1fr .9fr;gap:0;align-items:stretch;max-height:calc(92vh - 84px)}
+    .modal-visual{position:relative;display:flex;align-items:center;justify-content:center;background:#111;min-height:520px;overflow:hidden}
+    .modal-visual img{max-width:100%;max-height:100%;object-fit:contain}
+    .modal-panel{padding:28px;overflow:auto}
+    .modal-panel p{margin:0 0 12px;color:var(--muted)}
+    .counter{display:inline-flex;padding:8px 14px;border-radius:999px;background:#f1e7da;color:var(--ink);font-weight:700;margin-bottom:18px}
+    .modal-nav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:999px;border:none;background:rgba(255,255,255,.95);font-size:1.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .modal-nav.prev{left:18px}
+    .modal-nav.next{right:18px}
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    footer{background:#2e1f18;color:#fff;margin-top:72px}
+    .footer-inner{max-width:1240px;margin:0 auto;padding:34px 24px;text-align:center}
+    .footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+    .footer-links a{color:#dbc7a7}
+    .footer-social{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+    .footer-social a{color:#fff}
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: var(--text-dark);
-        }
+    @media(max-width:1100px){.modal-main{grid-template-columns:1fr}.modal-visual{min-height:360px}.modal-shell{overflow:auto}}
+    @media(max-width:900px){.header-container{align-items:flex-start}.logo-section{min-width:auto}.logo-text h1{font-size:1.35rem}.logo-text p{font-size:.88rem}.logo-img{width:56px;height:56px}nav{width:100%}}
+    @media(max-width:760px){.header-container{flex-direction:column;align-items:flex-start;padding:12px 18px}.logo-section{width:100%;gap:12px}.logo-img{width:52px;height:52px}.logo-text h1{font-size:1.15rem;white-space:normal}.logo-text p{font-size:.82rem;white-space:normal}.section-block{padding:46px 0}.section-title{font-size:2.25rem}.container{padding:0 18px}.card-grid{grid-template-columns:1fr}.site-card h3{font-size:1.65rem}.modal{padding:12px}.modal-shell{border-radius:20px}.modal-top{padding:18px 20px}.modal-top h3{font-size:1.7rem}.modal-panel{padding:20px}.modal-nav{width:44px;height:44px}}
+  .donate-btn:hover{background:#68BFEF!important;color:#18324A!important}
 
-        .logo-img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-        }
 
-        .logo-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
+/* FINAL GLOBAL HEADER ALIGNMENT FIX
+   Keeps the same logo, text size, nav level, hover colour and button sizing on every page. */
+header{
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(255,255,255,.98) !important;
+  padding: 0 !important;
+  box-shadow: 0 2px 14px rgba(0,0,0,.06) !important;
+  border-bottom: 1px solid rgba(0,0,0,.05) !important;
+}
+header .header-container,
+header .header-inner{
+  max-width: 1280px !important;
+  min-height: 104px !important;
+  margin: 0 auto !important;
+  padding: 14px 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 28px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+header .logo-section,
+header .brand{
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  min-width: 430px !important;
+  flex: 0 0 auto !important;
+  color: #2d1d14 !important;
+  text-decoration: none !important;
+}
+header .logo-img,
+header .brand img{
+  width: 72px !important;
+  height: 72px !important;
+  object-fit: contain !important;
+  flex: 0 0 auto !important;
+}
+header .logo-text h1,
+header .brand h1{
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 1.75rem !important;
+  line-height: 1.08 !important;
+  font-weight: 700 !important;
+  color: #2d1d14 !important;
+  white-space: nowrap !important;
+}
+header .logo-text p,
+header .brand p{
+  margin: 6px 0 0 !important;
+  padding: 0 !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.03rem !important;
+  line-height: 1.2 !important;
+  font-weight: 400 !important;
+  letter-spacing: .15px !important;
+  color: #6d5d54 !important;
+  white-space: nowrap !important;
+}
+header nav{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+header nav a{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 46px !important;
+  padding: 0 20px !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #2d1d14 !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, transform .2s ease !important;
+}
+header nav a:hover,
+header nav a.active,
+header nav a[aria-current="page"],
+header nav a:focus{
+  background: #68BFEF !important;
+  color: #18324A !important;
+}
+header nav a.donate-btn,
+header nav .donate-btn{
+  min-height: 56px !important;
+  padding: 0 32px !important;
+  background: #68BFEF !important;
+  color: #18324A !important;
+  font-weight: 700 !important;
+}
+header nav a.donate-btn:hover,
+header nav .donate-btn:hover,
+header nav a.donate-btn:focus,
+header nav .donate-btn:focus{
+  background: #68BFEF !important;
+  color: #18324A !important;
+  transform: translateY(-1px) !important;
+}
+@media (max-width: 1100px){
+  header .header-container,
+  header .header-inner{
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    min-height: auto !important;
+    padding: 12px 20px !important;
+  }
+  header .logo-section,
+  header .brand{
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  header nav{
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+  }
+}
+@media (max-width: 760px){
+  header .header-container,
+  header .header-inner{
+    padding: 12px 16px !important;
+  }
+  header .logo-img,
+  header .brand img{
+    width: 56px !important;
+    height: 56px !important;
+  }
+  header .logo-text h1,
+  header .brand h1{
+    font-size: 1.28rem !important;
+    white-space: normal !important;
+  }
+  header .logo-text p,
+  header .brand p{
+    font-size: .88rem !important;
+    white-space: normal !important;
+  }
+  header nav{
+    gap: 7px !important;
+  }
+  header nav a{
+    min-height: 40px !important;
+    padding: 0 13px !important;
+    font-size: .94rem !important;
+  }
+  header nav a.donate-btn,
+  header nav .donate-btn{
+    min-height: 42px !important;
+    padding: 0 18px !important;
+  }
+}
 
-        .logo-text p {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            letter-spacing: 0.5px;
-        }
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
 
-        nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
+/* FINAL FIX: same global header height/style on every page + blue only on hover */
+header{
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(255,255,255,.98) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 104px !important;
+  display: flex !important;
+  align-items: center !important;
+  border-bottom: 1px solid rgba(47,28,20,.08) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05) !important;
+}
+header .header-container,
+header .header-inner{
+  width: 100% !important;
+  max-width: 1280px !important;
+  min-height: 104px !important;
+  margin: 0 auto !important;
+  padding: 14px 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 28px !important;
+  box-sizing: border-box !important;
+}
+header .logo-section,
+header .brand{
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  min-width: 430px !important;
+  flex: 0 0 auto !important;
+  color: #2d1d14 !important;
+  text-decoration: none !important;
+}
+header .logo-img,
+header .brand img{
+  width: 72px !important;
+  height: 72px !important;
+  object-fit: contain !important;
+  flex: 0 0 72px !important;
+}
+header .logo-text h1,
+header .brand h1{
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 1.75rem !important;
+  line-height: 1.08 !important;
+  font-weight: 700 !important;
+  color: #2d1d14 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+header .logo-text p,
+header .brand p{
+  margin: 6px 0 0 !important;
+  padding: 0 !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.03rem !important;
+  line-height: 1.2 !important;
+  font-weight: 400 !important;
+  letter-spacing: .15px !important;
+  color: #6d5d54 !important;
+  white-space: nowrap !important;
+}
+header nav{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+header nav a{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 46px !important;
+  padding: 0 20px !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #2d1d14 !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, transform .2s ease !important;
+}
+header nav a.active:not(.donate-btn),
+header nav a[aria-current="page"]:not(.donate-btn){
+  background: transparent !important;
+  color: #2d1d14 !important;
+}
+header nav a:hover,
+header nav a:focus{
+  background: #68BFEF !important;
+  color: #18324A !important;
+}
+header nav a.donate-btn,
+header nav .donate-btn{
+  min-height: 56px !important;
+  padding: 0 32px !important;
+  background: #68BFEF !important;
+  color: #18324A !important;
+  font-weight: 700 !important;
+}
+header nav a.donate-btn:hover,
+header nav .donate-btn:hover,
+header nav a.donate-btn:focus,
+header nav .donate-btn:focus{
+  background: #68BFEF !important;
+  color: #18324A !important;
+  transform: translateY(-1px) !important;
+}
+@media (max-width: 1100px){
+  header{
+    min-height: auto !important;
+  }
+  header .header-container,
+  header .header-inner{
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    min-height: auto !important;
+    padding: 12px 20px !important;
+  }
+  header .logo-section,
+  header .brand{
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  header nav{
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+}
+@media (max-width: 640px){
+  header .header-container,
+  header .header-inner{
+    padding: 10px 14px !important;
+  }
+  header .logo-img,
+  header .brand img{
+    width: 58px !important;
+    height: 58px !important;
+    flex-basis: 58px !important;
+  }
+  header .logo-text h1,
+  header .brand h1{
+    font-size: 1.28rem !important;
+    white-space: normal !important;
+  }
+  header .logo-text p,
+  header .brand p{
+    font-size: .82rem !important;
+    white-space: normal !important;
+  }
+  header nav a{
+    min-height: 40px !important;
+    padding: 0 12px !important;
+    font-size: .92rem !important;
+  }
+  header nav a.donate-btn,
+  header nav .donate-btn{
+    min-height: 42px !important;
+    padding: 0 18px !important;
+  }
+}
 
-        nav a:hover {
-            background: var(--accent-cream);
-        }
 
-        nav a.active {
-            background: var(--accent-cream);
-        }
+/* FINAL LOCKED GLOBAL HEADER + FOOTER FIX
+   Same height, font, spacing and hover behaviour on every page. */
+:root{--fgfnz-blue:#68BFEF;--fgfnz-ink:#2d1d14;--fgfnz-muted:#6d5d54;--fgfnz-brown:#3d2817;}
+html,body{overflow-x:hidden!important;}
+header{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(255,255,255,.98)!important;padding:0!important;box-shadow:0 2px 14px rgba(0,0,0,.06)!important;border-bottom:1px solid rgba(0,0,0,.05)!important;}
+header .header-container,header .header-inner{max-width:1280px!important;min-height:104px!important;margin:0 auto!important;padding:14px 28px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:28px!important;width:100%!important;box-sizing:border-box!important;}
+header .logo-section,header .brand{display:flex!important;align-items:center!important;gap:14px!important;min-width:430px!important;flex:0 0 auto!important;color:var(--fgfnz-ink)!important;text-decoration:none!important;}
+header .logo-img,header .brand img{width:72px!important;height:72px!important;object-fit:contain!important;flex:0 0 auto!important;}
+header .logo-text h1,header .brand h1{margin:0!important;padding:0!important;font-family:"Playfair Display",Georgia,serif!important;font-size:1.75rem!important;line-height:1.08!important;font-weight:700!important;color:var(--fgfnz-ink)!important;white-space:nowrap!important;}
+header .logo-text p,header .brand p{margin:6px 0 0!important;padding:0!important;font-family:"Lora",Georgia,serif!important;font-size:1.03rem!important;line-height:1.2!important;font-weight:400!important;letter-spacing:.15px!important;color:var(--fgfnz-muted)!important;white-space:nowrap!important;}
+header nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:10px!important;flex-wrap:nowrap!important;width:auto!important;margin:0!important;padding:0!important;}
+header nav a{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:46px!important;padding:0 20px!important;border-radius:999px!important;background:transparent!important;color:var(--fgfnz-ink)!important;font-family:"Lora",Georgia,serif!important;font-size:1.05rem!important;line-height:1!important;font-weight:500!important;text-decoration:none!important;transition:background .2s ease,color .2s ease,transform .2s ease!important;}
+header nav a.active:not(.donate-btn),header nav a[aria-current="page"]:not(.donate-btn){background:transparent!important;color:var(--fgfnz-ink)!important;}
+header nav a:not(.donate-btn):hover,header nav a:not(.donate-btn):focus{background:var(--fgfnz-blue)!important;color:#18324A!important;}
+header nav a.donate-btn,header nav .donate-btn{min-height:56px!important;padding:0 32px!important;background:var(--fgfnz-blue)!important;color:#18324A!important;font-weight:700!important;}
+header nav a.donate-btn:hover,header nav .donate-btn:hover,header nav a.donate-btn:focus,header nav .donate-btn:focus{background:var(--fgfnz-blue)!important;color:#18324A!important;transform:translateY(-1px)!important;}
+.footer-social{display:flex!important;justify-content:center!important;align-items:center!important;gap:14px!important;margin:12px 0 12px!important;}
+.footer-social .social-icon{width:42px!important;height:42px!important;border-radius:999px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;background:var(--fgfnz-blue)!important;color:#18324A!important;text-decoration:none!important;transition:transform .2s ease,opacity .2s ease!important;}
+.footer-social .social-icon:hover{transform:translateY(-2px)!important;opacity:.92!important;}
+.footer-social .social-icon svg{width:22px!important;height:22px!important;fill:currentColor!important;display:block!important;}
+@media (max-width:1100px){header .header-container,header .header-inner{align-items:flex-start!important;flex-direction:column!important;gap:14px!important;min-height:auto!important;padding:12px 20px!important;}header .logo-section,header .brand{min-width:0!important;width:100%!important;}header nav{width:100%!important;justify-content:flex-start!important;flex-wrap:wrap!important;}}
+@media (max-width:760px){header .header-container,header .header-inner{padding:12px 16px!important;}header .logo-img,header .brand img{width:56px!important;height:56px!important;}header .logo-text h1,header .brand h1{font-size:1.18rem!important;white-space:normal!important;}header .logo-text p,header .brand p{font-size:.82rem!important;white-space:normal!important;}header nav{gap:6px!important;}header nav a{min-height:40px!important;padding:0 12px!important;font-size:.92rem!important;}header nav a.donate-btn,header nav .donate-btn{min-height:42px!important;padding:0 18px!important;}}
 
-        .donate-btn {
-            background: #d32f2f !important;
-            color: white !important;
-            padding: 0.7rem 1.8rem !important;
-            border-radius: 25px !important;
-            font-weight: 600 !important;
-            transition: all 0.3s !important;
-            text-decoration: none !important;
-            display: inline-block !important;
-        }
-
-        .donate-btn:hover {
-            background: #b71c1c !important;
-            transform: translateY(-2px) !important;
-        }
-
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .event-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-
-        .event-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        }
-
-        .event-image-placeholder {
-            background: linear-gradient(135deg, var(--accent-cream) 0%, #ede6dd 100%);
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .event-image {
-            height: 200px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .event-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .event-card:hover .event-image img {
-            transform: scale(1.05);
-        }
-
-        .event-content {
-            padding: 2rem;
-        }
-
-        .event-category {
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .event-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-dark);
-        }
-
-        .event-date {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .event-card p {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* PHOTO GALLERIES */
-        .gallery-section {
-            margin-bottom: 4rem;
-            padding-top: 3rem;
-            border-top: 2px solid #f0f0f0;
-        }
-
-        .gallery-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            text-align: center;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            background: linear-gradient(135deg, var(--accent-cream) 0%, #ede6dd 100%);
-            height: 200px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-cream);
-        }
-
-        .footer-text {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-wrap: wrap;
-                gap: 0.3rem;
-            }
-
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+</style>
 </head>
+
 <body>
-    <!-- ========== HEADER ========== -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo-section">
-                <img src="logo.jpg" alt="Fiji Girmit Foundation Logo" class="logo-img">
-                <div class="logo-text">
-                    <h1>Fiji Girmit</h1>
-                    <p>Foundation NZ</p>
-                </div>
-            </a>
-            <nav>
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="history.html" class="nav-link">History</a>
-                <a href="events.html" class="nav-link active">Events</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="donate.html" class="donate-btn">Donate</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- ========== EVENTS SECTION ========== -->
-    <section>
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">What's Happening</p>
-                <h2>Upcoming Events</h2>
-            </div>
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-image">
-                        <img src="images/girmitday.jpg" alt="147th Girmit Remembrance Day">
-                    </div>
-                    <div class="event-content">
-                        <p class="event-category">Cultural Celebration</p>
-                        <h3>147th Girmit Remembrance Day</h3>
-                        <p class="event-date">Saturday 16 May 2026</p>
-                        <p>An Evening of Remembrance & Recognition. Lest we forget the sacrifices of our pioneer generation. Malaeola Community Centre, Mangere, Auckland. 4:30pm-8:30pm</p>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-image">
-                        <img src="images/hightea.jpg" alt="International Women's Day High Tea">
-                    </div>
-                    <div class="event-content">
-                        <p class="event-category">Women's Celebration</p>
-                        <h3>International Women's Day High Tea</h3>
-                        <p class="event-date">Sunday 8 March 2026</p>
-                        <p>Balance the Scales - IWD 2026. An inspiring afternoon of connection, conversation, and celebration featuring an elegant high tea. Divine Patisserie, Auckland. 2:00 PM - 4:00 PM</p>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-image-placeholder">🎁</div>
-                    <div class="event-content">
-                        <p class="event-category">Fundraiser</p>
-                        <h3>Annual Fundraiser</h3>
-                        <p class="event-date">Coming Soon</p>
-                        <p>Join us for our Annual Fundraiser to support the Fiji Girmit Foundation NZ's mission of preserving Girmit history and culture. Community gathering with activities, entertainment, and refreshments.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GALLERY SECTIONS -->
-            <div class="gallery-section">
-                <h3>Diwali Celebrations 2024</h3>
-                <div class="gallery-grid">
-                    <div class="gallery-item"><img src="images/diwali-1.jpg" alt="Diwali celebration 1"></div>
-                    <div class="gallery-item"><img src="images/diwali-2.jpg" alt="Diwali celebration 2"></div>
-                    <div class="gallery-item"><img src="images/diwali-3.jpg" alt="Diwali celebration 3"></div>
-                    <div class="gallery-item"><img src="images/diwali-4.jpg" alt="Diwali celebration 4"></div>
-                    <div class="gallery-item"><img src="images/diwali-5.jpg" alt="Diwali celebration 5"></div>
-                    <div class="gallery-item"><img src="images/diwali-6.jpg" alt="Diwali celebration 6"></div>
-                </div>
-            </div>
-
-            <div class="gallery-section">
-                <h3>Breast Cancer Awareness Campaign</h3>
-                <div class="gallery-grid">
-                    <div class="gallery-item"><img src="images/cancer-1.jpg" alt="Breast cancer awareness 1"></div>
-                    <div class="gallery-item"><img src="images/cancer-2.jpg" alt="Breast cancer awareness 2"></div>
-                    <div class="gallery-item"><img src="images/cancer-3.jpg" alt="Breast cancer awareness 3"></div>
-                    <div class="gallery-item"><img src="images/cancer-4.jpg" alt="Breast cancer awareness 4"></div>
-                    <div class="gallery-item"><img src="images/cancer-5.jpg" alt="Breast cancer awareness 5"></div>
-                    <div class="gallery-item"><img src="images/cancer-6.jpg" alt="Breast cancer awareness 6"></div>
-                    <div class="gallery-item"><img src="images/cancer-7.jpg" alt="Breast cancer awareness 7"></div>
-                    <div class="gallery-item"><img src="images/cancer-8.jpg" alt="Breast cancer awareness 8"></div>
-                </div>
-            </div>
-
-            <div class="gallery-section">
-                <h3>Older People's Day Celebration</h3>
-                <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">Honouring our elders and preserving Fiji Indian heritage, identity and diaspora</p>
-                <div class="gallery-grid">
-                    <div class="gallery-item"><img src="images/older-1.jpg" alt="Older people's day 1"></div>
-                    <div class="gallery-item"><img src="images/older-2.jpg" alt="Older people's day 2"></div>
-                    <div class="gallery-item"><img src="images/older-3.jpg" alt="Older people's day 3"></div>
-                    <div class="gallery-item"><img src="images/older-4.jpg" alt="Older people's day 4"></div>
-                    <div class="gallery-item"><img src="images/older-5.jpg" alt="Older people's day 5"></div>
-                    <div class="gallery-item"><img src="images/older-6.jpg" alt="Older people's day 6"></div>
-                    <div class="gallery-item"><img src="images/older-7.jpg" alt="Older people's day 7"></div>
-                    <div class="gallery-item"><img src="images/older-8.jpg" alt="Older people's day 8"></div>
-                </div>
-            </div>
-
-            <div class="gallery-section">
-                <h3>Annual Fundraiser</h3>
-                <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">Support the Fiji Girmit Foundation NZ - Community Fundraising Events</p>
-                <div class="gallery-grid">
-                    <div class="gallery-item"><img src="images/afr-1.jpg" alt="Annual fundraiser 1"></div>
-                    <div class="gallery-item"><img src="images/afr-2.jpg" alt="Annual fundraiser 2"></div>
-                    <div class="gallery-item"><img src="images/afr-3.jpg" alt="Annual fundraiser 3"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== FOOTER ========== -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="history.html">History</a>
-                <a href="events.html">Events</a>
-                <a href="contact.html">Contact</a>
-                <a href="donate.html">Donate</a>
-            </div>
-            <p class="footer-text">&copy; 2024 Fiji Girmit Foundation NZ. All rights reserved.</p>
-        </div>
-    </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+<header><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
+<main><section class="section-block"><div class="container"><h1 class="section-title">Upcoming &amp; Past Events</h1><div class="grid card-grid" id="eventsGrid"></div><p id="eventsEmpty" style="display:none;color:#6a5b52;margin-top:20px;">No events have been published yet.</p></div></section></main>
+<div aria-hidden="true" class="modal" id="eventModal"><div class="modal-shell"><div class="modal-top"><h3 data-modal-title>Event</h3><button class="close-btn" type="button" onclick="closeEventModal()">×</button></div><div class="modal-main"><div class="modal-visual"><button class="modal-nav prev" data-modal-prev type="button" onclick="changeEventModalGallery(-1)">❮</button><img alt="Event image" data-modal-image src=""/><button class="modal-nav next" data-modal-next type="button" onclick="changeEventModalGallery(1)">❯</button></div><div class="modal-panel"><div class="counter" data-modal-counter>1 / 1</div><div data-modal-text></div></div></div></div></div>
+<footer><div class="footer-inner footer-content"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a></div><div class="footer-social" aria-label="Social links"><a class="social-icon" href="https://www.facebook.com/FijiGirmitFoundationNz" rel="noopener" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"/></svg></a><a class="social-icon" href="https://www.linkedin.com/company/fiji-girmit-foundation-nz/about/" rel="noopener" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45z"/></svg></a><a class="social-icon" href="mailto:admin@fijigirmit.org.nz" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg></a></div><p class="footer-text">© 2024 Fiji Girmit Foundation NZ. All rights reserved.</p></div></footer>
+<script src="site-content.js"></script>
 <script>
-const CMS_REPO = {
-  owner: "Ashchand833",
-  repo: "fijigirmit-website",
-  branch: "main",
-  folder: "events"
-};
-
-function cmsEscapeHtml(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function cmsEscapeAttr(value) {
-  return cmsEscapeHtml(value).replace(/`/g, "&#96;");
-}
-
-function cmsNormalizeImage(value) {
-  return value ? String(value).trim() : "";
-}
-
-function cmsDateText(eventItem) {
-  if (eventItem.date_display) return eventItem.date_display;
-  if (!eventItem.date) return "";
-  const d = new Date(eventItem.date);
-  if (Number.isNaN(d.getTime())) return String(eventItem.date);
-  return d.toLocaleDateString("en-NZ", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-  });
-}
-
-async function cmsFetchEvents() {
-  const apiUrl = `https://api.github.com/repos/${CMS_REPO.owner}/${CMS_REPO.repo}/contents/${CMS_REPO.folder}?ref=${CMS_REPO.branch}`;
-  const response = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
-  if (!response.ok) throw new Error("Could not load events from GitHub.");
-  const items = await response.json();
-  const files = items.filter(item =>
-    item.type === "file" && /\.(md|markdown|yml|yaml|json)$/i.test(item.name)
-  );
-  const parsed = await Promise.all(files.map(cmsFetchEventFile));
-  return parsed
-    .filter(Boolean)
-    .sort((a, b) => (Number(a.sort_order || 9999) - Number(b.sort_order || 9999)));
-}
-
-async function cmsFetchEventFile(fileItem) {
-  const response = await fetch(fileItem.download_url + `?v=${Date.now()}`);
-  if (!response.ok) return null;
-  const raw = await response.text();
-  return cmsParseEvent(raw, fileItem.name);
-}
-
-function cmsParseEvent(raw, fallbackName) {
-  const trimmed = raw.trim();
-  let data = {};
-  if (trimmed.startsWith("{")) {
-    data = JSON.parse(trimmed);
-  } else {
-    const fm = raw.match(/^---\s*\n([\s\S]*?)\n---/);
-    if (!fm) return null;
-    data = jsyaml.load(fm[1]) || {};
-  }
-
-  const photos = Array.isArray(data.photos)
-    ? data.photos.map(item => {
-        if (typeof item === "string") return cmsNormalizeImage(item);
-        if (item && typeof item === "object") return cmsNormalizeImage(item.image || item.src || "");
-        return "";
-      }).filter(Boolean)
-    : [];
-
-  return {
-    slug: String(data.slug || fallbackName.replace(/\.[^.]+$/, "")).trim(),
-    title: String(data.title || fallbackName.replace(/\.[^.]+$/, "")).trim(),
-    category: String(data.category || "").trim(),
-    date: data.date || "",
-    date_display: String(data.date_display || "").trim(),
-    time: String(data.time || "").trim(),
-    venue: String(data.venue || "").trim(),
-    location: String(data.location || "").trim(),
-    description: String(data.description || "").trim(),
-    gallery_intro: String(data.gallery_intro || "").trim(),
-    display_mode: String(data.display_mode || (photos.length ? "gallery" : "flyer")).trim(),
-    flyer: cmsNormalizeImage(data.flyer || ""),
-    photos,
-    sort_order: Number(data.sort_order || 9999)
-  };
-}
-
-function cmsRenderEventsPage(events) {
-  const grid = document.querySelector(".events-grid");
-  if (!grid) return;
-
-  grid.innerHTML = events.map(eventItem => {
-    const image = cmsEscapeAttr(eventItem.flyer || eventItem.photos[0] || "");
-    const hasImage = Boolean(image);
-    const meta = cmsEscapeHtml(eventItem.category || "Community Event");
-    const dateText = cmsEscapeHtml([cmsDateText(eventItem), eventItem.time].filter(Boolean).join(" · "));
-    const details = [eventItem.venue, eventItem.location, eventItem.description].filter(Boolean).map(v => `<p>${cmsEscapeHtml(v)}</p>`).join("");
-    return `
-      <div class="event-card">
-        ${hasImage ? `
-        <div class="event-image">
-          <img src="${image}" alt="${cmsEscapeHtml(eventItem.title)}">
-        </div>` : `
-        <div class="event-image-placeholder">🎁</div>`}
-        <div class="event-content">
-          <p class="event-category">${meta}</p>
-          <h3>${cmsEscapeHtml(eventItem.title)}</h3>
-          ${dateText ? `<p class="event-date">${dateText}</p>` : ""}
-          ${details}
-        </div>
-      </div>
-    `;
-  }).join("");
-
-  const oldSections = Array.from(document.querySelectorAll(".gallery-section"));
-  oldSections.forEach(node => node.remove());
-
-  const container = document.querySelector("section .container");
-  const gallerySections = events
-    .filter(eventItem => eventItem.photos && eventItem.photos.length)
-    .map(eventItem => `
-      <div class="gallery-section">
-        <h3>${cmsEscapeHtml(eventItem.title)}</h3>
-        ${eventItem.gallery_intro ? `<p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">${cmsEscapeHtml(eventItem.gallery_intro)}</p>` : ""}
-        <div class="gallery-grid">
-          ${eventItem.photos.map((src, idx) => `
-            <div class="gallery-item"><img src="${cmsEscapeAttr(src)}" alt="${cmsEscapeHtml(eventItem.title)} ${idx + 1}"></div>
-          `).join("")}
-        </div>
-      </div>
-    `).join("");
-
-  if (gallerySections) {
-    const host = document.createElement("div");
-    host.id = "cms-gallery-sections";
-    host.innerHTML = gallerySections;
-    container.appendChild(host);
-  }
-}
-
-async function loadCmsEventsPage() {
-  try {
-    const events = await cmsFetchEvents();
-    if (!events.length) return;
-    cmsRenderEventsPage(events);
-  } catch (error) {
-    console.warn("CMS events fallback in use.", error);
-  }
-}
-
-loadCmsEventsPage();
+let events=[];let currentEventIndex=0;let currentImageIndex=0;
+function escapeHtml(value){return String(value||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});}
+function eventDateLabel(event){return event.date_display|| (typeof cmsFormatDate==='function'?cmsFormatDate(event.date,true):'') || event.meta || 'Event';}
+function eventCategory(event){return event.category || (event.display_mode==='flyer'?'Upcoming Event':'Photo Gallery');}
+function eventDescription(event){return event.description || event.gallery_intro || '';}
+function renderEvents(){const grid=document.getElementById('eventsGrid');const empty=document.getElementById('eventsEmpty');if(!events.length){empty.style.display='block';return;}empty.style.display='none';grid.innerHTML=events.map((event,index)=>{const image=(typeof cmsCoverImage==='function'?cmsCoverImage(event):((event.flyer||(event.photos&&event.photos[0])||'')));const media=image?`<div class="media"><img src="${escapeHtml(image)}" alt="${escapeHtml(event.title)}"></div>`:`<div class="media"><div style="padding:30px;text-align:center;color:#6a5b52;">No image uploaded</div></div>`;return `<button class="site-card" type="button" onclick="openEventModalByIndex(${index})">${media}<div class="content"><p class="eyebrow">${escapeHtml(eventDateLabel(event))}</p><h3>${escapeHtml(event.title||'Event')}</h3><p class="meta">${escapeHtml(eventCategory(event))}</p><p>${escapeHtml(eventDescription(event))}</p><p class="cta">${eventCategory(event).toLowerCase().includes('gallery')?'View gallery →':'View event →'}</p></div></button>`;}).join('');}
+async function loadAndRenderEvents(){try{events=await cmsLoadEvents();}catch(e){events=[];console.warn(e)}events=(typeof cmsSortEvents==='function'?cmsSortEvents(events):events);renderEvents();}
+function openEventModalByIndex(index){currentEventIndex=index;currentImageIndex=0;renderEventModal();const modal=document.getElementById('eventModal');modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+function closeEventModal(){const modal=document.getElementById('eventModal');modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+function changeEventModalGallery(step){const images=(typeof cmsEventImages==='function'?cmsEventImages(events[currentEventIndex]):[]);if(images.length<2)return;currentImageIndex=(currentImageIndex+step+images.length)%images.length;renderEventModal();}
+function renderEventModal(){const event=events[currentEventIndex]||{};const images=(typeof cmsEventImages==='function'?cmsEventImages(event):[]);const title=document.querySelector('[data-modal-title]');const img=document.querySelector('[data-modal-image]');const counter=document.querySelector('[data-modal-counter]');const text=document.querySelector('[data-modal-text]');const prev=document.querySelector('[data-modal-prev]');const next=document.querySelector('[data-modal-next]');title.textContent=event.title||'Event';if(images.length){img.src=images[currentImageIndex];img.alt=event.title||'Event image';}else{img.removeAttribute('src');img.alt='No image uploaded';}counter.textContent=(images.length?(currentImageIndex+1):0)+' / '+(images.length||0);counter.style.display=images.length?'inline-flex':'none';prev.style.display=images.length>1?'flex':'none';next.style.display=images.length>1?'flex':'none';const details=[eventDateLabel(event),event.time?`Time: ${event.time}`:'',event.venue?`Venue: ${event.venue}`:'',event.location?`Location: ${event.location}`:'',eventCategory(event),eventDescription(event)].filter(Boolean);text.innerHTML=details.map(line=>`<p>${escapeHtml(line)}</p>`).join('');}
+document.getElementById('eventModal').addEventListener('click',function(e){if(e.target===this)closeEventModal();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeEventModal();});loadAndRenderEvents();
 </script>
-
 </body>
 </html>
