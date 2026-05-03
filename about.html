@@ -396,9 +396,197 @@ header nav a.donate-btn:hover,header nav .donate-btn:hover,header nav a.donate-b
 
 .about-hero{background:linear-gradient(rgba(43,27,20,.48),rgba(43,27,20,.48)),url("images/about-girmit-elders-banner.jpg") center/cover no-repeat!important;}
 </style>
+<link rel="stylesheet" href="site-style.css?v=fgfnz-hard-lock-20260503">
+<style id="fgfnz-final-header-lock">
+
+/* === FGFNZ TRUE FINAL LOCK: one identical header/nav on every page === */
+:root{
+  --fgfnz-blue:#68BFEF;
+  --fgfnz-ink:#2f1c14;
+  --fgfnz-muted:#6a5b52;
+}
+html{scroll-padding-top:112px!important;}
+body > header.fgfnz-global-header,
+header.fgfnz-global-header{
+  position:sticky!important;
+  top:0!important;
+  z-index:9999!important;
+  width:100%!important;
+  min-height:112px!important;
+  max-height:112px!important;
+  height:112px!important;
+  padding:0!important;
+  margin:0!important;
+  background:#fff!important;
+  border:0!important;
+  border-bottom:1px solid rgba(0,0,0,.06)!important;
+  box-shadow:0 2px 12px rgba(0,0,0,.06)!important;
+  backdrop-filter:none!important;
+  overflow:visible!important;
+}
+body > header.fgfnz-global-header > .header-container,
+body > header.fgfnz-global-header > .header-inner,
+header.fgfnz-global-header > .header-container,
+header.fgfnz-global-header > .header-inner{
+  max-width:1280px!important;
+  height:112px!important;
+  min-height:112px!important;
+  max-height:112px!important;
+  margin:0 auto!important;
+  padding:0 28px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:28px!important;
+  box-sizing:border-box!important;
+}
+header.fgfnz-global-header .logo-section,
+header.fgfnz-global-header .brand{
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+  flex:0 0 430px!important;
+  min-width:430px!important;
+  height:84px!important;
+  margin:0!important;
+  padding:0!important;
+  color:var(--fgfnz-ink)!important;
+  text-decoration:none!important;
+}
+header.fgfnz-global-header .logo-img,
+header.fgfnz-global-header .brand img{
+  width:76px!important;
+  height:76px!important;
+  min-width:76px!important;
+  min-height:76px!important;
+  max-width:76px!important;
+  max-height:76px!important;
+  object-fit:contain!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  flex:0 0 76px!important;
+}
+header.fgfnz-global-header .logo-text,
+header.fgfnz-global-header .brand > div{
+  height:62px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0!important;
+}
+header.fgfnz-global-header .logo-text h1,
+header.fgfnz-global-header .brand h1{
+  margin:0!important;
+  padding:0!important;
+  font-family:"Playfair Display",Georgia,serif!important;
+  font-size:1.75rem!important;
+  line-height:1.06!important;
+  font-weight:700!important;
+  color:var(--fgfnz-ink)!important;
+  white-space:nowrap!important;
+  letter-spacing:0!important;
+}
+header.fgfnz-global-header .logo-text p,
+header.fgfnz-global-header .brand p{
+  margin:6px 0 0!important;
+  padding:0!important;
+  font-family:"Lora",Georgia,serif!important;
+  font-size:1.02rem!important;
+  line-height:1.2!important;
+  font-weight:400!important;
+  color:var(--fgfnz-muted)!important;
+  white-space:nowrap!important;
+  letter-spacing:.15px!important;
+}
+header.fgfnz-global-header nav{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  flex:1 1 auto!important;
+  gap:10px!important;
+  width:auto!important;
+  height:64px!important;
+  min-height:64px!important;
+  max-height:64px!important;
+  margin:0!important;
+  padding:0!important;
+  flex-wrap:nowrap!important;
+}
+header.fgfnz-global-header nav a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  height:48px!important;
+  min-height:48px!important;
+  max-height:48px!important;
+  margin:0!important;
+  padding:0 18px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  color:var(--fgfnz-ink)!important;
+  font-family:"Lora",Georgia,serif!important;
+  font-size:1.03rem!important;
+  line-height:1!important;
+  font-weight:500!important;
+  text-decoration:none!important;
+  transform:none!important;
+  box-shadow:none!important;
+  transition:background .18s ease,color .18s ease!important;
+}
+header.fgfnz-global-header nav a.active:not(.donate-btn),
+header.fgfnz-global-header nav a[aria-current="page"]:not(.donate-btn),
+header.fgfnz-global-header nav a:focus:not(.donate-btn){
+  background:transparent!important;
+  color:var(--fgfnz-ink)!important;
+}
+header.fgfnz-global-header nav a:not(.donate-btn):hover{
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+}
+header.fgfnz-global-header nav a.donate-btn,
+header.fgfnz-global-header nav .donate-btn{
+  height:64px!important;
+  min-height:64px!important;
+  max-height:64px!important;
+  min-width:132px!important;
+  padding:0 30px!important;
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+  font-weight:700!important;
+  border-radius:999px!important;
+}
+header.fgfnz-global-header nav a.donate-btn:hover,
+header.fgfnz-global-header nav a.donate-btn:focus{
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+  transform:none!important;
+}
+@media (max-width:1100px){
+  body > header.fgfnz-global-header,header.fgfnz-global-header{height:auto!important;max-height:none!important;min-height:0!important;}
+  body > header.fgfnz-global-header > .header-container,body > header.fgfnz-global-header > .header-inner,header.fgfnz-global-header > .header-container,header.fgfnz-global-header > .header-inner{height:auto!important;min-height:0!important;max-height:none!important;padding:12px 18px!important;flex-direction:column!important;align-items:flex-start!important;gap:12px!important;}
+  header.fgfnz-global-header .logo-section,header.fgfnz-global-header .brand{flex:0 0 auto!important;width:100%!important;min-width:0!important;}
+  header.fgfnz-global-header nav{width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;justify-content:flex-start!important;flex-wrap:wrap!important;}
+}
+@media (max-width:760px){
+  header.fgfnz-global-header .logo-section,header.fgfnz-global-header .brand{height:60px!important;gap:10px!important;}
+  header.fgfnz-global-header .logo-img,header.fgfnz-global-header .brand img{width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;max-width:56px!important;max-height:56px!important;flex-basis:56px!important;}
+  header.fgfnz-global-header .logo-text h1,header.fgfnz-global-header .brand h1{font-size:1.15rem!important;white-space:normal!important;}
+  header.fgfnz-global-header .logo-text p,header.fgfnz-global-header .brand p{font-size:.82rem!important;white-space:normal!important;}
+  header.fgfnz-global-header nav a{height:40px!important;min-height:40px!important;max-height:40px!important;padding:0 12px!important;font-size:.92rem!important;}
+  header.fgfnz-global-header nav a.donate-btn{height:42px!important;min-height:42px!important;max-height:42px!important;min-width:88px!important;padding:0 18px!important;}
+}
+/* Event cards: no broken-looking alt text; cover first, consistent shape */
+.media{background:#efe6da!important;position:relative!important;overflow:hidden!important;}
+.media img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;}
+.media .media-placeholder{height:100%;min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;color:#6a5b52;padding:24px;}
+</style>
 </head>
 <body>
-<header><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
+<header class="fgfnz-global-header"><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
 <section class="about-hero"><div class="container"><p class="kicker">Our Story · Our People · Our Mission</p><h1>About Fiji Girmit Foundation NZ</h1><p>Fiji Girmit Foundation New Zealand (FGFNZ) is dedicated to preserving, celebrating and advocating the heritage of the Girmitiyas — the indentured labourers who journeyed from India to Fiji between 1879 and 1916.</p></div></section>
 <section class="about-intro"><div class="container"><div class="intro-grid"><div class="intro-card"><p class="section-label">Who We Are</p><h2>Keeping Girmit history alive for future generations</h2><p>Fiji Girmit Foundation NZ exists to honour the courage, endurance and cultural resilience of the Girmitiya. We work to preserve stories, memories, traditions and legacies that shaped Fiji Indian identity and continue to inspire communities in New Zealand.</p><p>Through remembrance, education, events and community connection, the Foundation helps keep this history visible, meaningful and relevant for younger generations.</p></div><div class="mission-card"><p class="section-label">What We Stand For</p><h2>Our mission</h2><div class="mission-points"><div class="point"><strong>Preserve</strong>Document and protect Girmit history, stories and heritage.</div><div class="point"><strong>Celebrate</strong>Honour the achievements, sacrifice and resilience of the Girmitiya.</div><div class="point"><strong>Advocate</strong>Strengthen Fiji Indian identity, pride and cultural continuity in New Zealand.</div></div></div></div></div></section>
 <section class="trustees"><div class="container"><div class="trustees-head"><p class="section-label">Leadership</p><h2>Board of Trustees</h2><p>Meet the trustees helping preserve Girmit history, honour the legacy of the Girmitiya, and strengthen Fiji Indian heritage and identity in New Zealand.</p></div><div class="trustee-grid">

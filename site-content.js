@@ -2,7 +2,7 @@
   const REPO = 'Ashchand833/fijigirmit-website';
   const BRANCH = (location.hostname.includes('staging--') || location.hostname.includes('localhost')) ? 'staging' : 'main';
   const FALLBACK_EVENTS = [
-    {title:'Girmit Connections Youth Workshop',date:'2026-06-07',date_display:'Sunday 7 June 2026',time:'1.00pm - 3.00pm',venue:'Ormiston Junior College',category:'Upcoming Event',description:'A youth workshop with Shana Chandra remembering the 147th Fiji Girmit Anniversary 2026. All youth from all cultures aged 12–24 are welcome. Explore the powerful history of the Girmit journey through stories, identity and belonging.',flyer:'/images/girmit-connections-youth-workshop-2026.png',photos:[],show_on_homepage:true},
+    {title:'Girmit Connections Youth Workshop',date:'2026-06-07',date_display:'Sunday 7 June 2026',time:'1.00pm - 3.00pm',venue:'Ormiston Junior College',category:'Upcoming Event',description:'A youth workshop with Shana Chandra remembering the 147th Fiji Girmit Anniversary 2026. All youth from all cultures aged 12–24 are welcome. Explore the powerful history of the Girmit journey through stories, identity and belonging.',flyer:'images/girmit-connections-youth-workshop-2026.png',photos:['images/girmit-connections-youth-workshop-2026.png'],show_on_homepage:true},
     {title:'147th Girmit Remembrance Day',date:'2026-05-16',date_display:'Saturday 16 May 2026',time:'5.00pm - 8.30pm',venue:'Malaeola Community Centre, 16 Waokauri Place, Mangere, Auckland',category:'Upcoming Event',description:'An evening of remembrance, recognition and celebration.',flyer:'girmitday.jpg',photos:[],show_on_homepage:true},
     {title:"International Women's Day High Tea",date:'2026-03-08',date_display:'Sunday 8 March 2026',time:'2.00pm - 4.00pm',venue:'Divine Patisserie, 240 Ormiston Road, Auckland 2019',category:'Upcoming Event',description:'Balance the Scales - IWD 2026.',flyer:'hightea.jpg',photos:[],show_on_homepage:true},
     {title:'Fiji NZ Girmit Day Celebration',date:'2025-05-14',date_display:'Fiji NZ Girmit Day Celebration',category:'Photo Gallery',description:'Celebrating community, remembrance and cultural connection.',photos:['gday1.jpg','gday2.jpg','gday3.jpg','gday4.jpg','gday5.jpg','gday6.jpg','gday7.jpg','gday8.jpg','gday9.jpg','gday10.jpg','gday11.jpg','gday12.jpg','gday14.jpg','gday15.jpg','gday16.jpg','gday17.jpg','gday21.jpg'],show_on_homepage:true},
@@ -12,8 +12,12 @@
   function clean(v){return String(v||'').trim().replace(/^['"]|['"]$/g,'');}
   function normalizePath(p){
     p=clean(p); if(!p) return '';
-    if(/^https?:\/\//i.test(p) || p.startsWith('/')) return p;
-    return p;
+    if(p.includes('Youth Workshop_Girmit Connections_2026_FGFNZ.png')) p='images/girmit-connections-youth-workshop-2026.png';
+    if(/^https?:\/\//i.test(p)) return p;
+    if(p.startsWith('/images/')) return p.slice(1);
+    if(p.startsWith('/')) return p;
+    if(p.startsWith('images/')) return p;
+    return 'images/'+p;
   }
   function parseScalar(v){
     v=clean(v);

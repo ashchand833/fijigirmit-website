@@ -386,10 +386,197 @@ header nav a.donate-btn:hover,header nav .donate-btn:hover,header nav a.donate-b
 @media (max-width:760px){header .header-container,header .header-inner{padding:12px 16px!important;}header .logo-img,header .brand img{width:56px!important;height:56px!important;}header .logo-text h1,header .brand h1{font-size:1.18rem!important;white-space:normal!important;}header .logo-text p,header .brand p{font-size:.82rem!important;white-space:normal!important;}header nav{gap:6px!important;}header nav a{min-height:40px!important;padding:0 12px!important;font-size:.92rem!important;}header nav a.donate-btn,header nav .donate-btn{min-height:42px!important;padding:0 18px!important;}}
 
 </style>
-<link rel="stylesheet" href="site-style.css?v=locked-header-final-4">
+<link rel="stylesheet" href="site-style.css?v=fgfnz-hard-lock-20260503">
+<style id="fgfnz-final-header-lock">
+
+/* === FGFNZ TRUE FINAL LOCK: one identical header/nav on every page === */
+:root{
+  --fgfnz-blue:#68BFEF;
+  --fgfnz-ink:#2f1c14;
+  --fgfnz-muted:#6a5b52;
+}
+html{scroll-padding-top:112px!important;}
+body > header.fgfnz-global-header,
+header.fgfnz-global-header{
+  position:sticky!important;
+  top:0!important;
+  z-index:9999!important;
+  width:100%!important;
+  min-height:112px!important;
+  max-height:112px!important;
+  height:112px!important;
+  padding:0!important;
+  margin:0!important;
+  background:#fff!important;
+  border:0!important;
+  border-bottom:1px solid rgba(0,0,0,.06)!important;
+  box-shadow:0 2px 12px rgba(0,0,0,.06)!important;
+  backdrop-filter:none!important;
+  overflow:visible!important;
+}
+body > header.fgfnz-global-header > .header-container,
+body > header.fgfnz-global-header > .header-inner,
+header.fgfnz-global-header > .header-container,
+header.fgfnz-global-header > .header-inner{
+  max-width:1280px!important;
+  height:112px!important;
+  min-height:112px!important;
+  max-height:112px!important;
+  margin:0 auto!important;
+  padding:0 28px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:28px!important;
+  box-sizing:border-box!important;
+}
+header.fgfnz-global-header .logo-section,
+header.fgfnz-global-header .brand{
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+  flex:0 0 430px!important;
+  min-width:430px!important;
+  height:84px!important;
+  margin:0!important;
+  padding:0!important;
+  color:var(--fgfnz-ink)!important;
+  text-decoration:none!important;
+}
+header.fgfnz-global-header .logo-img,
+header.fgfnz-global-header .brand img{
+  width:76px!important;
+  height:76px!important;
+  min-width:76px!important;
+  min-height:76px!important;
+  max-width:76px!important;
+  max-height:76px!important;
+  object-fit:contain!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  flex:0 0 76px!important;
+}
+header.fgfnz-global-header .logo-text,
+header.fgfnz-global-header .brand > div{
+  height:62px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0!important;
+}
+header.fgfnz-global-header .logo-text h1,
+header.fgfnz-global-header .brand h1{
+  margin:0!important;
+  padding:0!important;
+  font-family:"Playfair Display",Georgia,serif!important;
+  font-size:1.75rem!important;
+  line-height:1.06!important;
+  font-weight:700!important;
+  color:var(--fgfnz-ink)!important;
+  white-space:nowrap!important;
+  letter-spacing:0!important;
+}
+header.fgfnz-global-header .logo-text p,
+header.fgfnz-global-header .brand p{
+  margin:6px 0 0!important;
+  padding:0!important;
+  font-family:"Lora",Georgia,serif!important;
+  font-size:1.02rem!important;
+  line-height:1.2!important;
+  font-weight:400!important;
+  color:var(--fgfnz-muted)!important;
+  white-space:nowrap!important;
+  letter-spacing:.15px!important;
+}
+header.fgfnz-global-header nav{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  flex:1 1 auto!important;
+  gap:10px!important;
+  width:auto!important;
+  height:64px!important;
+  min-height:64px!important;
+  max-height:64px!important;
+  margin:0!important;
+  padding:0!important;
+  flex-wrap:nowrap!important;
+}
+header.fgfnz-global-header nav a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  height:48px!important;
+  min-height:48px!important;
+  max-height:48px!important;
+  margin:0!important;
+  padding:0 18px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  color:var(--fgfnz-ink)!important;
+  font-family:"Lora",Georgia,serif!important;
+  font-size:1.03rem!important;
+  line-height:1!important;
+  font-weight:500!important;
+  text-decoration:none!important;
+  transform:none!important;
+  box-shadow:none!important;
+  transition:background .18s ease,color .18s ease!important;
+}
+header.fgfnz-global-header nav a.active:not(.donate-btn),
+header.fgfnz-global-header nav a[aria-current="page"]:not(.donate-btn),
+header.fgfnz-global-header nav a:focus:not(.donate-btn){
+  background:transparent!important;
+  color:var(--fgfnz-ink)!important;
+}
+header.fgfnz-global-header nav a:not(.donate-btn):hover{
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+}
+header.fgfnz-global-header nav a.donate-btn,
+header.fgfnz-global-header nav .donate-btn{
+  height:64px!important;
+  min-height:64px!important;
+  max-height:64px!important;
+  min-width:132px!important;
+  padding:0 30px!important;
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+  font-weight:700!important;
+  border-radius:999px!important;
+}
+header.fgfnz-global-header nav a.donate-btn:hover,
+header.fgfnz-global-header nav a.donate-btn:focus{
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+  transform:none!important;
+}
+@media (max-width:1100px){
+  body > header.fgfnz-global-header,header.fgfnz-global-header{height:auto!important;max-height:none!important;min-height:0!important;}
+  body > header.fgfnz-global-header > .header-container,body > header.fgfnz-global-header > .header-inner,header.fgfnz-global-header > .header-container,header.fgfnz-global-header > .header-inner{height:auto!important;min-height:0!important;max-height:none!important;padding:12px 18px!important;flex-direction:column!important;align-items:flex-start!important;gap:12px!important;}
+  header.fgfnz-global-header .logo-section,header.fgfnz-global-header .brand{flex:0 0 auto!important;width:100%!important;min-width:0!important;}
+  header.fgfnz-global-header nav{width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;justify-content:flex-start!important;flex-wrap:wrap!important;}
+}
+@media (max-width:760px){
+  header.fgfnz-global-header .logo-section,header.fgfnz-global-header .brand{height:60px!important;gap:10px!important;}
+  header.fgfnz-global-header .logo-img,header.fgfnz-global-header .brand img{width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;max-width:56px!important;max-height:56px!important;flex-basis:56px!important;}
+  header.fgfnz-global-header .logo-text h1,header.fgfnz-global-header .brand h1{font-size:1.15rem!important;white-space:normal!important;}
+  header.fgfnz-global-header .logo-text p,header.fgfnz-global-header .brand p{font-size:.82rem!important;white-space:normal!important;}
+  header.fgfnz-global-header nav a{height:40px!important;min-height:40px!important;max-height:40px!important;padding:0 12px!important;font-size:.92rem!important;}
+  header.fgfnz-global-header nav a.donate-btn{height:42px!important;min-height:42px!important;max-height:42px!important;min-width:88px!important;padding:0 18px!important;}
+}
+/* Event cards: no broken-looking alt text; cover first, consistent shape */
+.media{background:#efe6da!important;position:relative!important;overflow:hidden!important;}
+.media img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;}
+.media .media-placeholder{height:100%;min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;color:#6a5b52;padding:24px;}
+</style>
 </head>
 <body>
-<header><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
+<header class="fgfnz-global-header"><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
 <section class="donate-hero"><div class="container"><h1>Support Our Mission</h1><p>Help us preserve Fiji Indian heritage, identity and diaspora. Your donation supports education, cultural events, and community programs.</p></div></section>
 <section><div class="donate-content"><div class="donate-info"><h2>Make a Difference</h2><p>The Fiji Girmit Foundation NZ relies on generous donations to continue our vital work of preserving Girmit history and culture.</p><p>Your contribution helps us:</p><p>✓ Organise community events and cultural celebrations<br/>✓ Create educational programs and workshops<br/>✓ Archive oral histories and family stories<br/>✓ Support young people connecting with their heritage</p></div><div class="donation-options"><div class="donation-option"><h3>🎁 One-Time Donation</h3><p>Make a single contribution to support our mission. Every dollar helps preserve Girmit heritage for future generations.</p><button class="donation-btn" onclick="openDonationModal()" type="button">Donate Now</button></div><div class="donation-option"><h3>🤝 Partner With Us</h3><p>Interested in partnering with us as an organisation or sponsor? We would love to work together to support our community.</p><a class="donation-btn" href="contact.html">Get In Touch</a></div></div></div></section>
 <div aria-hidden="true" class="bank-modal" id="bankModal" onclick="closeDonationModalOutside(event)"><div aria-labelledby="bankModalTitle" aria-modal="true" class="bank-card" role="dialog"><button class="bank-close" onclick="closeDonationModal()" type="button">×</button><h3 id="bankModalTitle">Donation Details</h3><p>Thank you for supporting Fiji Girmit Foundation NZ. Please use the bank details below for one-time donations.</p><div class="bank-detail"><strong>Account Name</strong>Fiji Girmit Foundation New Zealand</div><div class="bank-detail"><strong>Account Number</strong>01-0205-0061026-00</div><div class="bank-detail"><strong>Reference</strong>Your name + Donation</div><p class="bank-note">After donating, you may contact the Foundation if you need confirmation or a receipt.</p></div></div>

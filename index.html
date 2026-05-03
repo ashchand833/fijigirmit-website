@@ -395,10 +395,197 @@ header nav a.donate-btn:hover,header nav .donate-btn:hover,header nav a.donate-b
 @media (max-width:760px){header .header-container,header .header-inner{padding:12px 16px!important;}header .logo-img,header .brand img{width:56px!important;height:56px!important;}header .logo-text h1,header .brand h1{font-size:1.18rem!important;white-space:normal!important;}header .logo-text p,header .brand p{font-size:.82rem!important;white-space:normal!important;}header nav{gap:6px!important;}header nav a{min-height:40px!important;padding:0 12px!important;font-size:.92rem!important;}header nav a.donate-btn,header nav .donate-btn{min-height:42px!important;padding:0 18px!important;}}
 
 </style>
-<link rel="stylesheet" href="site-style.css?v=locked-header-final-4">
+<link rel="stylesheet" href="site-style.css?v=fgfnz-hard-lock-20260503">
+<style id="fgfnz-final-header-lock">
+
+/* === FGFNZ TRUE FINAL LOCK: one identical header/nav on every page === */
+:root{
+  --fgfnz-blue:#68BFEF;
+  --fgfnz-ink:#2f1c14;
+  --fgfnz-muted:#6a5b52;
+}
+html{scroll-padding-top:112px!important;}
+body > header.fgfnz-global-header,
+header.fgfnz-global-header{
+  position:sticky!important;
+  top:0!important;
+  z-index:9999!important;
+  width:100%!important;
+  min-height:112px!important;
+  max-height:112px!important;
+  height:112px!important;
+  padding:0!important;
+  margin:0!important;
+  background:#fff!important;
+  border:0!important;
+  border-bottom:1px solid rgba(0,0,0,.06)!important;
+  box-shadow:0 2px 12px rgba(0,0,0,.06)!important;
+  backdrop-filter:none!important;
+  overflow:visible!important;
+}
+body > header.fgfnz-global-header > .header-container,
+body > header.fgfnz-global-header > .header-inner,
+header.fgfnz-global-header > .header-container,
+header.fgfnz-global-header > .header-inner{
+  max-width:1280px!important;
+  height:112px!important;
+  min-height:112px!important;
+  max-height:112px!important;
+  margin:0 auto!important;
+  padding:0 28px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:28px!important;
+  box-sizing:border-box!important;
+}
+header.fgfnz-global-header .logo-section,
+header.fgfnz-global-header .brand{
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+  flex:0 0 430px!important;
+  min-width:430px!important;
+  height:84px!important;
+  margin:0!important;
+  padding:0!important;
+  color:var(--fgfnz-ink)!important;
+  text-decoration:none!important;
+}
+header.fgfnz-global-header .logo-img,
+header.fgfnz-global-header .brand img{
+  width:76px!important;
+  height:76px!important;
+  min-width:76px!important;
+  min-height:76px!important;
+  max-width:76px!important;
+  max-height:76px!important;
+  object-fit:contain!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  flex:0 0 76px!important;
+}
+header.fgfnz-global-header .logo-text,
+header.fgfnz-global-header .brand > div{
+  height:62px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:0!important;
+}
+header.fgfnz-global-header .logo-text h1,
+header.fgfnz-global-header .brand h1{
+  margin:0!important;
+  padding:0!important;
+  font-family:"Playfair Display",Georgia,serif!important;
+  font-size:1.75rem!important;
+  line-height:1.06!important;
+  font-weight:700!important;
+  color:var(--fgfnz-ink)!important;
+  white-space:nowrap!important;
+  letter-spacing:0!important;
+}
+header.fgfnz-global-header .logo-text p,
+header.fgfnz-global-header .brand p{
+  margin:6px 0 0!important;
+  padding:0!important;
+  font-family:"Lora",Georgia,serif!important;
+  font-size:1.02rem!important;
+  line-height:1.2!important;
+  font-weight:400!important;
+  color:var(--fgfnz-muted)!important;
+  white-space:nowrap!important;
+  letter-spacing:.15px!important;
+}
+header.fgfnz-global-header nav{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  flex:1 1 auto!important;
+  gap:10px!important;
+  width:auto!important;
+  height:64px!important;
+  min-height:64px!important;
+  max-height:64px!important;
+  margin:0!important;
+  padding:0!important;
+  flex-wrap:nowrap!important;
+}
+header.fgfnz-global-header nav a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  height:48px!important;
+  min-height:48px!important;
+  max-height:48px!important;
+  margin:0!important;
+  padding:0 18px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  color:var(--fgfnz-ink)!important;
+  font-family:"Lora",Georgia,serif!important;
+  font-size:1.03rem!important;
+  line-height:1!important;
+  font-weight:500!important;
+  text-decoration:none!important;
+  transform:none!important;
+  box-shadow:none!important;
+  transition:background .18s ease,color .18s ease!important;
+}
+header.fgfnz-global-header nav a.active:not(.donate-btn),
+header.fgfnz-global-header nav a[aria-current="page"]:not(.donate-btn),
+header.fgfnz-global-header nav a:focus:not(.donate-btn){
+  background:transparent!important;
+  color:var(--fgfnz-ink)!important;
+}
+header.fgfnz-global-header nav a:not(.donate-btn):hover{
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+}
+header.fgfnz-global-header nav a.donate-btn,
+header.fgfnz-global-header nav .donate-btn{
+  height:64px!important;
+  min-height:64px!important;
+  max-height:64px!important;
+  min-width:132px!important;
+  padding:0 30px!important;
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+  font-weight:700!important;
+  border-radius:999px!important;
+}
+header.fgfnz-global-header nav a.donate-btn:hover,
+header.fgfnz-global-header nav a.donate-btn:focus{
+  background:var(--fgfnz-blue)!important;
+  color:#18324A!important;
+  transform:none!important;
+}
+@media (max-width:1100px){
+  body > header.fgfnz-global-header,header.fgfnz-global-header{height:auto!important;max-height:none!important;min-height:0!important;}
+  body > header.fgfnz-global-header > .header-container,body > header.fgfnz-global-header > .header-inner,header.fgfnz-global-header > .header-container,header.fgfnz-global-header > .header-inner{height:auto!important;min-height:0!important;max-height:none!important;padding:12px 18px!important;flex-direction:column!important;align-items:flex-start!important;gap:12px!important;}
+  header.fgfnz-global-header .logo-section,header.fgfnz-global-header .brand{flex:0 0 auto!important;width:100%!important;min-width:0!important;}
+  header.fgfnz-global-header nav{width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;justify-content:flex-start!important;flex-wrap:wrap!important;}
+}
+@media (max-width:760px){
+  header.fgfnz-global-header .logo-section,header.fgfnz-global-header .brand{height:60px!important;gap:10px!important;}
+  header.fgfnz-global-header .logo-img,header.fgfnz-global-header .brand img{width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;max-width:56px!important;max-height:56px!important;flex-basis:56px!important;}
+  header.fgfnz-global-header .logo-text h1,header.fgfnz-global-header .brand h1{font-size:1.15rem!important;white-space:normal!important;}
+  header.fgfnz-global-header .logo-text p,header.fgfnz-global-header .brand p{font-size:.82rem!important;white-space:normal!important;}
+  header.fgfnz-global-header nav a{height:40px!important;min-height:40px!important;max-height:40px!important;padding:0 12px!important;font-size:.92rem!important;}
+  header.fgfnz-global-header nav a.donate-btn{height:42px!important;min-height:42px!important;max-height:42px!important;min-width:88px!important;padding:0 18px!important;}
+}
+/* Event cards: no broken-looking alt text; cover first, consistent shape */
+.media{background:#efe6da!important;position:relative!important;overflow:hidden!important;}
+.media img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;}
+.media .media-placeholder{height:100%;min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;color:#6a5b52;padding:24px;}
+</style>
 </head>
 <body>
-<header><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
+<header class="fgfnz-global-header"><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
 <main>
 <section class="hero"><div class="hero-slides"><div class="hero-slide active"><img alt="Fiji Girmit Day celebration hero image 1" src="images/gday17.jpg"/></div><div class="hero-slide"><img alt="Fiji Girmit Day celebration hero image 2" src="images/gday16.jpg"/></div><div class="hero-slide"><img alt="Fiji Girmit Day celebration hero image 3" src="images/gday15.jpg"/></div><div class="hero-slide"><img alt="Fiji Girmit Day celebration hero image 4" src="images/gday14.jpg"/></div></div><div class="hero-content"><p class="topline">Remembering · Celebrating · Advocating</p><h1>Honouring the Legacy of</h1><h2>the Girmitiya</h2><p class="desc">Preserving the stories, identity, and diaspora of Fiji Indians in Aotearoa through remembrance, education, and community connection.</p><button onclick="window.location.href='history.html'">Discover Our Story</button></div><div class="hero-dots"></div></section>
 <section class="section"><div><p class="section-label">Keeping the story alive</p><h3>Fiji Girmit Foundation New Zealand</h3><p>The Fiji Girmit Foundation New Zealand honours the journey, sacrifice, and achievements of the Girmitiya and their descendants. The Foundation keeps this history visible through remembrance, education, cultural events, and community connection.</p></div><div class="full-width-slideshow"><div class="slides-track"><div class="story-slide active"><img alt="Historic Fiji Girmit memory 10" src="images/gday10.jpg"/></div><div class="story-slide"><img alt="Historic Fiji Girmit memory 9" src="images/gday9.jpg"/></div><div class="story-slide"><img alt="Historic Fiji Girmit memory 8" src="images/gday8.jpg"/></div><div class="story-slide"><img alt="Historic Fiji Girmit memory 7" src="images/gday7.jpg"/></div></div><div class="slideshow-overlay"></div><div class="slideshow-dots"></div></div></section>
@@ -411,7 +598,7 @@ header nav a.donate-btn:hover,header nav .donate-btn:hover,header nav a.donate-b
 function setupHeroSlideshow(){const slides=Array.from(document.querySelectorAll('.hero .hero-slide'));const dotsWrap=document.querySelector('.hero-dots');if(!slides.length||!dotsWrap)return;let current=0;slides.forEach(function(_,i){const b=document.createElement('button');b.className='dot'+(i===0?' active':'');b.onclick=function(){show(i)};dotsWrap.appendChild(b)});const dots=Array.from(dotsWrap.children);function show(i){slides[current].classList.remove('active');dots[current].classList.remove('active');current=i;slides[current].classList.add('active');dots[current].classList.add('active')}setInterval(function(){show((current+1)%slides.length)},4500)}
 function setupStorySlideshow(){const slides=Array.from(document.querySelectorAll('.story-slide'));const dotsWrap=document.querySelector('.slideshow-dots');if(!slides.length||!dotsWrap)return;let current=0;slides.forEach(function(_,i){const b=document.createElement('button');b.className='dot'+(i===0?' active':'');b.onclick=function(){show(i)};dotsWrap.appendChild(b)});const dots=Array.from(dotsWrap.children);function show(i){slides[current].classList.remove('active');dots[current].classList.remove('active');current=i;slides[current].classList.add('active');dots[current].classList.add('active')}setInterval(function(){show((current+1)%slides.length)},5200)}
 let galleries=[],modalIndex=0,photoIndex=0;function esc(v){return String(v||'').replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})}
-async function loadGalleries(){let items=[];try{if(typeof cmsLoadEvents==='function')items=await cmsLoadEvents()}catch(e){console.warn(e)}galleries=(typeof cmsSortEvents==='function'?cmsSortEvents(items||[]):items||[]).filter(item=>item&&item.show_on_homepage!==false).slice(0,6);const section=document.getElementById('galleryHighlightsSection');const grid=document.getElementById('galleryHighlightsGrid');if(!grid)return;if(!galleries.length){if(section)section.style.display='none';return}grid.innerHTML=galleries.map((g,i)=>{const first=(typeof cmsCoverImage==='function'?cmsCoverImage(g):((g.flyer||(g.photos&&g.photos[0])||'')));const media=first?`<div class="media"><img src="${esc(first)}" alt="${esc(g.title)}"></div>`:`<div class="media media--empty"><div class="media-placeholder">No image uploaded</div></div>`;return `<article class="site-card" onclick="openEventModal(${i})">${media}<div class="content"><p class="eyebrow">${esc(g.date_display||cmsFormatDate(g.date,false)||'Gallery')}</p><h3>${esc(g.title||'Event Gallery')}</h3><p class="meta">${esc(g.category||'Photo Gallery')}</p><p>${esc(g.description||g.gallery_intro||'')}</p><p class="cta">View gallery</p></div></article>`}).join('')}
+async function loadGalleries(){let items=[];try{if(typeof cmsLoadEvents==='function')items=await cmsLoadEvents()}catch(e){console.warn(e)}galleries=(typeof cmsSortEvents==='function'?cmsSortEvents(items||[]):items||[]).filter(item=>item&&item.show_on_homepage!==false).slice(0,6);const section=document.getElementById('galleryHighlightsSection');const grid=document.getElementById('galleryHighlightsGrid');if(!grid)return;if(!galleries.length){if(section)section.style.display='none';return}grid.innerHTML=galleries.map((g,i)=>{const first=(typeof cmsCoverImage==='function'?cmsCoverImage(g):((g.flyer||(g.photos&&g.photos[0])||'')));const media=first?`<div class="media"><img src="${esc(first)}" alt="${esc(g.title)}" onerror="this.remove();this.parentElement.innerHTML='<div class=&quot;media-placeholder&quot;>No image uploaded</div>';"></div>`:`<div class="media media--empty"><div class="media-placeholder">No image uploaded</div></div>`;return `<article class="site-card" onclick="openEventModal(${i})">${media}<div class="content"><p class="eyebrow">${esc(g.date_display||cmsFormatDate(g.date,false)||'Gallery')}</p><h3>${esc(g.title||'Event Gallery')}</h3><p class="meta">${esc(g.category||'Photo Gallery')}</p><p>${esc(g.description||g.gallery_intro||'')}</p><p class="cta">View gallery</p></div></article>`}).join('')}
 function openEventModal(i){modalIndex=i;photoIndex=0;renderModal();document.getElementById('eventModal').classList.add('open')}function closeEventModal(){document.getElementById('eventModal').classList.remove('open')}function changeEventModalGallery(step){const photos=(galleries[modalIndex]&&galleries[modalIndex].photos)||[];if(!photos.length)return;photoIndex=(photoIndex+step+photos.length)%photos.length;renderModal()}function renderModal(){const g=galleries[modalIndex]||{};const photos=(typeof cmsEventImages==='function'?cmsEventImages(g):((g.photos&&g.photos.length)?g.photos:(g.flyer?[g.flyer]:[])));const visual=document.querySelector('.modal-visual');const img=document.querySelector('[data-modal-image]');document.querySelector('[data-modal-title]').textContent=g.title||'Gallery';if(photos.length){visual.classList.remove('no-image');img.src=photos[photoIndex];img.alt=g.title||'Gallery image'}else{visual.classList.add('no-image');img.removeAttribute('src')}document.querySelector('[data-modal-counter]').style.display=photos.length?'inline-flex':'none';document.querySelector('[data-modal-counter]').textContent=(photoIndex+1)+' / '+photos.length;const modalMeta=document.querySelector('[data-modal-meta]');if(modalMeta)modalMeta.textContent=g.date_display||cmsFormatDate(g.date,false)||'';document.querySelector('[data-modal-text]').innerHTML='<p>'+esc(g.description||g.gallery_intro||'')+'</p>';document.querySelector('[data-modal-prev]').style.display=photos.length>1?'block':'none';document.querySelector('[data-modal-next]').style.display=photos.length>1?'block':'none'}
 setupHeroSlideshow();setupStorySlideshow();loadGalleries();document.getElementById('eventModal').addEventListener('click',function(e){if(e.target===this)closeEventModal()});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeEventModal()});
 </script>
