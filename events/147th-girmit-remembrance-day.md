@@ -11,7 +11,7 @@ description: An Evening of Remembrance & Recognition. Doors open at 5:00pm with
   networking, tea and snacks.
 display_mode: flyer
 sort_order: 1
-flyer: ""
+flyer: /images/uploads/fiji-girmit-remembrance-day_2026_fgfnz.jpg
 photos:
   - /images/uploads/147th-fiji-girmit-flyer.jpg
 ---
