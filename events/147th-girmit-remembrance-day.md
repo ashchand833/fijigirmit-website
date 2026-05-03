@@ -13,4 +13,5 @@ flyer: /images/uploads/fiji-girmit-remembrance-day_2026_fgfnz.jpg
 photos:
   - /images/uploads/fiji-girmit-remembrance-day_gold-silver-sponsors_2026_fgfnz-1.jpg
   - /images/uploads/fiji-girmit-remembrance-day_gold-silver-sponsors_2026_fgfnz.png
+  - /images/uploads/fiji-girmit-remembrance-day_2026_fgfnz.jpg
 ---
