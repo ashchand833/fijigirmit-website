@@ -37,15 +37,388 @@ footer{background:var(--primary-dark);color:white;padding:3rem 2rem;text-align:c
 /* Global logo/header format across all pages */
 .header-container{max-width:1240px;margin:0 auto;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;gap:22px}.logo-section{display:flex;align-items:center;gap:14px;min-width:360px;color:inherit}.logo-img{width:64px;height:64px;object-fit:contain;flex:0 0 auto}.logo-text h1{margin:0;font-family:"Playfair Display",serif;font-size:1.55rem;line-height:1.1;font-weight:700;color:inherit;white-space:nowrap}.logo-text p{margin:6px 0 0;color:var(--muted,var(--text-light,#63554d));font-size:.98rem;letter-spacing:.2px;white-space:nowrap}@media(max-width:900px){.header-container{align-items:flex-start}.logo-section{min-width:auto}.logo-text h1{font-size:1.35rem}.logo-text p{font-size:.88rem}.logo-img{width:56px;height:56px}nav{width:100%;}}@media(max-width:760px){.header-container{flex-direction:column;align-items:flex-start;padding:12px 18px}.logo-section{width:100%;gap:12px}.logo-img{width:52px;height:52px}.logo-text h1{font-size:1.15rem;white-space:normal}.logo-text p{font-size:.82rem;white-space:normal}}
 .donate-btn:hover{background:#68BFEF!important;color:#18324A!important}
+
+
+/* FINAL GLOBAL HEADER ALIGNMENT FIX
+   Keeps the same logo, text size, nav level, hover colour and button sizing on every page. */
+header{
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(255,255,255,.98) !important;
+  padding: 0 !important;
+  box-shadow: 0 2px 14px rgba(0,0,0,.06) !important;
+  border-bottom: 1px solid rgba(0,0,0,.05) !important;
+}
+header .header-container,
+header .header-inner{
+  max-width: 1280px !important;
+  min-height: 104px !important;
+  margin: 0 auto !important;
+  padding: 14px 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 28px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+header .logo-section,
+header .brand{
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  min-width: 430px !important;
+  flex: 0 0 auto !important;
+  color: #2d1d14 !important;
+  text-decoration: none !important;
+}
+header .logo-img,
+header .brand img{
+  width: 72px !important;
+  height: 72px !important;
+  object-fit: contain !important;
+  flex: 0 0 auto !important;
+}
+header .logo-text h1,
+header .brand h1{
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 1.75rem !important;
+  line-height: 1.08 !important;
+  font-weight: 700 !important;
+  color: #2d1d14 !important;
+  white-space: nowrap !important;
+}
+header .logo-text p,
+header .brand p{
+  margin: 6px 0 0 !important;
+  padding: 0 !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.03rem !important;
+  line-height: 1.2 !important;
+  font-weight: 400 !important;
+  letter-spacing: .15px !important;
+  color: #6d5d54 !important;
+  white-space: nowrap !important;
+}
+header nav{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+header nav a{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 46px !important;
+  padding: 0 20px !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #2d1d14 !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, transform .2s ease !important;
+}
+header nav a:hover,
+header nav a.active,
+header nav a[aria-current="page"],
+header nav a:focus{
+  background: #68BFEF !important;
+  color: #18324A !important;
+}
+header nav a.donate-btn,
+header nav .donate-btn{
+  min-height: 56px !important;
+  padding: 0 32px !important;
+  background: #68BFEF !important;
+  color: #18324A !important;
+  font-weight: 700 !important;
+}
+header nav a.donate-btn:hover,
+header nav .donate-btn:hover,
+header nav a.donate-btn:focus,
+header nav .donate-btn:focus{
+  background: #68BFEF !important;
+  color: #18324A !important;
+  transform: translateY(-1px) !important;
+}
+@media (max-width: 1100px){
+  header .header-container,
+  header .header-inner{
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    min-height: auto !important;
+    padding: 12px 20px !important;
+  }
+  header .logo-section,
+  header .brand{
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  header nav{
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+  }
+}
+@media (max-width: 760px){
+  header .header-container,
+  header .header-inner{
+    padding: 12px 16px !important;
+  }
+  header .logo-img,
+  header .brand img{
+    width: 56px !important;
+    height: 56px !important;
+  }
+  header .logo-text h1,
+  header .brand h1{
+    font-size: 1.28rem !important;
+    white-space: normal !important;
+  }
+  header .logo-text p,
+  header .brand p{
+    font-size: .88rem !important;
+    white-space: normal !important;
+  }
+  header nav{
+    gap: 7px !important;
+  }
+  header nav a{
+    min-height: 40px !important;
+    padding: 0 13px !important;
+    font-size: .94rem !important;
+  }
+  header nav a.donate-btn,
+  header nav .donate-btn{
+    min-height: 42px !important;
+    padding: 0 18px !important;
+  }
+}
+
+
+
+/* FINAL FIX: same global header height/style on every page + blue only on hover */
+header{
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(255,255,255,.98) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 104px !important;
+  display: flex !important;
+  align-items: center !important;
+  border-bottom: 1px solid rgba(47,28,20,.08) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05) !important;
+}
+header .header-container,
+header .header-inner{
+  width: 100% !important;
+  max-width: 1280px !important;
+  min-height: 104px !important;
+  margin: 0 auto !important;
+  padding: 14px 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 28px !important;
+  box-sizing: border-box !important;
+}
+header .logo-section,
+header .brand{
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  min-width: 430px !important;
+  flex: 0 0 auto !important;
+  color: #2d1d14 !important;
+  text-decoration: none !important;
+}
+header .logo-img,
+header .brand img{
+  width: 72px !important;
+  height: 72px !important;
+  object-fit: contain !important;
+  flex: 0 0 72px !important;
+}
+header .logo-text h1,
+header .brand h1{
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 1.75rem !important;
+  line-height: 1.08 !important;
+  font-weight: 700 !important;
+  color: #2d1d14 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+header .logo-text p,
+header .brand p{
+  margin: 6px 0 0 !important;
+  padding: 0 !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.03rem !important;
+  line-height: 1.2 !important;
+  font-weight: 400 !important;
+  letter-spacing: .15px !important;
+  color: #6d5d54 !important;
+  white-space: nowrap !important;
+}
+header nav{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+header nav a{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 46px !important;
+  padding: 0 20px !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: #2d1d14 !important;
+  font-family: "Lora", Georgia, serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: background .2s ease, color .2s ease, transform .2s ease !important;
+}
+header nav a.active:not(.donate-btn),
+header nav a[aria-current="page"]:not(.donate-btn){
+  background: transparent !important;
+  color: #2d1d14 !important;
+}
+header nav a:hover,
+header nav a:focus{
+  background: #68BFEF !important;
+  color: #18324A !important;
+}
+header nav a.donate-btn,
+header nav .donate-btn{
+  min-height: 56px !important;
+  padding: 0 32px !important;
+  background: #68BFEF !important;
+  color: #18324A !important;
+  font-weight: 700 !important;
+}
+header nav a.donate-btn:hover,
+header nav .donate-btn:hover,
+header nav a.donate-btn:focus,
+header nav .donate-btn:focus{
+  background: #68BFEF !important;
+  color: #18324A !important;
+  transform: translateY(-1px) !important;
+}
+@media (max-width: 1100px){
+  header{
+    min-height: auto !important;
+  }
+  header .header-container,
+  header .header-inner{
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    min-height: auto !important;
+    padding: 12px 20px !important;
+  }
+  header .logo-section,
+  header .brand{
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  header nav{
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+}
+@media (max-width: 640px){
+  header .header-container,
+  header .header-inner{
+    padding: 10px 14px !important;
+  }
+  header .logo-img,
+  header .brand img{
+    width: 58px !important;
+    height: 58px !important;
+    flex-basis: 58px !important;
+  }
+  header .logo-text h1,
+  header .brand h1{
+    font-size: 1.28rem !important;
+    white-space: normal !important;
+  }
+  header .logo-text p,
+  header .brand p{
+    font-size: .82rem !important;
+    white-space: normal !important;
+  }
+  header nav a{
+    min-height: 40px !important;
+    padding: 0 12px !important;
+    font-size: .92rem !important;
+  }
+  header nav a.donate-btn,
+  header nav .donate-btn{
+    min-height: 42px !important;
+    padding: 0 18px !important;
+  }
+}
+
+
+/* FINAL LOCKED GLOBAL HEADER + FOOTER FIX
+   Same height, font, spacing and hover behaviour on every page. */
+:root{--fgfnz-blue:#68BFEF;--fgfnz-ink:#2d1d14;--fgfnz-muted:#6d5d54;--fgfnz-brown:#3d2817;}
+html,body{overflow-x:hidden!important;}
+header{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(255,255,255,.98)!important;padding:0!important;box-shadow:0 2px 14px rgba(0,0,0,.06)!important;border-bottom:1px solid rgba(0,0,0,.05)!important;}
+header .header-container,header .header-inner{max-width:1280px!important;min-height:104px!important;margin:0 auto!important;padding:14px 28px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:28px!important;width:100%!important;box-sizing:border-box!important;}
+header .logo-section,header .brand{display:flex!important;align-items:center!important;gap:14px!important;min-width:430px!important;flex:0 0 auto!important;color:var(--fgfnz-ink)!important;text-decoration:none!important;}
+header .logo-img,header .brand img{width:72px!important;height:72px!important;object-fit:contain!important;flex:0 0 auto!important;}
+header .logo-text h1,header .brand h1{margin:0!important;padding:0!important;font-family:"Playfair Display",Georgia,serif!important;font-size:1.75rem!important;line-height:1.08!important;font-weight:700!important;color:var(--fgfnz-ink)!important;white-space:nowrap!important;}
+header .logo-text p,header .brand p{margin:6px 0 0!important;padding:0!important;font-family:"Lora",Georgia,serif!important;font-size:1.03rem!important;line-height:1.2!important;font-weight:400!important;letter-spacing:.15px!important;color:var(--fgfnz-muted)!important;white-space:nowrap!important;}
+header nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:10px!important;flex-wrap:nowrap!important;width:auto!important;margin:0!important;padding:0!important;}
+header nav a{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:46px!important;padding:0 20px!important;border-radius:999px!important;background:transparent!important;color:var(--fgfnz-ink)!important;font-family:"Lora",Georgia,serif!important;font-size:1.05rem!important;line-height:1!important;font-weight:500!important;text-decoration:none!important;transition:background .2s ease,color .2s ease,transform .2s ease!important;}
+header nav a.active:not(.donate-btn),header nav a[aria-current="page"]:not(.donate-btn){background:transparent!important;color:var(--fgfnz-ink)!important;}
+header nav a:not(.donate-btn):hover,header nav a:not(.donate-btn):focus{background:var(--fgfnz-blue)!important;color:#18324A!important;}
+header nav a.donate-btn,header nav .donate-btn{min-height:56px!important;padding:0 32px!important;background:var(--fgfnz-blue)!important;color:#18324A!important;font-weight:700!important;}
+header nav a.donate-btn:hover,header nav .donate-btn:hover,header nav a.donate-btn:focus,header nav .donate-btn:focus{background:var(--fgfnz-blue)!important;color:#18324A!important;transform:translateY(-1px)!important;}
+.footer-social{display:flex!important;justify-content:center!important;align-items:center!important;gap:14px!important;margin:12px 0 12px!important;}
+.footer-social .social-icon{width:42px!important;height:42px!important;border-radius:999px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;background:var(--fgfnz-blue)!important;color:#18324A!important;text-decoration:none!important;transition:transform .2s ease,opacity .2s ease!important;}
+.footer-social .social-icon:hover{transform:translateY(-2px)!important;opacity:.92!important;}
+.footer-social .social-icon svg{width:22px!important;height:22px!important;fill:currentColor!important;display:block!important;}
+@media (max-width:1100px){header .header-container,header .header-inner{align-items:flex-start!important;flex-direction:column!important;gap:14px!important;min-height:auto!important;padding:12px 20px!important;}header .logo-section,header .brand{min-width:0!important;width:100%!important;}header nav{width:100%!important;justify-content:flex-start!important;flex-wrap:wrap!important;}}
+@media (max-width:760px){header .header-container,header .header-inner{padding:12px 16px!important;}header .logo-img,header .brand img{width:56px!important;height:56px!important;}header .logo-text h1,header .brand h1{font-size:1.18rem!important;white-space:normal!important;}header .logo-text p,header .brand p{font-size:.82rem!important;white-space:normal!important;}header nav{gap:6px!important;}header nav a{min-height:40px!important;padding:0 12px!important;font-size:.92rem!important;}header nav a.donate-btn,header nav .donate-btn{min-height:42px!important;padding:0 18px!important;}}
+
 </style>
 </head>
 <body>
-<header><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a class="active" href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
+<header><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
 <section class="history-hero"><div class="container"><h1>Girmit History</h1><p>A chapter of courage, endurance, and cultural resilience — the story of the Girmitiya between 1879 and 1916.</p></div></section>
 <section class="memory-strip"><div class="container"><h2 style="text-align:center;">Historic Photo Memories</h2><div class="gallery-shell"><div aria-label="Historic photo slideshow" class="full-width-slideshow history-slideshow" data-image-prefix="Historic photo memory" data-random="true"><div class="slides-track"></div><div class="slideshow-overlay"></div><div class="slideshow-controls"><button aria-label="Previous slide" class="slideshow-arrow prev">❮</button><button aria-label="Next slide" class="slideshow-arrow next">❯</button></div><div class="slideshow-bottom"><div aria-label="Slideshow navigation" class="slideshow-dots"></div><div class="slideshow-progress"><span></span></div></div></div></div></div></section>
 <section class="history-content"><div class="container"><div class="history-section"><h2>What is Girmit?</h2><p>The word “Girmit” came from the English word “agreement,” spoken in a different accent and repeated by labourers who were asked to sign contracts they often could not fully understand. Over time, the people who travelled under that contract became known as the Girmitiya, and their journey became one of the defining stories of Fiji Indian identity.</p><p>Between 1879 and 1916, more than 60,000 men, women, and children were taken from India to Fiji under the British indenture system to work mainly on sugar plantations. Many left with hope for wages and a better future, but arrived to a reality of hard labour, strict control, and deep separation from home, family, caste, and village life.</p><p>The voyage across the kala pani, or dark waters, was itself a life-changing crossing. Crowded ships, sickness, uncertainty, grief, and fear shaped the journey. Yet on those same ships, strangers began forming new bonds of survival and community that would carry into their new lives in Fiji.</p><p>In Fiji, Girmitiya endured long working days, harsh discipline, and difficult living conditions. Even so, they rebuilt family life, preserved religious and cultural traditions, and created new communities rooted in resilience, faith, and mutual support. From hardship, they laid foundations that would shape Fiji’s agriculture, education, language, business, and public life for generations.</p><p>Remembering Girmit today is not only about recalling suffering. It is also about honouring dignity, endurance, and the remarkable legacy built by descendants who kept language, festivals, stories, food, and values alive across Fiji and the wider diaspora, including New Zealand.</p></div><div class="history-section" style="margin-top:3rem;"><h2>Girmit Day</h2><p>Every year on 14 May, communities in Fiji, New Zealand, Australia, and beyond observe Girmit Day. It marks the arrival of the first ship, Leonidas, to Fiji in 1879 and gives descendants an opportunity to remember sacrifice, celebrate endurance, and pass history to younger generations.</p><p>Through prayer, speeches, cultural performance, exhibitions, and storytelling, Girmit Day keeps memory alive. It reminds us that identity was shaped by courage — and that the opportunities many enjoy today were built on the labour, hope, and survival of those who came before.</p></div></div></section>
 <section class="timeline-section"><div class="container"><h2>Timeline of Girmit History</h2><div class="timeline"><div class="timeline-item"><div class="timeline-year">1879</div><div class="timeline-card"><h3>Leonidas Arrives in Fiji</h3><p>The first ship, Leonidas, reaches Fiji on 14 May 1879 carrying 498 indentured labourers from India. This marked the beginning of the Girmit era in Fiji.</p></div></div><div class="timeline-item"><div class="timeline-year">1879–1916</div><div class="timeline-card"><h3>The Indenture Period</h3><p>Across 87 voyages, over 60,000 Indians were transported to Fiji under the Girmit system. They worked mostly on sugar plantations and endured difficult contracts, isolation, and harsh labour conditions.</p></div></div><div class="timeline-item"><div class="timeline-year">1916</div><div class="timeline-card"><h3>Recruitment Ends</h3><p>The indenture system was officially stopped. Public criticism and reform campaigns had exposed the human cost of the system and pushed authorities to end further recruitment.</p></div></div><div class="timeline-item"><div class="timeline-year">1920</div><div class="timeline-card"><h3>Final Contracts Expire</h3><p>By 1920, the last indenture contracts came to an end. Many Girmitiya chose to remain in Fiji, where they built homes, families, businesses, schools, and places of worship.</p></div></div><div class="timeline-item"><div class="timeline-year">1987–2006</div><div class="timeline-card"><h3>Migration Expands</h3><p>Political upheaval in Fiji encouraged many Fiji Indians to migrate abroad, including to New Zealand. Communities abroad carried Girmit memory with them and created new spaces for cultural preservation.</p></div></div><div class="timeline-item"><div class="timeline-year">2012</div><div class="timeline-card"><h3>FGFNZ Is Founded</h3><p>The Fiji Girmit Foundation New Zealand was established in Auckland to honour the Girmit legacy, preserve history, support language and culture, and give Fiji Indians in Aotearoa a stronger shared voice.</p></div></div><div class="timeline-item"><div class="timeline-year">Today</div><div class="timeline-card"><h3>Legacy Continues</h3><p>Descendants continue to honour the Girmitiya through education, remembrance events, oral histories, cultural programmes, and intergenerational storytelling that keeps the journey visible for the future.</p></div></div></div></div></section>
-<footer><div class="footer-content"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a></div><div class="footer-social" style="display:flex;justify-content:center;gap:1rem;margin:0.35rem 0 0.75rem;"><a href="https://www.facebook.com/FijiGirmitFoundationNz/" rel="noopener" style="color:#c9a961;font-weight:600;" target="_blank">Facebook</a><a href="mailto:admin@fijigirmit.org.nz" style="color:#c9a961;font-weight:600;">Email</a></div><p class="footer-text">© 2024 Fiji Girmit Foundation NZ. All rights reserved.</p></div></footer>
+<footer><div class="footer-inner footer-content"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a></div><div class="footer-social" aria-label="Social links"><a class="social-icon" href="https://www.facebook.com/FijiGirmitFoundationNz" rel="noopener" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"/></svg></a><a class="social-icon" href="https://www.linkedin.com/company/fiji-girmit-foundation-nz/about/" rel="noopener" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45z"/></svg></a><a class="social-icon" href="mailto:admin@fijigirmit.org.nz" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg></a></div><p class="footer-text">© 2024 Fiji Girmit Foundation NZ. All rights reserved.</p></div></footer>
 <script>
 const galleryImages=['images/oldpic1.jpg','images/oldpic2.jpeg','images/oldpic3.webp','images/oldpic4.png','images/oldpic5.png','images/oldpic6.png','images/oldpic7.png','images/oldpic8.png','images/oldpic9.png','images/oldpic10.png','images/oldpic11.png'];
 function shuffleArray(items){const arr=[...items];for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}

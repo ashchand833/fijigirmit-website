@@ -30,7 +30,7 @@
     .logo-text p{margin:6px 0 0;color:var(--muted);font-size:.98rem;letter-spacing:.2px;white-space:nowrap}
     nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     nav a{padding:10px 18px;border-radius:999px;font-size:1rem;transition:.2s}
-    nav a:hover,nav a:focus{background:#68BFEF!important;color:#18324A!important}
+    nav a:hover,nav a.active,nav a[aria-current="page"],nav a:focus{background:#68BFEF!important;color:#18324A!important}
     .donate-btn{background:#68BFEF!important;color:#18324A!important;font-weight:700;padding:14px 28px!important}
 
     main{min-height:60vh}
@@ -51,16 +51,16 @@
     .site-card p{margin:0;color:var(--muted)}
     .cta{margin-top:14px!important;color:#68BFEF!important;font-weight:700}
 
-    .modal{position:fixed;inset:0;background:rgba(20,13,10,.78);display:none;align-items:center;justify-content:center;padding:22px;z-index:2000;overflow:auto}
+    .modal{position:fixed;inset:0;background:rgba(20,13,10,.78);display:none;align-items:center;justify-content:center;padding:24px;z-index:2000}
     .modal.open{display:flex}
-    .modal-shell{width:min(1120px,calc(100vw - 44px));max-height:calc(100vh - 44px);background:#fbf8f4;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;flex-direction:column}
-    .modal-top{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--line);flex:0 0 auto;min-height:78px}
-    .modal-top h3{margin:0;font-family:"Playfair Display",serif;font-size:2rem;line-height:1.1}
+    .modal-shell{width:min(1120px,100%);background:#fbf8f4;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);max-height:92vh}
+    .modal-top{display:flex;align-items:center;justify-content:space-between;padding:22px 28px;border-bottom:1px solid var(--line)}
+    .modal-top h3{margin:0;font-family:"Playfair Display",serif;font-size:2.2rem;line-height:1.1}
     .close-btn{background:none;border:none;font-size:2rem;cursor:pointer;color:var(--ink)}
-    .modal-main{display:grid;grid-template-columns:1.1fr .9fr;gap:0;align-items:stretch;height:min(620px,calc(100vh - 150px));min-height:420px;overflow:hidden}
-    .modal-visual{position:relative;display:flex;align-items:center;justify-content:center;background:#111;height:100%;overflow:hidden;padding:0}
-    .modal-visual img{display:block!important;max-width:100%!important;max-height:100%!important;width:auto!important;height:auto!important;object-fit:contain!important;background:#111;margin:auto!important}
-    .modal-panel{padding:28px;overflow:auto;min-height:0}
+    .modal-main{display:grid;grid-template-columns:1.1fr .9fr;gap:0;align-items:stretch;max-height:calc(92vh - 84px)}
+    .modal-visual{position:relative;display:flex;align-items:center;justify-content:center;background:#111;min-height:520px;overflow:hidden}
+    .modal-visual img{max-width:100%;max-height:100%;object-fit:contain}
+    .modal-panel{padding:28px;overflow:auto}
     .modal-panel p{margin:0 0 12px;color:var(--muted)}
     .counter{display:inline-flex;padding:8px 14px;border-radius:999px;background:#f1e7da;color:var(--ink);font-weight:700;margin-bottom:18px}
     .modal-nav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:999px;border:none;background:rgba(255,255,255,.95);font-size:1.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
@@ -74,9 +74,9 @@
     .footer-social{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
     .footer-social a{color:#fff}
 
-    @media(max-width:1100px){.modal-shell{height:92vh;overflow:hidden}.modal-main{grid-template-columns:1fr;grid-template-rows:minmax(0,58%) minmax(0,42%)}.modal-visual{min-height:0;height:100%}.modal-panel{overflow:auto}}
+    @media(max-width:1100px){.modal-main{grid-template-columns:1fr}.modal-visual{min-height:360px}.modal-shell{overflow:auto}}
     @media(max-width:900px){.header-container{align-items:flex-start}.logo-section{min-width:auto}.logo-text h1{font-size:1.35rem}.logo-text p{font-size:.88rem}.logo-img{width:56px;height:56px}nav{width:100%}}
-    @media(max-width:760px){.header-container{flex-direction:column;align-items:flex-start;padding:12px 18px}.logo-section{width:100%;gap:12px}.logo-img{width:52px;height:52px}.logo-text h1{font-size:1.15rem;white-space:normal}.logo-text p{font-size:.82rem;white-space:normal}.section-block{padding:46px 0}.section-title{font-size:2.25rem}.container{padding:0 18px}.card-grid{grid-template-columns:1fr}.site-card h3{font-size:1.65rem}.modal{padding:12px}.modal-shell{border-radius:20px;height:94vh}.modal-top{padding:18px 20px}.modal-top h3{font-size:1.7rem}.modal-main{grid-template-rows:minmax(0,56%) minmax(0,44%)}.modal-panel{padding:20px}.modal-nav{width:44px;height:44px}}
+    @media(max-width:760px){.header-container{flex-direction:column;align-items:flex-start;padding:12px 18px}.logo-section{width:100%;gap:12px}.logo-img{width:52px;height:52px}.logo-text h1{font-size:1.15rem;white-space:normal}.logo-text p{font-size:.82rem;white-space:normal}.section-block{padding:46px 0}.section-title{font-size:2.25rem}.container{padding:0 18px}.card-grid{grid-template-columns:1fr}.site-card h3{font-size:1.65rem}.modal{padding:12px}.modal-shell{border-radius:20px}.modal-top{padding:18px 20px}.modal-top h3{font-size:1.7rem}.modal-panel{padding:20px}.modal-nav{width:44px;height:44px}}
   .donate-btn:hover{background:#68BFEF!important;color:#18324A!important}
 
 
@@ -428,204 +428,51 @@ header nav .donate-btn:focus{
 }
 
 
-    /* Keep every event popup the same size and stop portrait flyers from overflowing/cropping. */
-    .modal-main{height:min(620px,calc(100vh - 150px))!important;min-height:420px!important;}
-    .modal-visual img{max-width:100%!important;max-height:100%!important;width:auto!important;height:auto!important;object-fit:contain!important;}
-    @media (max-width:760px){
-      .modal{padding:12px;align-items:flex-start;}
-      .modal-shell{width:calc(100vw - 24px);max-height:calc(100vh - 24px);border-radius:20px;overflow:auto;}
-      .modal-top{padding:16px 18px;min-height:auto;}
-      .modal-top h3{font-size:1.45rem;}
-      .modal-main{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;overflow:visible!important;}
-      .modal-visual{height:52vh!important;min-height:320px!important;}
-      .modal-panel{padding:20px;}
-    }
-  </style>
+/* FINAL LOCKED GLOBAL HEADER + FOOTER FIX
+   Same height, font, spacing and hover behaviour on every page. */
+:root{--fgfnz-blue:#68BFEF;--fgfnz-ink:#2d1d14;--fgfnz-muted:#6d5d54;--fgfnz-brown:#3d2817;}
+html,body{overflow-x:hidden!important;}
+header{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(255,255,255,.98)!important;padding:0!important;box-shadow:0 2px 14px rgba(0,0,0,.06)!important;border-bottom:1px solid rgba(0,0,0,.05)!important;}
+header .header-container,header .header-inner{max-width:1280px!important;min-height:104px!important;margin:0 auto!important;padding:14px 28px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:28px!important;width:100%!important;box-sizing:border-box!important;}
+header .logo-section,header .brand{display:flex!important;align-items:center!important;gap:14px!important;min-width:430px!important;flex:0 0 auto!important;color:var(--fgfnz-ink)!important;text-decoration:none!important;}
+header .logo-img,header .brand img{width:72px!important;height:72px!important;object-fit:contain!important;flex:0 0 auto!important;}
+header .logo-text h1,header .brand h1{margin:0!important;padding:0!important;font-family:"Playfair Display",Georgia,serif!important;font-size:1.75rem!important;line-height:1.08!important;font-weight:700!important;color:var(--fgfnz-ink)!important;white-space:nowrap!important;}
+header .logo-text p,header .brand p{margin:6px 0 0!important;padding:0!important;font-family:"Lora",Georgia,serif!important;font-size:1.03rem!important;line-height:1.2!important;font-weight:400!important;letter-spacing:.15px!important;color:var(--fgfnz-muted)!important;white-space:nowrap!important;}
+header nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:10px!important;flex-wrap:nowrap!important;width:auto!important;margin:0!important;padding:0!important;}
+header nav a{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:46px!important;padding:0 20px!important;border-radius:999px!important;background:transparent!important;color:var(--fgfnz-ink)!important;font-family:"Lora",Georgia,serif!important;font-size:1.05rem!important;line-height:1!important;font-weight:500!important;text-decoration:none!important;transition:background .2s ease,color .2s ease,transform .2s ease!important;}
+header nav a.active:not(.donate-btn),header nav a[aria-current="page"]:not(.donate-btn){background:transparent!important;color:var(--fgfnz-ink)!important;}
+header nav a:not(.donate-btn):hover,header nav a:not(.donate-btn):focus{background:var(--fgfnz-blue)!important;color:#18324A!important;}
+header nav a.donate-btn,header nav .donate-btn{min-height:56px!important;padding:0 32px!important;background:var(--fgfnz-blue)!important;color:#18324A!important;font-weight:700!important;}
+header nav a.donate-btn:hover,header nav .donate-btn:hover,header nav a.donate-btn:focus,header nav .donate-btn:focus{background:var(--fgfnz-blue)!important;color:#18324A!important;transform:translateY(-1px)!important;}
+.footer-social{display:flex!important;justify-content:center!important;align-items:center!important;gap:14px!important;margin:12px 0 12px!important;}
+.footer-social .social-icon{width:42px!important;height:42px!important;border-radius:999px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;background:var(--fgfnz-blue)!important;color:#18324A!important;text-decoration:none!important;transition:transform .2s ease,opacity .2s ease!important;}
+.footer-social .social-icon:hover{transform:translateY(-2px)!important;opacity:.92!important;}
+.footer-social .social-icon svg{width:22px!important;height:22px!important;fill:currentColor!important;display:block!important;}
+@media (max-width:1100px){header .header-container,header .header-inner{align-items:flex-start!important;flex-direction:column!important;gap:14px!important;min-height:auto!important;padding:12px 20px!important;}header .logo-section,header .brand{min-width:0!important;width:100%!important;}header nav{width:100%!important;justify-content:flex-start!important;flex-wrap:wrap!important;}}
+@media (max-width:760px){header .header-container,header .header-inner{padding:12px 16px!important;}header .logo-img,header .brand img{width:56px!important;height:56px!important;}header .logo-text h1,header .brand h1{font-size:1.18rem!important;white-space:normal!important;}header .logo-text p,header .brand p{font-size:.82rem!important;white-space:normal!important;}header nav{gap:6px!important;}header nav a{min-height:40px!important;padding:0 12px!important;font-size:.92rem!important;}header nav a.donate-btn,header nav .donate-btn{min-height:42px!important;padding:0 18px!important;}}
+
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="header-container">
-      <a class="logo-section" href="index.html">
-        <img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg" />
-        <div class="logo-text">
-          <h1>Fiji Girmit Foundation NZ</h1>
-          <p>Remembering · Celebrating · Advocating</p>
-        </div>
-      </a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="history.html">History</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact Us</a>
-        <a class="donate-btn" href="donate.html">Donate</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="section-block">
-    <div class="container">
-      <h1 class="section-title">Upcoming &amp; Past Events</h1>
-      <div class="grid card-grid" id="eventsGrid"></div>
-    </div>
-  </main>
-
-  <div aria-hidden="true" class="modal" id="eventModal">
-    <div class="modal-shell">
-      <div class="modal-top">
-        <h3 data-modal-title>Event</h3>
-        <button class="close-btn" type="button" aria-label="Close popup" onclick="closeEventModal()">×</button>
-      </div>
-      <div class="modal-main">
-        <div class="modal-visual">
-          <button class="modal-nav prev" type="button" data-modal-prev onclick="changeEventModalGallery(-1)">❮</button>
-          <img alt="Event image" data-modal-image src="" />
-          <button class="modal-nav next" type="button" data-modal-next onclick="changeEventModalGallery(1)">❯</button>
-        </div>
-        <div class="modal-panel">
-          <div class="counter" data-modal-counter>1 / 1</div>
-          <div data-modal-text></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-links">
-        <a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a>
-      </div>
-      <div class="footer-social"><a href="https://www.facebook.com/FijiGirmitFoundationNz/" rel="noopener" target="_blank">Facebook</a><a href="mailto:admin@fijigirmit.org.nz">Email</a></div>
-      <p>© Fiji Girmit Foundation NZ</p>
-    </div>
-  </footer>
-
-  <script>
-    const events = [
-      {
-        title: "Girmit Connections Youth Workshop",
-        meta: "Sunday 7 June 2026",
-        category: "Upcoming Event",
-        description: "A youth workshop with Shana Chandra remembering the 147th Fiji Girmit Anniversary 2026. All youth from all cultures aged 12–24 are welcome.",
-        details: ["Date: Sunday 7 June 2026", "Time: 1.00pm - 3.00pm", "Venue: Ormiston Junior College", "Complimentary tea and snacks provided", "Registration: Scan the QR code on the flyer", "Email: girmitawaaz@gmail.com", "Phone: 022 020 7490"],
-        images: ["images/girmit-connections-youth-workshop-2026.png"],
-        fit: "contain"
-      },
-      {
-        title: "147th Girmit Remembrance Day",
-        meta: "Saturday 16 May 2026",
-        category: "Upcoming Event",
-        description: "An evening of remembrance, recognition and celebration.",
-        details: ["Date: Saturday 16 May 2026", "Time: 5.00pm - 8.30pm", "Venue: Malaeola Community Centre, 16 Waokauri Place, Mangere, Auckland"],
-        images: ["girmitday.jpg"]
-      },
-      {
-        title: "International Women's Day High Tea",
-        meta: "Sunday 8 March 2026",
-        category: "Upcoming Event",
-        description: "Balance the Scales - IWD 2026.",
-        details: ["Date: Sunday 8 March 2026", "Time: 2.00pm - 4.00pm", "Venue: Divine Patisserie, 240 Ormiston Road, Auckland 2019"],
-        images: ["hightea.jpg"]
-      },
-      {
-        title: "Fiji NZ Girmit Day Celebration",
-        meta: "Fiji NZ Girmit Day Celebration",
-        category: "Photo Gallery",
-        description: "Celebrating community, remembrance and cultural connection.",
-        details: ["Photo gallery from Fiji NZ Girmit Day Celebration."],
-        images: ["gday1.jpg", "gday2.jpg", "gday3.jpg", "gday4.jpg", "gday5.jpg", "gday6.jpg", "gday7.jpg", "gday8.jpg", "gday9.jpg", "gday10.jpg", "gday11.jpg", "gday12.jpg", "gday14.jpg", "gday15.jpg", "gday16.jpg", "gday17.jpg", "gday21.jpg"]
-      },
-      {
-        title: "Diwali Celebrations 2024",
-        meta: "Diwali Celebrations 2024",
-        category: "Photo Gallery",
-        description: "Festival moments from the Diwali celebrations.",
-        details: ["Photo gallery from Diwali Celebrations 2024."],
-        images: ["diwali-1.jpg", "diwali-2.jpg", "diwali-3.jpg", "diwali-4.jpg", "diwali-5.jpg", "diwali-6.jpg"]
-      },
-      {
-        title: "Breast Cancer Awareness Campaign",
-        meta: "Breast Cancer Awareness Campaign",
-        category: "Photo Gallery",
-        description: "Community awareness and support campaign.",
-        details: ["Photo gallery from the Breast Cancer Awareness Campaign."],
-        images: ["cancer-1.jpg", "cancer-2.jpg", "cancer-3.jpg", "cancer-4.jpg", "cancer-5.jpg", "cancer-6.jpg", "cancer-7.jpg", "cancer-8.jpg"]
-      }
-    ];
-
-    let currentEventIndex = 0;
-    let currentImageIndex = 0;
-
-    function escapeHtml(value){
-      return String(value || '').replace(/[&<>"']/g, function(char){
-        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char];
-      });
-    }
-
-    function renderEvents(){
-      const grid = document.getElementById('eventsGrid');
-      grid.innerHTML = events.map((event, index) => {
-        const image = event.images && event.images.length ? event.images[0] : '';
-        const imageStyle = event.fit === 'contain' ? ' style="object-fit:contain;background:#fff;"' : '';
-        const media = image
-          ? `<div class="media"><img src="${escapeHtml(image)}" alt="${escapeHtml(event.title)}"${imageStyle}></div>`
-          : `<div class="media"><div style="padding:30px;text-align:center;color:#6a5b52;">No image uploaded</div></div>`;
-        return `<button class="site-card" type="button" onclick="openEventModalByIndex(${index})">${media}<div class="content"><p class="eyebrow">${escapeHtml(event.meta)}</p><h3>${escapeHtml(event.title)}</h3><p class="meta">${escapeHtml(event.category)}</p><p>${escapeHtml(event.description)}</p><p class="cta">${event.category === 'Photo Gallery' ? 'View gallery →' : 'View event →'}</p></div></button>`;
-      }).join('');
-    }
-
-    function openEventModalByIndex(index){
-      currentEventIndex = index;
-      currentImageIndex = 0;
-      renderEventModal();
-      const modal = document.getElementById('eventModal');
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeEventModal(){
-      const modal = document.getElementById('eventModal');
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-    }
-
-    function changeEventModalGallery(step){
-      const event = events[currentEventIndex];
-      const images = event.images || [];
-      if(images.length < 2) return;
-      currentImageIndex = (currentImageIndex + step + images.length) % images.length;
-      renderEventModal();
-    }
-
-    function renderEventModal(){
-      const event = events[currentEventIndex];
-      const images = event.images || [];
-      const title = document.querySelector('[data-modal-title]');
-      const img = document.querySelector('[data-modal-image]');
-      const counter = document.querySelector('[data-modal-counter]');
-      const text = document.querySelector('[data-modal-text]');
-      const prev = document.querySelector('[data-modal-prev]');
-      const next = document.querySelector('[data-modal-next]');
-
-      title.textContent = event.title;
-      img.src = images[currentImageIndex] || 'logo.jpg';
-      img.alt = event.title;
-      counter.textContent = `${currentImageIndex + 1} / ${images.length || 1}`;
-      prev.style.display = images.length > 1 ? 'flex' : 'none';
-      next.style.display = images.length > 1 ? 'flex' : 'none';
-
-      const detailHtml = [event.meta, event.category, ...(event.details || []), event.description]
-        .filter(Boolean)
-        .map(line => `<p>${escapeHtml(line)}</p>`)
-        .join('');
-      text.innerHTML = detailHtml;
-    }
-
-    document.getElementById('eventModal').addEventListener('click', function(e){ if(e.target === this) closeEventModal(); });
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeEventModal(); });
-    renderEvents();
-  </script>
+<header><div class="header-container"><a class="logo-section" href="index.html"><img alt="Fiji Girmit Foundation NZ Logo" class="logo-img" src="logo.jpg"/><div class="logo-text"><h1>Fiji Girmit Foundation NZ</h1><p>Remembering · Celebrating · Advocating</p></div></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a class="donate-btn" href="donate.html">Donate</a></nav></div></header>
+<main><section class="section-block"><div class="container"><h1 class="section-title">Upcoming &amp; Past Events</h1><div class="grid card-grid" id="eventsGrid"></div><p id="eventsEmpty" style="display:none;color:#6a5b52;margin-top:20px;">No events have been published yet.</p></div></section></main>
+<div aria-hidden="true" class="modal" id="eventModal"><div class="modal-shell"><div class="modal-top"><h3 data-modal-title>Event</h3><button class="close-btn" type="button" onclick="closeEventModal()">×</button></div><div class="modal-main"><div class="modal-visual"><button class="modal-nav prev" data-modal-prev type="button" onclick="changeEventModalGallery(-1)">❮</button><img alt="Event image" data-modal-image src=""/><button class="modal-nav next" data-modal-next type="button" onclick="changeEventModalGallery(1)">❯</button></div><div class="modal-panel"><div class="counter" data-modal-counter>1 / 1</div><div data-modal-text></div></div></div></div></div>
+<footer><div class="footer-inner footer-content"><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="history.html">History</a><a href="events.html">Events</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a><a href="/admin/">Admin Login</a></div><div class="footer-social" aria-label="Social links"><a class="social-icon" href="https://www.facebook.com/FijiGirmitFoundationNz" rel="noopener" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"/></svg></a><a class="social-icon" href="https://www.linkedin.com/company/fiji-girmit-foundation-nz/about/" rel="noopener" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45z"/></svg></a><a class="social-icon" href="mailto:admin@fijigirmit.org.nz" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg></a></div><p class="footer-text">© 2024 Fiji Girmit Foundation NZ. All rights reserved.</p></div></footer>
+<script src="site-content.js"></script>
+<script>
+let events=[];let currentEventIndex=0;let currentImageIndex=0;
+function escapeHtml(value){return String(value||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});}
+function eventDateLabel(event){return event.date_display|| (typeof cmsFormatDate==='function'?cmsFormatDate(event.date,true):'') || event.meta || 'Event';}
+function eventCategory(event){return event.category || (event.display_mode==='flyer'?'Upcoming Event':'Photo Gallery');}
+function eventDescription(event){return event.description || event.gallery_intro || '';}
+function renderEvents(){const grid=document.getElementById('eventsGrid');const empty=document.getElementById('eventsEmpty');if(!events.length){empty.style.display='block';return;}empty.style.display='none';grid.innerHTML=events.map((event,index)=>{const image=(typeof cmsCoverImage==='function'?cmsCoverImage(event):((event.flyer||(event.photos&&event.photos[0])||'')));const media=image?`<div class="media"><img src="${escapeHtml(image)}" alt="${escapeHtml(event.title)}"></div>`:`<div class="media"><div style="padding:30px;text-align:center;color:#6a5b52;">No image uploaded</div></div>`;return `<button class="site-card" type="button" onclick="openEventModalByIndex(${index})">${media}<div class="content"><p class="eyebrow">${escapeHtml(eventDateLabel(event))}</p><h3>${escapeHtml(event.title||'Event')}</h3><p class="meta">${escapeHtml(eventCategory(event))}</p><p>${escapeHtml(eventDescription(event))}</p><p class="cta">${eventCategory(event).toLowerCase().includes('gallery')?'View gallery →':'View event →'}</p></div></button>`;}).join('');}
+async function loadAndRenderEvents(){try{events=await cmsLoadEvents();}catch(e){events=[];console.warn(e)}events=(typeof cmsSortEvents==='function'?cmsSortEvents(events):events);renderEvents();}
+function openEventModalByIndex(index){currentEventIndex=index;currentImageIndex=0;renderEventModal();const modal=document.getElementById('eventModal');modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+function closeEventModal(){const modal=document.getElementById('eventModal');modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+function changeEventModalGallery(step){const images=(typeof cmsEventImages==='function'?cmsEventImages(events[currentEventIndex]):[]);if(images.length<2)return;currentImageIndex=(currentImageIndex+step+images.length)%images.length;renderEventModal();}
+function renderEventModal(){const event=events[currentEventIndex]||{};const images=(typeof cmsEventImages==='function'?cmsEventImages(event):[]);const title=document.querySelector('[data-modal-title]');const img=document.querySelector('[data-modal-image]');const counter=document.querySelector('[data-modal-counter]');const text=document.querySelector('[data-modal-text]');const prev=document.querySelector('[data-modal-prev]');const next=document.querySelector('[data-modal-next]');title.textContent=event.title||'Event';if(images.length){img.src=images[currentImageIndex];img.alt=event.title||'Event image';}else{img.removeAttribute('src');img.alt='No image uploaded';}counter.textContent=(images.length?(currentImageIndex+1):0)+' / '+(images.length||0);counter.style.display=images.length?'inline-flex':'none';prev.style.display=images.length>1?'flex':'none';next.style.display=images.length>1?'flex':'none';const details=[eventDateLabel(event),event.time?`Time: ${event.time}`:'',event.venue?`Venue: ${event.venue}`:'',event.location?`Location: ${event.location}`:'',eventCategory(event),eventDescription(event)].filter(Boolean);text.innerHTML=details.map(line=>`<p>${escapeHtml(line)}</p>`).join('');}
+document.getElementById('eventModal').addEventListener('click',function(e){if(e.target===this)closeEventModal();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeEventModal();});loadAndRenderEvents();
+</script>
 </body>
 </html>

@@ -1,107 +1,110 @@
-const CMS_SETTINGS = {
-  owner: "Ashchand833",
-  repo: "fijigirmit-website",
-  branch: location.hostname.startsWith("staging--") ? "staging" : "main"
-};
-
-function cmsEscapeHtml(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/\"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-function cmsEscapeAttr(value) { return cmsEscapeHtml(value).replace(/`/g, "&#96;"); }
-function cmsNormalizeImage(value) {
-  if (!value) return "";
-  const trimmed = String(value).trim();
-  if (/^https?:\/\//i.test(trimmed) || trimmed.startsWith('/')) return trimmed;
-  return trimmed;
-}
-function cmsParseFrontmatter(raw) {
-  const trimmed = raw.trim();
-  let data = {}, body = "";
-  if (trimmed.startsWith('{')) data = JSON.parse(trimmed);
-  else {
-    const fm = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
-    if (!fm) return null;
-    data = jsyaml.load(fm[1]) || {};
-    body = (fm[2] || "").trim();
+(function(){
+  const REPO = 'Ashchand833/fijigirmit-website';
+  const BRANCH = (location.hostname.includes('staging--') || location.hostname.includes('localhost')) ? 'staging' : 'main';
+  const FALLBACK_EVENTS = [
+    {title:'Girmit Connections Youth Workshop',date:'2026-06-07',date_display:'Sunday 7 June 2026',time:'1.00pm - 3.00pm',venue:'Ormiston Junior College',category:'Upcoming Event',description:'A youth workshop with Shana Chandra remembering the 147th Fiji Girmit Anniversary 2026. All youth from all cultures aged 12–24 are welcome. Explore the powerful history of the Girmit journey through stories, identity and belonging.',flyer:'/images/girmit-connections-youth-workshop-2026.png',photos:[],show_on_homepage:true},
+    {title:'147th Girmit Remembrance Day',date:'2026-05-16',date_display:'Saturday 16 May 2026',time:'5.00pm - 8.30pm',venue:'Malaeola Community Centre, 16 Waokauri Place, Mangere, Auckland',category:'Upcoming Event',description:'An evening of remembrance, recognition and celebration.',flyer:'girmitday.jpg',photos:[],show_on_homepage:true},
+    {title:"International Women's Day High Tea",date:'2026-03-08',date_display:'Sunday 8 March 2026',time:'2.00pm - 4.00pm',venue:'Divine Patisserie, 240 Ormiston Road, Auckland 2019',category:'Upcoming Event',description:'Balance the Scales - IWD 2026.',flyer:'hightea.jpg',photos:[],show_on_homepage:true},
+    {title:'Fiji NZ Girmit Day Celebration',date:'2025-05-14',date_display:'Fiji NZ Girmit Day Celebration',category:'Photo Gallery',description:'Celebrating community, remembrance and cultural connection.',photos:['gday1.jpg','gday2.jpg','gday3.jpg','gday4.jpg','gday5.jpg','gday6.jpg','gday7.jpg','gday8.jpg','gday9.jpg','gday10.jpg','gday11.jpg','gday12.jpg','gday14.jpg','gday15.jpg','gday16.jpg','gday17.jpg','gday21.jpg'],show_on_homepage:true},
+    {title:'Diwali Celebrations 2024',date:'2024-11-01',date_display:'Diwali Celebrations 2024',category:'Photo Gallery',description:'Festival moments from the Diwali celebrations.',photos:['diwali-1.jpg','diwali-2.jpg','diwali-3.jpg','diwali-4.jpg','diwali-5.jpg','diwali-6.jpg'],show_on_homepage:true},
+    {title:'Breast Cancer Awareness Campaign',date:'2024-10-01',date_display:'Breast Cancer Awareness Campaign',category:'Photo Gallery',description:'Community awareness and support campaign.',photos:['cancer-1.jpg','cancer-2.jpg','cancer-3.jpg','cancer-4.jpg','cancer-5.jpg','cancer-6.jpg','cancer-7.jpg','cancer-8.jpg'],show_on_homepage:true}
+  ];
+  function clean(v){return String(v||'').trim().replace(/^['"]|['"]$/g,'');}
+  function normalizePath(p){
+    p=clean(p); if(!p) return '';
+    if(/^https?:\/\//i.test(p) || p.startsWith('/')) return p;
+    return p;
   }
-  return { data, body };
-}
-function cmsParsePhotos(value) {
-  return Array.isArray(value) ? value.map(item => {
-    if (typeof item === "string") return cmsNormalizeImage(item);
-    if (item && typeof item === "object") return cmsNormalizeImage(item.image || item.src || item.url || "");
-    return "";
-  }).filter(Boolean) : [];
-}
-function cmsFormatDate(value, includeWeekday=false) {
-  if (!value) return "";
-  const d = new Date(value); if (Number.isNaN(d.getTime())) return String(value);
-  return d.toLocaleDateString("en-NZ", { weekday: includeWeekday ? "long" : undefined, day: "numeric", month: "long", year: "numeric" });
-}
-function cmsParagraphs(markdownText) {
-  return String(markdownText || "").split(/\n{2,}/).map(p => p.trim()).filter(Boolean).map(p => `<p>${cmsEscapeHtml(p)}</p>`).join('');
-}
-async function cmsFetchFolder(folder) {
-  const apiUrl = `https://api.github.com/repos/${CMS_SETTINGS.owner}/${CMS_SETTINGS.repo}/contents/${folder}?ref=${CMS_SETTINGS.branch}`;
-  const response = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
-  if (!response.ok) throw new Error(`Could not load ${folder} from GitHub`);
-  const items = await response.json();
-  const files = items.filter(item => item.type === "file" && /\.(md|markdown|yml|yaml|json)$/i.test(item.name));
-  return Promise.all(files.map(async fileItem => ({ fileItem, raw: await fetch(fileItem.download_url + `?v=${Date.now()}`).then(r => r.text()) })));
-}
-async function cmsLoadEvents() {
-  const items = await cmsFetchFolder('events');
-  const parsed = items.map(({fileItem, raw}) => {
-    const parsed = cmsParseFrontmatter(raw); if (!parsed) return null;
-    const data = parsed.data || {}; const photos = cmsParsePhotos(data.photos);
-    return {
-      slug: String(data.slug || fileItem.name.replace(/\.[^.]+$/, '')).trim(),
-      title: String(data.title || fileItem.name.replace(/\.[^.]+$/, '')).trim(),
-      show_on_homepage: data.show_on_homepage !== false,
-      category: String(data.category || (photos.length ? 'Photo Gallery' : 'Event')).trim(),
-      date: data.date || '', date_display: String(data.date_display || '').trim(), time: String(data.time || '').trim(), venue: String(data.venue || '').trim(), location: String(data.location || '').trim(),
-      description: String(data.description || '').trim(), gallery_intro: String(data.gallery_intro || '').trim(), display_mode: String(data.display_mode || (photos.length ? 'gallery' : 'flyer')).trim(),
-      flyer: cmsNormalizeImage(data.flyer || data.cover_image || ''), photos, sort_order: Number(data.sort_order || 9999)
-    };
-  }).filter(Boolean);
-  return parsed.sort((a,b) => {
-    const aDate = a.date ? new Date(a.date).getTime() : null, bDate = b.date ? new Date(b.date).getTime() : null;
-    if (aDate && bDate) return bDate - aDate; if (aDate) return -1; if (bDate) return 1;
-    return Number(a.sort_order || 9999) - Number(b.sort_order || 9999);
-  });
-}
-async function cmsLoadNews() {
-  const items = await cmsFetchFolder('news');
-  const parsed = items.map(({fileItem, raw}) => {
-    const parsed = cmsParseFrontmatter(raw); if (!parsed) return null;
-    const data = parsed.data || {}; const slugBase = fileItem.name.replace(/\.[^.]+$/, '');
-    return {
-      slug: String(data.slug || slugBase.replace(/^\d{4}-\d{2}-\d{2}-/, '')).trim(),
-      title: String(data.title || slugBase).trim(), publish_date: data.publish_date || '', show_on_homepage: data.show_on_homepage !== false, featured: data.featured === true,
-      excerpt: String(data.excerpt || '').trim(), cover_image: cmsNormalizeImage(data.cover_image || ''), photos: cmsParsePhotos(data.photos), body: parsed.body || ''
-    };
-  }).filter(Boolean);
-  return parsed.sort((a,b) => new Date(b.publish_date).getTime() - new Date(a.publish_date).getTime());
-}
-function eventMetaLine(item) {
-  const parts = []; const dateText = item.date_display || cmsFormatDate(item.date, false); if (dateText) parts.push(dateText); if (item.time) parts.push(item.time); return parts.join(' · ');
-}
-let eventModalItems = []; let eventModalIndex = 0; let eventModalImageIndex = 0;
-function openEventModalByIndex(index) { eventModalItems = window.__eventItems || []; eventModalIndex = index; eventModalImageIndex = 0; renderEventModal(); const modal = document.getElementById('eventModal'); if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; } }
-function closeEventModal() { const modal = document.getElementById('eventModal'); if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; } }
-function changeEventModalGallery(direction) { const item = eventModalItems[eventModalIndex]; const images = item && item.photos && item.photos.length ? item.photos : [item.flyer || 'logo.jpg']; eventModalImageIndex = (eventModalImageIndex + direction + images.length) % images.length; renderEventModal(); }
-function renderEventModal() {
-  const item = eventModalItems[eventModalIndex]; if (!item) return; const modal = document.getElementById('eventModal'); if (!modal) return;
-  const images = item.photos && item.photos.length ? item.photos : [item.flyer || 'logo.jpg']; const imageSrc = images[eventModalImageIndex] || 'logo.jpg';
-  modal.querySelector('[data-modal-title]').textContent = item.title;
-  modal.querySelector('[data-modal-meta]').textContent = item.category || eventMetaLine(item);
-  modal.querySelector('[data-modal-text]').innerHTML = [eventMetaLine(item), item.venue, item.location, item.description || item.gallery_intro].filter(Boolean).map(v => `<p>${cmsEscapeHtml(v)}</p>`).join('');
-  const img = modal.querySelector('[data-modal-image]'); img.src = imageSrc; img.alt = item.title;
-  modal.querySelector('[data-modal-counter]').textContent = `${eventModalImageIndex + 1} / ${images.length}`;
-  const multiple = images.length > 1; modal.querySelector('[data-modal-prev]').style.display = multiple ? 'flex' : 'none'; modal.querySelector('[data-modal-next]').style.display = multiple ? 'flex' : 'none';
-}
+  function parseScalar(v){
+    v=clean(v);
+    if(v==='true') return true; if(v==='false') return false;
+    if(v==='' || v==='null') return '';
+    if(!Number.isNaN(Number(v)) && /^-?\d+(\.\d+)?$/.test(v)) return Number(v);
+    return v;
+  }
+  function parseFrontMatter(text){
+    const out={};
+    if(!text || !text.trim().startsWith('---')) return out;
+    const end=text.indexOf('\n---',3);
+    if(end<0) return out;
+    const yaml=text.slice(3,end).replace(/\r/g,'').split('\n');
+    let i=0;
+    while(i<yaml.length){
+      const line=yaml[i];
+      if(!line.trim() || line.trim().startsWith('#')){i++;continue;}
+      const m=line.match(/^([A-Za-z0-9_\-]+):\s*(.*)$/);
+      if(!m){i++;continue;}
+      const key=m[1]; const rest=m[2];
+      if(rest!=='') { out[key]=parseScalar(rest); i++; continue; }
+      // parse simple list, especially photos:
+      const arr=[]; i++;
+      while(i<yaml.length && /^\s+-\s*/.test(yaml[i])){
+        const itemLine=yaml[i].replace(/^\s+-\s*/, '');
+        if(itemLine.includes(':')){
+          const [k,...parts]=itemLine.split(':');
+          const obj={}; obj[k.trim()]=parseScalar(parts.join(':'));
+          i++;
+          while(i<yaml.length && /^\s{4,}[A-Za-z0-9_\-]+:/.test(yaml[i])){
+            const mm=yaml[i].trim().match(/^([A-Za-z0-9_\-]+):\s*(.*)$/);
+            if(mm) obj[mm[1]]=parseScalar(mm[2]);
+            i++;
+          }
+          arr.push(obj);
+        }else{ arr.push(parseScalar(itemLine)); i++; }
+      }
+      out[key]=arr;
+    }
+    return out;
+  }
+  function formatDate(date, longForm=true){
+    if(!date) return '';
+    const d=new Date(date); if(Number.isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-NZ',{weekday:longForm?'long':undefined,day:'numeric',month:'long',year:'numeric'});
+  }
+  function sortEvents(items){
+    return [...(items||[])].sort((a,b)=>{
+      const ad=a.date?new Date(a.date).getTime():-Infinity;
+      const bd=b.date?new Date(b.date).getTime():-Infinity;
+      if(bd!==ad) return bd-ad; // latest/future dates first
+      return (Number(a.sort_order)||100)-(Number(b.sort_order)||100);
+    });
+  }
+  function getPhotos(item){
+    const list=[];
+    if(item.flyer) list.push(normalizePath(item.flyer));
+    const photos=item.photos||[];
+    photos.forEach(p=>{
+      const src=typeof p==='string'?p:(p&&p.image);
+      if(src) list.push(normalizePath(src));
+    });
+    if(item.image) list.push(normalizePath(item.image));
+    if(item.images && Array.isArray(item.images)) item.images.forEach(p=>p&&list.push(normalizePath(p)));
+    return [...new Set(list.filter(Boolean))];
+  }
+  function coverImage(item){ return getPhotos(item)[0] || ''; }
+  async function loadEvents(){
+    try{
+      const api=`https://api.github.com/repos/${REPO}/contents/events?ref=${BRANCH}`;
+      const res=await fetch(api,{headers:{Accept:'application/vnd.github+json'}});
+      if(!res.ok) throw new Error('GitHub API returned '+res.status);
+      const files=(await res.json()).filter(f=>f.name && f.name.endsWith('.md'));
+      const items=await Promise.all(files.map(async f=>{
+        const r=await fetch(f.download_url); if(!r.ok) return null;
+        const text=await r.text(); const data=parseFrontMatter(text);
+        data._file=f.name;
+        data.title=data.title || data.name || f.name.replace(/\.md$/,'').replace(/-/g,' ');
+        data.category=data.category || (data.display_mode==='flyer'?'Upcoming Event':'Photo Gallery');
+        data.photos=data.photos || [];
+        return data;
+      }));
+      const cleaned=items.filter(Boolean);
+      if(cleaned.length) return sortEvents(cleaned);
+    }catch(e){ console.warn('CMS event load failed, using fallback:',e); }
+    return sortEvents(FALLBACK_EVENTS);
+  }
+  window.cmsLoadEvents=loadEvents;
+  window.cmsFormatDate=formatDate;
+  window.cmsSortEvents=sortEvents;
+  window.cmsEventImages=getPhotos;
+  window.cmsCoverImage=coverImage;
+})();
