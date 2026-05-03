@@ -1,0 +1,472 @@
+/* FGFNZ FINAL GLOBAL LOCK
+   Upload this as /site-style.css in the ROOT of the repo.
+   Purpose:
+   1) One exact header height/style across all pages.
+   2) Nav links only turn blue on hover; Donate stays blue.
+   3) Event/home cards keep images the same size and stop overflow/blank image areas.
+*/
+
+:root {
+  --fgfnz-ink: #2b1710;
+  --fgfnz-muted: #6f5f57;
+  --fgfnz-cream: #f7f1e8;
+  --fgfnz-line: #eadfce;
+  --fgfnz-blue: #61b9e8;
+  --fgfnz-blue-dark: #2f8fc7;
+}
+
+/* ---------- Global header lock ---------- */
+header,
+.site-header,
+.global-header {
+  width: 100% !important;
+  min-height: 116px !important;
+  height: 116px !important;
+  padding: 0 48px !important;
+  margin: 0 !important;
+  background: #ffffff !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  border: 0 !important;
+  box-shadow: 0 4px 18px rgba(43, 23, 16, 0.06) !important;
+  position: relative !important;
+  z-index: 50 !important;
+}
+
+.header-inner,
+.site-header .header-inner,
+.global-header .header-inner,
+header .header-inner,
+header .container,
+.site-header .container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  min-height: 116px !important;
+  height: 116px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 36px !important;
+  box-sizing: border-box !important;
+}
+
+/* Brand/logo block */
+.brand,
+.site-brand,
+.logo-brand,
+.brand-link,
+header a.brand,
+header .brand a {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  min-height: 88px !important;
+  height: 88px !important;
+  text-decoration: none !important;
+  color: var(--fgfnz-ink) !important;
+  flex: 0 0 auto !important;
+}
+
+.brand img,
+.site-brand img,
+.logo-brand img,
+.brand-link img,
+header img[src*="logo"],
+header img[alt*="logo" i],
+header img[alt*="Fiji" i] {
+  width: 78px !important;
+  height: 78px !important;
+  min-width: 78px !important;
+  max-width: 78px !important;
+  min-height: 78px !important;
+  max-height: 78px !important;
+  object-fit: contain !important;
+  display: block !important;
+  flex: 0 0 78px !important;
+  margin: 0 !important;
+}
+
+.brand-title,
+.site-title,
+.logo-title,
+header .brand-title,
+header .site-title,
+header h1 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 32px !important;
+  line-height: 1.08 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--fgfnz-ink) !important;
+  white-space: nowrap !important;
+}
+
+.brand-subtitle,
+.site-tagline,
+.logo-subtitle,
+header .brand-subtitle,
+header .site-tagline,
+header p {
+  margin: 5px 0 0 0 !important;
+  padding: 0 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 19px !important;
+  line-height: 1.15 !important;
+  color: var(--fgfnz-muted) !important;
+  white-space: nowrap !important;
+}
+
+/* Nav lock */
+nav,
+.header-nav,
+.site-nav,
+header nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 24px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 64px !important;
+  height: 64px !important;
+  flex: 1 1 auto !important;
+}
+
+nav a,
+.header-nav a,
+.site-nav a,
+header nav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  padding: 0 16px !important;
+  margin: 0 !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: var(--fgfnz-ink) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transition: background-color .18s ease, color .18s ease, transform .18s ease !important;
+}
+
+/* No page should show blue by default except Donate. */
+nav a.active:not(.donate-btn):not(.donate-link),
+nav a[aria-current="page"]:not(.donate-btn):not(.donate-link),
+.header-nav a.active:not(.donate-btn):not(.donate-link),
+.header-nav a[aria-current="page"]:not(.donate-btn):not(.donate-link),
+.site-nav a.active:not(.donate-btn):not(.donate-link),
+.site-nav a[aria-current="page"]:not(.donate-btn):not(.donate-link) {
+  background: transparent !important;
+  color: var(--fgfnz-ink) !important;
+}
+
+/* Hover colour must match Donate button. */
+nav a:hover,
+.header-nav a:hover,
+.site-nav a:hover,
+header nav a:hover {
+  background: var(--fgfnz-blue) !important;
+  color: var(--fgfnz-ink) !important;
+}
+
+/* Donate button stays blue. */
+.donate-btn,
+.donate-link,
+a[href*="donate"].donate-btn,
+nav a[href*="donate"],
+.header-nav a[href*="donate"],
+.site-nav a[href*="donate"],
+header nav a[href*="donate"] {
+  min-width: 138px !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  padding: 0 26px !important;
+  background: var(--fgfnz-blue) !important;
+  color: var(--fgfnz-ink) !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+
+.donate-btn:hover,
+.donate-link:hover,
+nav a[href*="donate"]:hover,
+.header-nav a[href*="donate"]:hover,
+.site-nav a[href*="donate"]:hover,
+header nav a[href*="donate"]:hover {
+  background: var(--fgfnz-blue-dark) !important;
+  color: #ffffff !important;
+}
+
+/* ---------- Event/home card image lock ---------- */
+.events-grid,
+.event-grid,
+#eventsGrid,
+#upcomingEvents,
+.upcoming-events-grid {
+  align-items: stretch !important;
+}
+
+/* Event cards should not allow images to overflow sideways. */
+.event-card,
+.event-tile,
+.events-grid article,
+.event-grid article,
+#eventsGrid article,
+#upcomingEvents article,
+.upcoming-events-grid article {
+  overflow: hidden !important;
+  border-radius: 28px !important;
+  background: #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+/* Image wrapper */
+.event-card .event-image,
+.event-card .card-image,
+.event-card .event-media,
+.event-card .media,
+.event-tile .event-image,
+.event-tile .card-image,
+.event-tile .event-media,
+.events-grid article .event-image,
+.event-grid article .event-image,
+#eventsGrid article .event-image,
+#upcomingEvents article .event-image,
+.upcoming-events-grid article .event-image {
+  width: 100% !important;
+  height: 260px !important;
+  max-height: 260px !important;
+  overflow: hidden !important;
+  display: block !important;
+  background: var(--fgfnz-cream) !important;
+  border-radius: 0 !important;
+}
+
+/* Card images: fill the card area correctly, no half image / blank right side. */
+.event-card img,
+.event-tile img,
+.events-grid article img,
+.event-grid article img,
+#eventsGrid article img,
+#upcomingEvents article img,
+.upcoming-events-grid article img {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  height: 260px !important;
+  min-height: 260px !important;
+  max-height: 260px !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Hide broken image icon space more cleanly if an admin image is removed. */
+.event-card img:not([src]),
+.event-card img[src=""],
+.event-tile img:not([src]),
+.event-tile img[src=""],
+.events-grid article img:not([src]),
+.events-grid article img[src=""] {
+  display: none !important;
+}
+
+/* Modal/gallery image: show the whole image consistently. */
+.modal img,
+.event-modal img,
+.gallery-modal img,
+.popup img,
+.lightbox img {
+  max-width: 100% !important;
+  max-height: 68vh !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* About trustees image lock */
+.trustee-card img,
+.trustees-grid img,
+.board-grid img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  border-radius: 18px !important;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  header,
+  .site-header,
+  .global-header {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 14px 18px !important;
+  }
+
+  .header-inner,
+  .site-header .header-inner,
+  .global-header .header-inner,
+  header .header-inner,
+  header .container,
+  .site-header .container {
+    height: auto !important;
+    min-height: 0 !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+  }
+
+  .brand,
+  .site-brand,
+  .logo-brand,
+  .brand-link,
+  header a.brand,
+  header .brand a {
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 12px !important;
+  }
+
+  .brand img,
+  .site-brand img,
+  .logo-brand img,
+  .brand-link img,
+  header img[src*="logo"],
+  header img[alt*="logo" i],
+  header img[alt*="Fiji" i] {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    min-height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+    flex-basis: 58px !important;
+  }
+
+  .brand-title,
+  .site-title,
+  .logo-title,
+  header .brand-title,
+  header .site-title,
+  header h1 {
+    font-size: 24px !important;
+    white-space: normal !important;
+  }
+
+  .brand-subtitle,
+  .site-tagline,
+  .logo-subtitle,
+  header .brand-subtitle,
+  header .site-tagline,
+  header p {
+    font-size: 15px !important;
+    white-space: normal !important;
+  }
+
+  nav,
+  .header-nav,
+  .site-nav,
+  header nav {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  nav a,
+  .header-nav a,
+  .site-nav a,
+  header nav a {
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 12px !important;
+    font-size: 16px !important;
+  }
+
+  .donate-btn,
+  .donate-link,
+  nav a[href*="donate"],
+  .header-nav a[href*="donate"],
+  .site-nav a[href*="donate"],
+  header nav a[href*="donate"] {
+    height: 44px !important;
+    min-height: 44px !important;
+    min-width: auto !important;
+  }
+
+  .event-card img,
+  .event-tile img,
+  .events-grid article img,
+  .event-grid article img,
+  #eventsGrid article img,
+  #upcomingEvents article img,
+  .upcoming-events-grid article img,
+  .event-card .event-image,
+  .event-card .card-image,
+  .event-card .event-media,
+  .event-card .media,
+  .event-tile .event-image,
+  .event-tile .card-image,
+  .event-tile .event-media,
+  .events-grid article .event-image,
+  .event-grid article .event-image,
+  #eventsGrid article .event-image,
+  #upcomingEvents article .event-image,
+  .upcoming-events-grid article .event-image {
+    height: 220px !important;
+    min-height: 220px !important;
+    max-height: 220px !important;
+  }
+
+  .trustee-card img,
+  .trustees-grid img,
+  .board-grid img {
+    height: 240px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .event-card img,
+  .event-tile img,
+  .events-grid article img,
+  .event-grid article img,
+  #eventsGrid article img,
+  #upcomingEvents article img,
+  .upcoming-events-grid article img,
+  .event-card .event-image,
+  .event-card .card-image,
+  .event-card .event-media,
+  .event-card .media,
+  .event-tile .event-image,
+  .event-tile .card-image,
+  .event-tile .event-media,
+  .events-grid article .event-image,
+  .event-grid article .event-image,
+  #eventsGrid article .event-image,
+  #upcomingEvents article .event-image,
+  .upcoming-events-grid article .event-image {
+    height: 190px !important;
+    min-height: 190px !important;
+    max-height: 190px !important;
+  }
+}
