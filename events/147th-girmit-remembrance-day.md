@@ -7,8 +7,8 @@ date_display: Saturday, 16th May 2026
 time: 5:00pm – 8:30pm
 venue: Malaeola Community Centre
 location: 16 Waokauri Place, Mangere, Auckland
-description: An Evening of Remembrance & Recognition. Doors open at 4pm with
-  networking, tea and snacks from 4.30pm.
+description: An Evening of Remembrance & Recognition. Doors open at 5:00pm with
+  networking, tea and snacks.
 display_mode: flyer
 sort_order: 10
 flyer: /images/uploads/fiji-girmit-remembrance-day_2026_fgfnz.jpg
